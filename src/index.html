@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banco Bradesco | Tela de Login</title>
 
-    <!-- <link rel="stylesheet" href="styles/vendor/reset.css"> -->
+    <link rel="stylesheet" href="styles/vendor/reset.css">
 
     <link rel="stylesheet" href="styles/global.css">
 
@@ -30,266 +30,320 @@
             </button>
             <div class="input-group">
                 <label for="campo-agencia">Agência:</label>
-                <input type="text" id="campo-agencia" name="agencia">
+                <input type="text" class="somente-numeros" id="campo-agencia" name="agencia" aria-label="Agência" maxlength="4">
             </div>
             <div class="input-group">
                 <label for="campo-conta">Conta:</label>
-                <input type="text" id="campo-conta" name="conta">
+                <input type="text"class="somente-numeros" id="campo-conta" name="conta" aria-label="Conta">
             </div>
             <div class="input-group">
                 <label for="campo-digito">Dígito:</label>
-                <input type="text" id="campo-digito" name="digito">
+                <input type="text" class="somente-numeros" id="campo-digito" name="digito" aria-label="Dígito" maxlength="1">
             </div>
             <button type="submit" class="header_submit-button">OK</button>
 
             <div class="checkbox-group">
                 <input type="checkbox" name="lembrar" id="lembrar-dados">
-                <label for="lembrar-dados"><span class="label_text-lembrar">Lembrar-me</span></label>
+                <label for="lembrar-dados">Lembrar-me</label>
             </div>
 
             <a href="#">Como usar <img src="assets/icons/nav/arrow-right.svg" alt="Botão de seta para direita"></a>
         </form>
 
         <div class="header-acessibilidade">
-            <a href="#">Acessibilidade <img src="assets/icons/acessibilidade/icon_acessibilidade.svg" alt=""></a>
+            <a href="#">Acessibilidade <img src="assets/icons/acessibilidade/icon_acessibilidade.svg"
+                    alt="Ícone da acessibilidade"></a>
         </div>
     </header>
-    <h3>Acessibilidade</h3>
-    <ul>
-        <li><a href="#" title="Ativar WebLibras"><img
-                    src="assets/icons/acessibilidade/icon_acessibilidade_weblibras.svg" alt="Libras"> WebLibras</a></li>
-        <li><a href="#" title="Ativar Voz"><img src="assets/icons/acessibilidade/icon_acessibilidade_contraste.svg"
-                    alt="Acessibilidade Contraste">&nbsp;Voz</a></li>
-        <li><a href="#" title="Acessar mais Ferramentas"><img
-                    src="assets/icons/acessibilidade/icon_acessibilidade_contraste.svg"
-                    alt="Acessibilidade Contraste">&nbsp;Mais Ferramentas</a></li>
-        <li><a href="#" title="Ler sobre acessibilidades"><img
-                    src="assets/icons/acessibilidade/icon_acessibilidade_produtos_servicos.svg"
-                    alt="Serviços de Acessibilidade"> Sobre Acessibilidade</a></li>
-    </ul>
-    <a href="#"><img src="assets/icons/acessibilidade/icon_acessibilidade_libras.svg" alt="">&nbsp;Atendimento em
-        Libras</a>
-
-    <p>Acesse sua conta pelo Aplicativo Bradesco</p>
-    <a href="#" aria-label="Baixar o aplicativo Bradesco">Ok</a> <br> <br>
-    <img src="assets/icons/marca/bra-logo.png" alt="Logo do Bradesco"> <br> <br>
-    <p><Strong>Para a conta da sua empresa, acesse o Bradesco Net Empresa</Strong></p>
-    <a href="#">Acessar conta</a> <br> <br> <br>
-
-    <p>Se você for pessoa física, use um dos navegadores pra poder acessar:</p>
-    <img src="assets/icons/browsers/nav-chrome.svg" alt="Logo do Google Chrome"> <br> <br>
-    <small>Google Chrome</small> <br> <br>
-    <img src="assets/icons/browsers/nav-edge.svg" alt="Logo do Microsoft Edge"> <br> <br>
-    <small>Microsoft Edge</small> <br> <br>
-    <img src="assets/icons/browsers/nav-firefox.svg" alt="Logo do Firefox"> <br> <br>
-    <small>Firefox</small> <br>
-
-
-    <ul>
-        <li><a href="#">Outros perfis <img src="assets/icons/nav/arrow-down.svg" alt="Seta para baixo"></a>
+    <div id="menu-acessibilidade" class="menu-acessibilidade-escondido">
+        <div class="menu-acessibilidade_topo">
+            <h3>Acessibilidade</h3>
+            <button id="btn-fechar-acessibilidade" aria-label="Fechar Menu">X</button>
+        </div>
+        <div class="menu-acessibilidade_grid">
             <ul>
+                <li><a href="#" title="Ativar WebLibras" class="btn-acesso-item"><img
+                            src="assets/icons/acessibilidade/icon_acessibilidade_weblibras.svg" alt="Libras">
+                        WebLibras</a>
+                </li>
+                <li><a href="#" title="Ativar Voz" class="btn-acesso-item"><img
+                            src="assets/icons/acessibilidade/icon_acessibilidade_contraste.svg"
+                            alt="Acessibilidade Contraste"><span>&nbsp;Voz</span></a></li>
+                <li><a href="#" title="Acessar mais Ferramentas" class="btn-acesso-item"><img
+                            src="assets/icons/acessibilidade/icon_acessibilidade_contraste.svg"
+                            alt="Acessibilidade Contraste"><span>&nbsp;Mais Ferramentas</span></a></li>
+                <li><a href="#" title="Ler sobre acessibilidades" class="btn-acesso-item"><img
+                            src="assets/icons/acessibilidade/icon_acessibilidade_produtos_servicos.svg"
+                            alt="Serviços de Acessibilidade"> <span>Sobre Acessibilidade</span></a></li>
+            </ul>
+        </div>
+        <div class="menu-acessibilidade_rodape">
+            <a href="#" class="btn-atendimento-libras"><img
+                    src="assets/icons/acessibilidade/icon_acessibilidade_libras.svg" alt="">&nbsp;Atendimento
+                em
+                Libras
+            </a>
+        </div>
+    </div>
+
+
+
+
+    <header id="main-header">
+        <div class="container-main-header">
+
+            <a href="index.html" class="main-logo">
+                <img src="assets/icons/dispositivos/logo-mobile.png" alt="Logo Bradesco">
+            </a>
+
+            <nav class="main-nav-direita">
+                <ul class="lista-perfis-topo">
+
+                    <li class="dropdown-perfil">
+                        <a href="#" class="btn-perfil">
+                            <div class="texto-duplo">
+                                <span class="txt-fino">Outros</span>
+                                <span class="txt-grosso">PERFIS <img src="assets/icons/nav/arrow-down.svg"
+                                        alt="Seta"></span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-escondido">
+                            <li><a href="#">Exclusive</a></li>
+                            <li><a href="#">Prime</a></li>
+                            <li><a href="#">Principal</a></li>
+                            <li><a href="#">Global Private</a></li>
+                            <li><a href="#">Mais opções</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-perfil">
+                        <a href="#" class="btn-perfil">
+                            <div class="texto-duplo">
+                                <span class="txt-fino">Pra sua</span>
+                                <span class="txt-grosso">EMPRESA <img src="assets/icons/nav/arrow-down.svg"
+                                        alt="Seta"></span>
+                            </div>
+                        </a>
+                        <ul class="dropdown-escondido">
+                            <li><a href="#">Empresas e Negócios</a></li>
+                            <li><a href="#">Bradesco Corporate</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <button type="button" class="btn-busca-topo">
+                    Busca <img src="assets/icons/nav/search-red.svg" alt="Ícone de pesquisa"> </button>
+            </nav>
+
+        </div>
+    </header>
+    <section id="painel-busca-global" class="esconder-busca">
+
+
+        <p class="btn-fechar-busca">Fechar X</p>
+
+        <div class="container-input-gigante">
+            <input type="text" id="campo-busca" placeholder="O que você procura?" aria-label="Pesquisar no site">
+
+
+            <div class="botoes-input">
+                <button type="button" id="btn-limpar-busca" class="btn-limpar-texto estado-oculto">
+                    <img src="assets/icons/nav/close.svg" alt="Limpar texto">
+                </button>
+
+                <button type="button" class="btn-lupa-busca">
+                    <img src="assets/icons/nav/search.svg" alt="Ícone de pesquisa">
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="area-dinamica-busca">
+
+            <div id="estado-vazio-busca" class="busca-linha-meio">
+                <div class="busca-coluna">
+                    <h1>Mais Buscados</h1>
+                    <ul>
+                        <li><a href="#">crédito</a></li>
+                        <li><a href="#">abra sua conta</a></li>
+                        <li><a href="#">boleto</a></li>
+                        <li><a href="#">cartão de crédito</a></li>
+                        <li><a href="#">ipva</a></li>
+                    </ul>
+                </div>
+                <div class="busca-coluna coluna-com-linha">
+                    <h1>Suas Buscas Recentes</h1>
+                    <ul id="buscas-recentes-content">
+                        <li class="empty">Você ainda não fez nenhuma busca</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="estado-digitando-busca" class="estado-oculto">
+                <h1>Sugestões</h1>
+                <button id="ver-resultados" class="btn-ver-resultados">Ver todos os resultados</button>
+            </div>
+
+        </div>
+
+
+
+        <div class="busca-linha-cartoes">
+            <h1>Separamos para você</h1>
+
+            <div class="grid-cartoes-imagens">
+
+                <div class="item">
+                    <a href="#">Antecipação Imposto de Renda</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/financiamento-mobile.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/financiamento-bg.jpg">
+                        <img src="assets/images/content/financiamento-bg.jpg" alt="Pessoas apertando as mãos"
+                            loading="lazy">
+                    </picture>
+                </div>
+
+                <div class="item">
+                    <a href="#">Bradesco Explica</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/bradesco-explica.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/bradesco-explica.png">
+                        <img src="assets/images/content/bradesco-explica.png" alt="Mulher feliz" loading="lazy">
+                    </picture>
+                </div>
+
+                <div class="item">
+                    <a href="#">Renegociação de Dívidas</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/renegocie-bg.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/renegocie-bg.jpg">
+                        <img src="assets/images/content/renegocie-bg.jpg" alt="Renegociação" loading="lazy">
+                    </picture>
+                </div>
+
+                <div class="item">
+                    <a href="#">Rastrear Novo Cartão</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/cartoes-mobile.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/cartoes-bg.jpg">
+                        <img src="assets/images/content/cartoes-bg.jpg" alt="Rastrear Cartão" loading="lazy">
+                    </picture>
+                </div>
+
+                <div class="item">
+                    <a href="#">Investimentos</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/invertimentos-mobile.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/investimento-bg.jpg">
+                        <img src="assets/images/content/investimento-bg.jpg" alt="Investimentos" loading="lazy">
+                    </picture>
+                </div>
+
+            </div>
+        </div>
+
+        <picture>
+            <source media="(max-width: 1024px)" srcset="assets/background/bg-busca-mobile.webp" type="image/webp">
+            <source media="(min-width: 1024px)" srcset="assets/background/bg-busca.webp" type="image/webp">
+            <img src="assets/background/bg-busca.png" alt="background busca" loading="lazy" width="1436" height="793"
+                class="background-busca">
+            <img src="assets/background/bg-busca.png" alt="background busca" loading="lazy" width="1436" height="793"
+                class="background-busca">
+        </picture>
+    </section>
+
+    <!-- Essa parte eu ainda não achei na página do Bradesco -->
+    <div class="menu-principal-mobile">
+        <p>Acesse sua conta pelo Aplicativo Bradesco</p>
+        <a href="#" aria-label="Baixar o aplicativo Bradesco">Ok</a> <br> <br>
+        <img src="assets/icons/marca/bra-logo.png" alt="Logo do Bradesco"> <br> <br>
+        <p><Strong>Para a conta da sua empresa, acesse o Bradesco Net Empresa</Strong></p>
+        <a href="#">Acessar conta</a> <br> <br> <br>
+
+        <p>Se você for pessoa física, use um dos navegadores pra poder acessar:</p>
+        <img src="assets/icons/browsers/nav-chrome.svg" alt="Logo do Google Chrome"> <br> <br>
+        <small>Google Chrome</small> <br> <br>
+        <img src="assets/icons/browsers/nav-edge.svg" alt="Logo do Microsoft Edge"> <br> <br>
+        <small>Microsoft Edge</small> <br> <br>
+        <img src="assets/icons/browsers/nav-firefox.svg" alt="Logo do Firefox"> <br> <br>
+        <small>Firefox</small> <br>
+    </div>
+
+    <nav class="menu-principal-mobile">
+        <div class="menu-topo-destaques">
+            <span>Para você</span>
+            <ul>
+                <li><a href="#">Classic</a></li>
                 <li><a href="#">Exclusive</a></li>
                 <li><a href="#">Prime</a></li>
                 <li><a href="#">Principal</a></li>
                 <li><a href="#">Global Private</a></li>
-                <li><a href="#">Mais opções</a></li>
+                <li><a href="#">&nbsp; Mais opções</a></li>
             </ul>
-        </li>
-        <li><a href="#">Pra sua empresa <img src="assets/icons/nav/arrow-down.svg" alt="Seta para baixo"></a>
+
+            <hr>
+
+            <span>Para sua empresa</span>
             <ul>
-                <li><a href="#">Empresas e Negócios</a></li>
+                <li><a href="#">Empresa e Negócios</a></li>
                 <li><a href="#">Bradesco Corporate</a></li>
             </ul>
-        </li>
-    </ul>
-
-    <button type="submit">Busca</button> <br>
-
-    <a href="#"><img src="assets/icons/dispositivos/logo-mobile.png" alt="Logo do mobile">Busca</a>
-    <a href="#"><img src="assets/icons/dispositivos/menu_icon_mobile.svg" alt="Logo do menu do mobile" loading="lazy"
-            width="32" height="80"></a>
-    <p>Fechar</p>
-
-    <input type="text" id="campo-busca" placeholder="O que você procura?">
-    <label for="campo-busca">O que você procura?</label>
-
-    <div class="image-container">
-        <img src="assets/icons/nav/close.svg" alt="Ícone de Fechar">
-        <img src="assets/icons/nav/arrow-left-2.svg" alt="ícone de Flecha para esquerda">
-    </div>
-    <button type="submit"><img src="assets/icons/nav/search.svg" alt="Ícone de pesquisa"></button>
-
-    <h1>Mais Buscados</h1>
-    <ul>
-        <li><a href="#">crédito</a></li>
-        <li><a href="#">abra sua conta</a></li>
-        <li><a href="#">boleto</a></li>
-        <li><a href="#">cartão de crédito</a></li>
-        <li><a href="#">ipva</a></li>
-    </ul>
-
-    <h1>Suas Buscas Recentes</h1>
-    <ul id="buscas-recentes-content">
-        <li class="empty">Você ainda não fez nenhuma busca</li>
-    </ul>
-
-    <h1>Sugestões</h1>
-    <div>
-        <button id="ver-resultados">Ver todos os resultados</button>
-    </div>
-    <div>
-        <button><img src="assets/icons/acessibilidade/voice.svg" alt="Microfone para falar"></button>
-        <p>Fale agora</p>
-    </div>
-
-    <h1>Separamos para você</h1>
-    <div class="item">
-        <a href="#">Antecipação Imposto de Renda</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/financiamento-mobile.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/financiamento-bg.jpg">
-            <img src="assets/images/content/financiamento-bg.jpg" alt="Pessoas apertando as mãos" loading="lazy"
-                width="290" height="175">
-        </picture>
-
-    </div>
-
-    <div class="item">
-        <a href="#">Bradesco Explica</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/bradesco-explica.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/bradesco-explica.png">
-            <img src="assets/images/content/bradesco-explica.png" alt="Mulher feliz com o celular na mão" loading="lazy"
-                width="290" height="175">
-        </picture>
-
-    </div>
+        </div>
+    </nav>
 
 
-    <div class="item">
-        <a href="#">Renegociação de Dívidas</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/renegocie-bg.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/renegocie-bg.jpg">
-            <img src="assets/images/content/renegocie-bg.jpg" alt="Homem conversando com mulher" loading="lazy"
-                width="290" height="175">
-        </picture>
+    <section class="banner" id="hero-banner">
 
-    </div>
-
-
-    <div class="item">
-        <a href="#">Rastrear Novo Cartão</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/cartoes-mobile.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/cartoes-bg.jpg">
-            <img src="assets/images/content/cartoes-bg.jpg" alt="Mulher segurando o cartão" loading="lazy" width="290"
-                height="175">
-        </picture>
-
-    </div>
-
-
-    <div class="item">
-        <a href="#">Investimentos</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/invertimentos-mobile.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/invertimentos-mobile.jpg">
-            <img src="assets/images/content/invertimentos-mobile.jpg"
-                alt="Homens olhando para Gráficos de investimentos" loading="lazy" width="290" height="175">
-        </picture>
-
-    </div>
-
-    <h3>Talvez seja do seu interesse</h3>
-    <div class="item">
-        <a href="#">Pague pelo celular <br> Por aproximação</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/aproximacao-celular.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/aproximacao-celular.jpg">
-            <img src="assets/images/content/aproximacao-celular.jpg" alt="Homem deitado olhando o celular"
-                loading="lazy" width="290" height="175">
-        </picture>
-    </div>
-
-    <div class="item">
-        <a href="#">Seguro <br> Superprotegido Premiável</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/seguro-premiavel.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/seguro-premiavel.jpg">
-            <img src="assets/images/content/seguro-premiavel.jpg"
-                alt="Mulher sentada com um cartão na mão vendo o notebook" loading="lazy" width="290" height="175">
-        </picture>
-    </div>
-
-    <div class="item">
-        <a href="#">As melhores <br> ofertas para você</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/melhores-ofertas.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/melhores-ofertas.jpg">
-            <img src="assets/images/content/melhores-ofertas.jpg" alt="Segurando o cartão na frente de um notebook"
-                loading="lazy" width="290" height="175">
-        </picture>
-    </div>
-
-    <div class="item">
-        <a href="#">Compre moeda <br> Pelo Autoatendimento</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/moeda-autoatendimento.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/moeda-autoatendimento.jpg">
-            <img src="assets/images/content/moeda-autoatendimento.jpg" alt="Sacando o dinheiro em um Banco"
-                loading="lazy" width="290" height="175">
-        </picture>
-    </div>
-
-    <div class="item">
-        <a href="#">Seguro <br> Superprotegido Premiável</a>
-        <picture>
-            <source media="(max-width: 1024px)" srcset="assets/images/content/seguro-premiavel-2.webp">
-            <source media="(min-width: 1024px)" srcset="assets/images/content/seguro-premiavel-2.jpg">
-            <img src="assets/images/content/seguro-premiavel-2.jpg" alt="Sacando o dinheiro em um Banco" loading="lazy"
-                width="290" height="175">
-        </picture>
-    </div>
-
-    <picture>
-        <source media="(max-width: 1024px)" srcset="assets/background/bg-busca-mobile.webp" type="image/webp">
-        <source media="(min-width: 1024px)" srcset="assets/background/bg-busca.webp" type="image/webp">
-        <img src="assets/background/bg-busca.png" alt="background busca" loading="lazy" width="1436" height="793"
-            class="background-busca">
-        <img src="assets/background/bg-busca.png" alt="background busca" loading="lazy" width="1436" height="793"
-            class="background-busca-mobile">
-    </picture>
-
-    <span>Para você</span>
-    <ul>
-        <li><a href="#">Classic</a></li>
-        <li><a href="#">Exclusive</a></li>
-        <li><a href="#">Prime</a></li>
-        <li><a href="#">Principal</a></li>
-        <li><a href="#">Global Private</a></li>
-        <li><a href="#">&nbsp; Mais opções</a></li>
-    </ul>
-
-    <hr>
-
-    <span>Para sua empresa</span>
-    <ul>
-        <li><a href="#">Empresa e Negócios</a></li>
-        <li><a href="#">Bradesco Corporate</a></li>
-    </ul>
-
-    <section class="banner"></section>
-
-    <section class="card-destaque">
-        <div class="non-account-holder">
-            <a href="#">
-                <span>Contrate on-line, mesmo sem conta-corrente</span>
-                <img src="assets/icons/nav/arrow_red.svg" alt="Seta vermelha para direita">
-                <img src="assets/icons/nav/arrow_white.svg" alt="Seta branca para direita">
-            </a>
+        <div class="slide ativa">
+            <picture>
+                <source media="(max-width: 1024px)" srcset="assets/banners/banner1-mobile.webp">
+                <img src="assets/banners/home/Banner_Renegocie_V4.webp" alt="Desenrola Brasil" loading="lazy">
+            </picture>
         </div>
 
+        <div class="slide">
+            <img src="assets/banners/home/banner_abra-conta-digital.webp" alt="Abrir conta digital no Bradesco"
+                loading="lazy">
+        </div>
+
+        <div class="slide">
+            <img src="assets/banners/home/banner_isencao_de_anuidade.webp" alt="Banner de Insenção de anuidade"
+                loading="lazy">
+        </div>
+
+        <div class="slide">
+            <img src="assets/banners/home/promocao_cartao_que_da_jogo.webp" alt="Promoção cartão que dá jogo"
+                loading="lazy">
+        </div>
+
+        <div class="slide">
+            <img src="assets/banners/home/Banner_Abertura_Conta_MEI.webp" alt="Abra sua conta Mei no Bradesco"
+                loading="lazy">
+        </div>
+
+        <div class="banner-paginacao">
+            <span class="dot ativa" data-index="0"><span class="dot-top"></span><span class="dot-bottom"></span></span>
+            <span class="dot" data-index="1"><span class="dot-top"></span><span class="dot-bottom"></span></span>
+            <span class="dot" data-index="2"><span class="dot-top"></span><span class="dot-bottom"></span></span>
+            <span class="dot" data-index="3"><span class="dot-top"></span><span class="dot-bottom"></span></span>
+            <span class="dot" data-index="4"><span class="dot-top"></span><span class="dot-bottom"></span></span>
+        </div>
+
+    </section>
+
+
+    <div class="non-account-holder">
+        <a href="#">
+            <span>Contrate on-line, mesmo sem conta-corrente</span>
+            <img src="assets/icons/nav/arrow_red.svg" alt="Seta vermelha para direita" class="seta-vermelha">
+            <img src="assets/icons/nav/arrow_white.svg" alt="Seta branca para direita" class="seta-branca">
+        </a>
+    </div>
+
+    <section class="container-cartoes-destaque">
         <div class="card-destaque">
             <a href="#">
                 <img width="193" height="150" src="assets/images/online-hire/renegociacao-de-dividas.svg" alt=""
@@ -361,90 +415,110 @@
         </ul>
     </div>
 
-    <div>
-        <a href="index.html" tabindex="0" title="Bradesco"><img src="assets/icons/dispositivos/logo-mobile.png"
-                alt="Logo do mobile"></a>
-        <a href="#">Abra sua conta</a>
-        <a href="#">CONTRATE ON-LINE</a>
-    </div>
+    <nav id="menu-lateral-bradesco">
 
+        <div class="menu-principal">
 
-    <nav>
-        <a href="#">Menu</a>
-        <ul>
-            <li><a href="#">Produtos e Serviços</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Acessibilidade</a></li>
-            <li><a href="#">Cidadania Financeira</a></li>
-            <li><a href="#">Canais</a></li>
-            <li><a href="#">Atendimento</a></li>
-            <li><a href="#">Encontrar Agência Bradesco</a></li>
-        </ul>
-        <ul>
-            <li><a href="#">Capitalização</a></li>
-            <li><a href="#">Câmbio</a></li>
-            <li><a href="#">Cartões</a></li>
-            <li><a href="#">Cestas de Serviços e Tarifas</a></li>
-            <li><a href="#">Consórcio</a></li>
-            <li><a href="#">Empréstimos Financiamento</a></li>
-            <li><a href="#">Investimentos</a></li>
-            <li><a href="#">Leilões</a></li>
-            <li><a href="#">Renegociação de Dívidas</a></li>
-            <li><a href="#">Seguros</a></li>
-            <li><a href="#">Tipos de Contas</a></li>
-            <li><a href="#">Vida e Previdência</a></li>
-            <li><a href="#">Serviços</a></li>
-        </ul>
+            <div class="menu-topo-destaques">
+                <a href="#">Abra sua conta<img src="assets/icons/nav/arrow_white.svg" alt="Seta branca para direita"
+                        class="seta-abra-conta"></a>
+                <a href="#">CONTRATE ON-LINE<img src="assets/icons/nav/arrow_white.svg" alt="Seta branca para direita"
+                        class="seta-abra-conta"></a>
+            </div>
 
-        <ul>
-            <li><a href="#">Como usar minha conta bradesco</a></li>
-            <li><a href="#">Internet Banking</a></li>
-            <li><a href="#">Aplicativo Bradesco</a></li>
-            <li><a href="#">Caixa Eletrônico</a></li>
-            <li><a href="#">BIA</a></li>
-        </ul>
+            <ul class="lista-icones">
+                <li class="item-menu-content" id="btn-produtos">
+                    <img src="assets/icons/nav/icon-produtos-servicos.svg" alt="" aria-hidden="true">
+                    <span>Produtos e Serviços</span>
+                </li>
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/icon-shop.svg" alt="" aria-hidden="true" width="29px" height="28px"
+                            loading="lazy">Shop
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/acessibilidade.svg" alt="" aria-hidden="true" width="29px"
+                            height="28px" loading="lazy">Acessibilidade
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/educ-financeira.svg" alt="" aria-hidden="true" width="29px"
+                            height="28px" loading="lazy">Cidadania Financeira
+                    </a>
+                </li>
+                <li class="item-menu-content" id="btn-canais">
+                    <img src="assets/icons/nav/canais-digitais.svg" alt="" aria-hidden="true">
+                    <span>Canais</span>
+                </li>
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/atendimento.svg" alt="" aria-hidden="true" width="29px" height="28px"
+                            loading="lazy">Atendimento
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/pin-endereco.svg" alt="" aria-hidden="true" width="29px"
+                            height="28px" loading="lazy">Encontrar Agências Bradesco
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-        <ul>
-            <li class="item-menu-content">
-                <img src="assets/icons/nav/icon-produtos-servicos.svg" alt="" aria-hidden="true">
-                <span>Produtos e Serviços</span>
-            </li>
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/icon-shop.svg" alt="" aria-hidden="true" width="29px" height="28px"
-                        loading="lazy">Shop
-                </a>
-            </li>
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/acessibilidade.svg" alt="" aria-hidden="true" width="29px" height="28px"
-                        loading="lazy">Acessibilidade
-                </a>
-            </li>
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/educ-financeira.svg" alt="" aria-hidden="true" width="29px" height="28px"
-                        loading="lazy">Cidadania Financeira
-                </a>
-            </li>
-            <li class="item-menu-content">
-                <img src="assets/icons/nav/canais-digitais.svg" alt="" aria-hidden="true">
-                <span>Canais</span>
-            </li>
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/atendimento.svg" alt="" aria-hidden="true" width="29px" height="28px"
-                        loading="lazy">Atendimento
-                </a>
-            </li>
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/pin-endereco.svg" alt="" aria-hidden="true" width="29px" height="28px"
-                        loading="lazy">Encontrar Agências Bradesco
-                </a>
-            </li>
-        </ul>
+        <div class="container-submenus">
+
+            <div class="submenu-painel" id="painel-produtos">
+                <h3 class="submenu-titulo">Produtos</h3>
+                <ul class="grid-produtos">
+                    <li><a href="#"><img src="assets/icons/nav/clover.png"
+                                alt="Trevo de quatro folhas">Capitalização</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/global-exchange-banking.png"
+                                alt="Troca de moeda global">Câmbio</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/card.png" alt="Cartão" aria-hidden="true">Cartões</a>
+                    </li>
+                    <li><a href="#"><img src="assets/icons/nav/cesta.png" alt="Cesta básica" aria-hidden="true">Cestas
+                            de Serviços e Tarifas</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/consorcio.svg" alt="Consórcio de Carro"
+                                aria-hidden="true">Consórcio</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/coin.svg" alt="Moeda" aria-hidden="true">Empréstimos
+                            Financiamento</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/line-chart.svg" alt="Tendência de crescer"
+                                aria-hidden="true">Investimentos</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/gavel.png" alt="Martelo de tribunal"
+                                aria-hidden="true">Leilões</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/refinance.png" alt="Renegociação"
+                                aria-hidden="true">Renegociação de Dívidas</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/holding-house.png" alt="Mão segurando uma casa"
+                                aria-hidden="true">Seguros</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/payment.png" alt="Mão segurando dinheiro"
+                                aria-hidden="true">Tipos de Contas</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/leaf.png" alt="Folhas" aria-hidden="true">Vida e
+                            Previdência</a></li>
+                    <li class="item-servicos-full"><a href="#"><img src="assets/icons/nav/gear-in-hand.png"
+                                alt="Engrenagem na mão" aria-hidden="true">Serviços</a></li>
+                </ul>
+            </div>
+
+            <div class="submenu-painel" id="painel-canais">
+                <ul class="lista-canais">
+                    <li><a href="#"><img src="assets/icons/nav/question-button.svg" alt="Interrogação"
+                                aria-hidden="true">Como usar minha conta bradesco</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/laptop.png" alt="Latop" aria-hidden="true">Internet
+                            Banking</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/mobile.png" alt="Celular com aplicativos"
+                                aria-hidden="true">Aplicativo Bradesco</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/atm-machine.svg" alt="" aria-hidden="true">Caixa
+                            Eletrônico</a></li>
+                    <li><a href="#"><img src="assets/icons/nav/comment.png" alt="" aria-hidden="true">BIA</a></li>
+                </ul>
+            </div>
+
+        </div>
     </nav>
+
     <section id="box-destaques">
         <img width="2629" height="2629" loading="lazy" src="assets/background/background-novidades.svg"
             alt="Plano de fundo Benefícios" class="bg-beneficios">
@@ -486,22 +560,46 @@
             </p>
             <a href="#" target="_blank">Simular</a>
         </div>
-        <a id="abra-conta-link" href="#">Abra sua conta</a>
+
     </div>
 
-    <div class="bia">
-        <h3>BIA no Whatsapp</h3>
-        <img src="assets/bia/logo/bia.png" alt="BIA">
-        <button aria-label="Fechar Modal">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round"></path>
-            </svg>
+    <a id="abra-conta-link" href="#">Abra sua conta <img src="assets/icons/nav/arrow_white.svg"
+            alt="Seta branca para direita" class="seta-abra-conta"></a>
+
+    <div id="container-flutuante-bia">
+
+        <div id="bia-estado-descanso" class="bia-descanso">
+        
+        <button id="btn-abrir-bia" class="bia-circulo" aria-label="Abrir BIA">
+            <img src="assets/bia/logo/bia.png" alt="Balão BIA" class="img-balao-bia">
+            
+            <span class="texto-dentro-balao"><strong>BIA</strong> no<br>WhatsApp</span>
         </button>
-        <img src="assets/bia/qrcode/qrcode-bia 1.png" alt="QR Code" class="cmp-floating-bia__modal-qrcode">
-        <p class="txt-fale-com-bia">Fale com a Bia</p>
-        <p class="txt-instrucao">Leia o QR Code ou mande mensagem pra <a href="https://wa.me/551133350237"
-                target="_blank">11 3335 0237</a>.</p>
+        
+    </div>
+        <div id="bia-estado-ativo" class="bia-ativa esconde-bia">
+            <div class="bia-retangulo">
+
+                <button id="btn-fechar-bia-retangulo" class="bia-fecha-retangulo" aria-label="Fechar">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+
+                <div class="bia-qr-container">
+                    <img src="assets/bia/qrcode/qrcode-bia 1.png" alt="QR Code BIA">
+                </div>
+
+                <div class="bia-separador"></div>
+
+                <div class="bia-texto-container">
+                    <p class="bia-titulo-retangulo">Fale com a BIA</p>
+                    <p class="bia-desc-retangulo">Leia o QR Code ou mande mensagem pra 11 3335 0237.</p>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <footer>
@@ -703,7 +801,7 @@
             </div>
         </div>
     </footer>
-    <!-- <script src="scripts/components/header.js"></script> -->
+    <script src="pages/main/main.js"></script>
 </body>
 
 </html>
