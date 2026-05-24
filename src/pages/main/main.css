@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
-/* body {
-    background-image: var(--meu-background);
-} */
+
 
 body {
     padding-top: 50px;
@@ -49,7 +47,8 @@ body {
 
 
 #campo-digito {
-    padding: 0 !important;       /* Confirma a remoção do enchimento lateral */
+    padding: 0 !important;
+    /* Confirma a remoção do enchimento lateral */
 }
 
 
@@ -94,17 +93,19 @@ button.btn-acessar {
 }
 
 #campo-agencia {
-    width: 50px;
+    width: 60px;
 }
 
 #campo-conta {
-    width: 80px;
+    width: 70px;
 }
 
 #campo-digito {
     width: 25px;
     text-align: center;
 }
+
+/* Menu acessibiliddade */
 
 #menu-acessibilidade {
     position: absolute;
@@ -201,6 +202,7 @@ button.btn-acessar {
     padding: 20px;
 }
 
+
 .btn-atendimento-libras {
     display: flex;
     justify-content: center;
@@ -215,6 +217,8 @@ button.btn-acessar {
     width: 100%;
     box-sizing: border-box;
 }
+
+/* Menu lateral do Bradesco */
 
 #menu-lateral-bradesco {
     position: absolute;
@@ -277,6 +281,9 @@ button.btn-acessar {
     border-bottom: 1px solid #EAEAEA;
     cursor: pointer;
     transition: background 0.2s;
+
+    position: relative;
+    z-index: 10;
 }
 
 #main-header {
@@ -428,6 +435,11 @@ button.btn-acessar {
 
 .dropdown-escondido a:hover {
     color: var(--cor-primaria);
+}
+
+.dropdown-perfil:hover .dropdown-escondido,
+.dropdown-escondido.mostrar-dropdown {
+    display: block;
 }
 
 /* Painel de Busca CSS */
@@ -716,6 +728,7 @@ button.btn-acessar {
 
 .submenu-painel.mostrar {
     display: block;
+    pointer-events: auto;
 }
 
 .submenu-titulo {
@@ -749,7 +762,7 @@ button.btn-acessar {
 
 .grid-produtos {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
@@ -911,7 +924,7 @@ button.btn-acessar {
     align-items: center;
     gap: 10px;
 
-    background-color: #F4F4F4;
+    background-color: #EBEBEB;
     color: #333333;
 
     padding: 50px 0px 80px;
@@ -931,6 +944,7 @@ button.btn-acessar {
     background-image: var(--meu-background);
     color: white;
 }
+
 
 .seta-branca {
     display: none !important;
@@ -1033,17 +1047,8 @@ button.btn-acessar {
     }
 }
 
-.item-menu-content {
-    display: flex;
-    align-items: end;
-    cursor: pointer;
-}
 
-.item-menu-content a {
-    display: flex;
-    align-items: end;
-    cursor: pointer;
-}
+
 
 .txt-fale-com-bia {
     font-weight: bold;
@@ -1224,9 +1229,9 @@ button.btn-acessar {
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    
-    position: relative; 
-    
+
+    position: relative;
+
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
     outline: none;
@@ -1238,9 +1243,9 @@ button.btn-acessar {
 }
 
 .img-balao-bia {
-    width: 75px; 
+    width: 75px;
     height: auto;
-    
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1250,17 +1255,17 @@ button.btn-acessar {
 /* O Texto BIA no WhatsApp */
 .texto-dentro-balao {
     position: absolute;
-    top: 50%; 
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
     color: white;
-    font-size: 11px; 
+    font-size: 11px;
     line-height: 1.2;
     text-align: center;
-    
-    z-index: 2; 
-    pointer-events: none; 
+
+    z-index: 2;
+    pointer-events: none;
 }
 
 .texto-dentro-balao strong {
@@ -1386,4 +1391,490 @@ button.btn-acessar {
 
 #abra-conta-link.mostrar {
     transform: translateY(0);
+}
+
+/* Seção de produtos */
+/* assets/background/background-novidades.svg */
+
+.secao-produtos-servicos {
+    width: 100%;
+    margin-top: -120px;
+    padding: 180px 0 100px 0;
+    background-image: url('../../assets/background/background-novidades.svg');
+    background-position: -600px -150px;
+    background-size: 2629px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+
+    position: relative;
+    z-index: 1;
+}
+
+.container-produtos {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    position: relative;
+    z-index: 2;
+}
+
+.produtos-texto {
+    width: 40%;
+    color: #333;
+}
+
+.produtos-texto h2 {
+    font-size: 32px;
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.produtos-texto h3 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.produtos-grid-wrapper {
+    width: 55%;
+}
+
+.benefit-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.benefit-card li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ffffff;
+    border-radius: 10px;
+
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.08);
+    height: 130px;
+    padding: 15px;
+
+    text-decoration: none;
+    color: #333;
+    font-size: 12px;
+    text-align: center;
+    text-transform: uppercase;
+
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.benefit-card li a:hover {
+    background-image: var(--meu-background-3);
+    color: white;
+}
+
+
+
+
+.benefit-card li a img {
+    height: 40px;
+    margin-bottom: 15px;
+    width: auto;
+}
+
+.benefit-card li a:hover img {
+    /* brightness(0) deixa o ícone 100% preto, e invert(1) inverte o preto para 100% branco! */
+    filter: brightness(0) invert(1);
+}
+
+/* Seção de consórcios */
+
+.container-consorcios {
+    max-width: 1100px;
+    margin: 250px auto 0 auto;
+    padding: 0 30px;
+
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: relative;
+    z-index: 2;
+}
+
+.consorcios-titulo {
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.grid-consorcios {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.card-consorcio {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px 20px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15);
+
+    min-height: 390px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.card-cabecalho-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.card-cabecalho-horizontal img {
+    height: 35px;
+    margin-bottom: 0;
+    width: auto;
+}
+
+
+.card-consorcio img {
+    height: 35px;
+    margin-bottom: 15px;
+}
+
+.card-consorcio h3 {
+    color: #47484C;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.card-consorcio p {
+    color: #47484C;
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.btn-simular {
+    background-color: var(--cor-primaria);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 30px;
+    border-radius: 20px;
+    transition: background-color 0.2s ease;
+    align-self: center;
+    width: auto;
+    margin-top: auto;
+}
+
+.btn-simular:hover {
+    background-color: #cc0000;
+}
+
+@media (max-width: 1024px) {
+    .grid-consorcios {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card-consorcio {
+        max-width: 320px;
+        width: 100%;
+
+    }
+
+    .secao-produtos-servicos {
+        margin-top: -60px;
+        padding-top: 120px;
+    }
+
+    .container-produtos {
+        flex-direction: column;
+    }
+
+    .produtos-texto {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .produtos-grid-wrapper {
+        width: 100%;
+    }
+
+    .benefit-card {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+        align-items: start;
+    }
+}
+
+/* RODAPÉ (FOOTER)                           */
+.container-footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.footer-area-cinza {
+    background-color: #ebebeb;
+    padding: 20px 0;
+}
+
+.footer-abas-botoes {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.btn-aba {
+    background: none;
+    border: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    font-family: inherit;
+    transition: color 0.2s ease;
+}
+
+
+.btn-aba .seta-aba {
+    position: relative;
+    display: inline-block;
+
+    width: 8px;
+    height: 8px;
+    margin-left: 10px;
+
+    vertical-align: middle;
+    top: -2px;
+}
+
+.btn-aba .seta-aba::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border-bottom: 2px solid #cc0000;
+    border-right: 2px solid #cc0000;
+
+    transform: rotate(45deg);
+
+    transform-origin: center center;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+}
+
+.btn-aba.ativo .seta-aba::after {
+    transform: rotate(225deg);
+    top: 1px;
+}
+
+.painel-conteudo {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.painel-conteudo.ativo {
+    display: block;
+}
+
+
+.grid-info-uteis {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px 40px;
+    list-style: none;
+    padding: 0;
+}
+
+.grid-info-uteis a {
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.grid-info-uteis a:hover {
+    color: var(--cor-primaria);
+}
+
+.flex-atendimento {
+    display: flex;
+    justify-content: flex-start;
+    gap: 60px;
+    list-style: none;
+    padding: 0;
+}
+
+.titulo-atendimento {
+    display: block;
+    color: #666;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.tel-atendimento {
+    color: #333;
+    font-weight: 800;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.link-centrais a {
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.colunas-alfabeticas {
+    column-count: 5;
+    /* Divide a div em 4 colunas automaticamente! */
+    column-gap: 30px;
+}
+
+.grupo-letra {
+    break-inside: avoid;
+    /* Impede que uma letra comece numa coluna e termine em outra */
+    margin-bottom: 20px;
+}
+
+.grupo-letra h3 {
+    color: var(--cor-primaria);
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.grupo-letra ul {
+    list-style: none;
+    padding: 0;
+}
+
+.grupo-letra a {
+    color: #333;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    display: block;
+    padding: 4px 0;
+}
+
+.grupo-letra a:hover {
+    color: var(--cor-primaria);
+}
+
+.footer-area-vermelha {
+    background-image: var(--meu-background);
+    color: white;
+    padding: 30px 0;
+}
+
+.footer-top-vermelho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-follow {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.footer-follow ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-follow img {
+    height: 24px;
+    filter: brightness(0) invert(1);
+    /* Deixa os ícones brancos */
+}
+
+.footer-address p {
+    font-size: 11px;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.footer-brand img {
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+.footer-bottom-links ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-bottom-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.footer-bottom-links a:hover {
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

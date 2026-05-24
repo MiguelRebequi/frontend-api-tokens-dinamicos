@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Bradesco | Dashboard</title>
+    <link rel="shortcut icon" href="../../assets/icons/favicon/faviconV2.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="../../styles/vendor/reset.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="../../styles/header-footer.css">
+</head>
+
+<body>
+    <header class="header-dashboard">
+        <div class="header-conteudo">
+            <div class="header-esquerda">
+                <img src="../../assets/images/logo/logo-bradesco.svg" alt="Bradesco">
+                <span id="data-atual">TERÇA-FEIRA, 19/05/2026</span>
+            </div>
+
+            <div class="header-centro">
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar">
+                    <img src="../../assets/icons/nav/search.svg" alt="Buscar">
+                </div>
+            </div>
+
+            <div class="header-direita">
+                <div class="saldo-box">
+                    <span class="label-saldo">Saldo disponível <img src="../../assets/icons/nav/arrow-down.svg"></span>
+                    <div class="valor-saldo">R$ *****</div>
+                </div>
+
+                <div class="timer-sair">
+                    <div class="timer-circulo">16 MIN</div>
+                    <a href="#" class="btn-sair">Sair <img src="../../assets/icons/nav/logout.svg"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-dashboard">
+        <div class="nav-conteudo">
+            <ul class="nav-links">
+                <li><a href="../dashboard/dashboard.html" class="ativo">Início</a></li>
+                <li><a href="#">Saldos e Extratos</a></li>
+                <li><a href="#">Pagamentos</a></li>
+                <li><a href="#">Pix</a></li>
+                <li><a href="#">Transferências</a></li>
+                <li><a href="../tokens/tokens.html">Tokens</a></li>
+                <li><a href="#">Cartões</a></li>
+                <li><a href="#">Empréstimos</a></li>
+                <li><a href="#">Ágora Home Broker</a></li>
+                <li><a href="#">Investimentos</a></li>
+                <li><a href="#">Open Finance</a></li>
+                <li><a href="#">Imposto de Renda</a></li>
+
+                <li>
+                    <a href="#" class="btn-mais-opcoes">
+                        Mais opções
+                        <img src="../../assets/icons/nav/arrow-down-blue-v2.svg" alt="Mais opções">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="dashboard-content">
+
+        <div class="coluna-saldos">
+            <div class="card-header-externo">
+                <h3>Meus saldos</h3>
+                <a href="#" class="link-ver-mais">Ver mais</a>
+            </div>
+            <section class="card-saldos">
+                <div class="lista-saldos">
+                    <div class="item-saldo"><span>Conta-poupança</span> <strong>R$ *****</strong></div>
+                    <div class="item-saldo"><span>Bloqueado</span> <strong>-</strong></div>
+                    <div class="item-saldo"><span>Investimentos c/ bx aut.</span> <strong>-</strong></div>
+
+                    <div class="item-saldo espacador"></div>
+
+                    <div class="item-saldo total sem-borda"><span>Total disponível</span> <strong>R$ *****</strong>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="coluna-resumo">
+
+            <div class="card-header-externo">
+                <h3>Resumo</h3>
+                <a href="#" class="link-ver-mais">Ver mais</a>
+            </div>
+
+            <section class="card-resumo">
+                <div class="resumo-container">
+
+                    <div class="col-graficos">
+                        <h4 class="titulo-sessao">Últimos 30 dias</h4>
+
+                        <div class="bloco-fluxo">
+                            <div class="info-fluxo">
+                                <span class="texto-fluxo">Entrada</span>
+                                <strong>R$ *****</strong>
+                            </div>
+                            <div class="barra-verde"></div>
+                        </div>
+
+                        <div class="bloco-fluxo">
+                            <div class="info-fluxo">
+                                <span class="texto-fluxo">Saída</span>
+                                <strong>R$ *****</strong>
+                            </div>
+                            <div class="barra-vermelha"></div>
+                        </div>
+
+                        <div class="status-conta-base">
+                            <span>Conta-poupança</span>
+                            <strong class="texto-verde">R$ *****</strong>
+                        </div>
+                    </div>
+
+                    <div class="col-transacoes">
+                        <h4 class="titulo-sessao">Últimas transações</h4>
+
+                        <div class="lista-transacoes">
+                            <div class="transacao-item">
+                                <div class="transacao-data">15<br><span>JAN</span></div>
+                                <div class="transacao-linha">
+                                    <div class="ponto-preto"></div>
+                                </div>
+                                <div class="transacao-detalhes">
+                                    <div class="transacao-topo">
+                                        <p>Pagto Cobrança</p>
+                                        <strong>R$ *****</strong>
+                                    </div>
+                                    <small>Banco Bradesco S.A.</small>
+                                </div>
+                            </div>
+
+                            <div class="transacao-item">
+                                <div class="transacao-data"></div>
+                                <div class="transacao-linha">
+                                    <div class="ponto-vazado"></div>
+                                </div>
+                                <div class="transacao-detalhes">
+                                    <div class="transacao-topo">
+                                        <p>Transfe Pix</p>
+                                        <strong>R$ *****</strong>
+                                    </div>
+                                    <small>Rem: Miguel Martinho re 11/05</small>
+                                </div>
+                            </div>
+
+                            <div class="transacao-item">
+                                <div class="transacao-data">08<br><span>JAN</span></div>
+                                <div class="transacao-linha">
+                                    <div class="ponto-preto"></div>
+                                </div>
+                                <div class="transacao-detalhes">
+                                    <div class="transacao-topo">
+                                        <p>Pagto Cobrança</p>
+                                        <strong>R$ *****</strong>
+                                    </div>
+                                    <small>Bradesco Seg-resid/outros</small>
+                                </div>
+                            </div>
+
+                            <div class="transacao-item">
+                                <div class="transacao-data">06<br><span>JAN</span></div>
+                                <div class="transacao-linha sem-linha">
+                                    <div class="ponto-preto"></div>
+                                </div>
+                                <div class="transacao-detalhes">
+                                    <div class="transacao-topo">
+                                        <p>Pagto Cobrança</p>
+                                        <strong>R$ *****</strong>
+                                    </div>
+                                    <small>Bradesco Vida e Previdencia</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <section class="dashboard-linha">
+
+        <div class="coluna-servicos">
+            <div class="card-header-externo">
+                <h3>Serviços</h3>
+            </div>
+
+            <div class="card-servico expandido">
+                <div class="servico-header">
+                    <div class="servico-titulo">
+                        <div class="wrapper-icone-circulo prime">
+                            <img src="../../assets/icons/nav/educ-financeira.svg" alt="Empréstimos"
+                                class="icone-azul icone-servico" width="29px" height="28px">
+                        </div>
+                        <span>Empréstimos</span>
+                    </div>
+                    <img src="../../assets/icons/nav/arrow-up-blue.svg" alt="Recolher" class="seta-toggle">
+                </div>
+
+                <div class="servico-body">
+                    <div class="servico-conteudo">
+                        <img src="../../assets/icons/nav/coin-red.svg" alt="Crédito" class="icone-destaque">
+                        <p>Confira suas soluções em crédito por aqui.<br><strong>Temos a opção ideal.</strong></p>
+                        <a href="#" class="btn-visualizar">Visualizar</a>
+                    </div>
+                    <div class="servico-imagem">
+                        <img src="../../assets/images/dashboard/mulher-cafe.png" alt="Mulher no notebook">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-servico">
+                <div class="servico-header">
+                    <div class="servico-titulo">
+                        <div class="wrapper-icone-circulo prime">
+                            <img src="../../assets/icons/nav/credit-card.svg" alt="Cartões"
+                                class="icone-azul icone-servico">
+                        </div>
+                        <span>Cartões de crédito</span>
+                    </div>
+                    <img src="../../assets/icons/nav/arrow-down-blue-v2.svg" alt="Expandir" class="seta-toggle">
+                </div>
+            </div>
+
+            <div class="card-servico">
+                <div class="servico-header">
+                    <div class="servico-titulo">
+                        <div class="wrapper-icone-circulo prime">
+                            <img src="../../assets/icons/nav/line-chart.svg" alt="Investimentos" class="icone-servico">
+                        </div>
+                        <span>Meus investimentos</span>
+                    </div>
+                    <img src="../../assets/icons/nav/arrow-down-blue-v2.svg" alt="Expandir" class="seta-toggle">
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="coluna-atalhos">
+            <div class="card-header-externo">
+                <h3>Atalhos</h3>
+            </div>
+
+            <div class="card-lista-atalhos">
+                <ul>
+                    <li>
+                        <a href="#">Extrato (Últimos Lançamentos)
+                            <img src="../../assets/icons/nav/arrow-right-blue.svg" alt="Ir">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Lançamentos Futuros
+                            <img src="../../assets/icons/nav/arrow-right-blue.svg" alt="Ir">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Boleto de Cobrança
+                            <img src="../../assets/icons/nav/arrow-right-blue.svg" alt="Ir">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Água, Luz, Telefone e Gás
+                            <img src="../../assets/icons/nav/arrow-right-blue.svg" alt="Ir">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Gerenciar limites de transações
+                            <img src="../../assets/icons/nav/arrow-right-blue.svg" alt="Ir">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Para Contas Bradesco
+                            <img src="../../assets/icons/nav/arrow-right-blue.svg" alt="Ir">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Para Contas de Outros Bancos - TED
+                            <img src="../../assets/icons/nav/arrow-right-blue.svg" alt="Ir">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Recarregar Celular Pré-Pago
+                            <img src="../../assets/icons/nav/arrow-right-blue.svg" alt="Ir">
+                        </a>
+                    </li>
+                    <li class="sem-borda">
+                        <a href="#">Comprovantes (2ª Via)
+                            <img src="../../assets/icons/nav/arrow-right-blue.svg" alt="Ir">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="dashboard-linha-2">
+
+        <div class="coluna-logo-bg">
+            <div class="card-logo-vazio">
+                <div id="logo-bradesco-v"></div>
+            </div>
+        </div>
+
+        <div class="coluna-seguros">
+            <div class="card-header-externo">
+                <h3>Seguros</h3>
+            </div>
+
+            <div class="card-bloco-centralizado">
+                <img src="../../assets/icons/services/Insurance in hand.png" alt="Seguros"
+                    class="icone-vermelho-grande">
+
+                <div class="texto-centralizado">
+                    <p>Acesse todos os seus bens segurados.</p>
+                    <p><strong>Ainda não tem?</strong><br>Faça um seguro pra proteger você e sua família.</p>
+                </div>
+
+                <a href="#" class="btn-visualizar btn-largo">Visualizar</a>
+            </div>
+        </div>
+
+        <div class="coluna-avisos">
+            <div class="card-header-externo">
+                <h3>Avisos</h3>
+            </div>
+
+            <div class="card-aviso">
+                <div class="aviso-header">
+                    <h4>Boleto de cobrança agendados e não efetuados</h4>
+                    <div class="controles-carrossel">
+                        <img src="../../assets/icons/nav/arrow-chevron-left.svg" alt="Anterior">
+                        <img src="../../assets/icons/nav/arrow-chevron-right.svg" alt="Próximo">
+                    </div>
+                </div>
+
+                <div class="aviso-body">
+                    <p>Boleto de cobrança agendados e não efetuados</p>
+                    <a href="#" class="link-saiba-mais">Saiba Mais</a>
+                </div>
+
+                <div class="aviso-footer">
+                    <a href="#" class="btn-acao-primaria">Ver próximo</a>
+                    <a href="#" class="btn-acao-secundaria">Excluir</a>
+                </div>
+
+                <div class="efeito-pilha"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="footer-dashboard">
+        <div class="footer-conteudo">
+
+            <div class="canais-atendimento">
+                <img src="../../assets/images/logo/logo-bradesco.svg" alt="Bradesco" class="logo-footer">
+
+                <div class="colunas-canais">
+                    <div class="canal">
+                        <h4 class="titulo-canal">Fone Fácil</h4>
+                        <p>Capitais e regiões <br> metropolitanas</p>
+                        <strong class="numero-grande">4002 0022</strong>
+                        <p>Consulta de saldo, extrato, transações financeiras e <br> cartão de crédito.</p>
+                    </div>
+
+                    <div class="canal">
+                        <p>Demais regiões</p>
+                        <strong class="numero-grande">0800 570 0022</strong>
+                        <p>SAC - Deficiência <br> Auditiva ou de Fala</p>
+                        <strong class="numero-grande">0800 722 0099</strong>
+                    </div>
+
+                    <div class="canal">
+                        <p>SAC - Alô Bradesco</p>
+                        <strong class="numero-grande">0800 704 8383</strong>
+                        <p>Cancelamento, <br> reclamação, informação, <br> sugestão e elogio.</p>
+                    </div>
+                </div>
+
+                <div class="footer-inferior">
+                    <div class="qrcode-whatsapp">
+                        <img src="../../assets/bia/qrcode/qrcode-bia-2.png" alt="QR Code">
+                        <span>Se preferir, fale com a BIA pelo WhatsApp: <strong>11 3335 0237</strong></span>
+                    </div>
+                    <a href="#" class="link-privacidade">Aviso de Privacidade</a>
+                </div>
+            </div>
+
+            <div class="card-seguranca">
+                <h4>Segurança</h4>
+                <p>O desenho do cadeado deve aparecer na barra do seu navegador.</p>
+                <a href="#">Ver mais</a>
+            </div>
+        </div>
+
+        <div class="footer-bar">
+            <div class="footer-bar-conteudo">
+                <a href="#">Ver outros telefones <img src="../../assets/icons/nav/arrow-right-chevron-white.svg"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="dashboard.js"></script>
+</body>
+
+</html>

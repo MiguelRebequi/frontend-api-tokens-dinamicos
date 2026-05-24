@@ -1,4 +1,19 @@
-            
+  <!-- Essa parte eu ainda não achei na página do Bradesco -->
+    <div class="menu-principal-mobile">
+        <p>Acesse sua conta pelo Aplicativo Bradesco</p>
+        <a href="#" aria-label="Baixar o aplicativo Bradesco">Ok</a> <br> <br>
+        <img src="assets/icons/marca/bra-logo.png" alt="Logo do Bradesco"> <br> <br>
+        <p><Strong>Para a conta da sua empresa, acesse o Bradesco Net Empresa</Strong></p>
+        <a href="#">Acessar conta</a> <br> <br> <br>
+
+        <p>Se você for pessoa física, use um dos navegadores pra poder acessar:</p>
+        <img src="assets/icons/browsers/nav-chrome.svg" alt="Logo do Google Chrome"> <br> <br>
+        <small>Google Chrome</small> <br> <br>
+        <img src="assets/icons/browsers/nav-edge.svg" alt="Logo do Microsoft Edge"> <br> <br>
+        <small>Microsoft Edge</small> <br> <br>
+        <img src="assets/icons/browsers/nav-firefox.svg" alt="Logo do Firefox"> <br> <br>
+        <small>Firefox</small> <br>
+    </div>          
 
 <section id="painel-busca-global">
 

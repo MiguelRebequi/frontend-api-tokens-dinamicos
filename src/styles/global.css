@@ -17,15 +17,19 @@
 /* Qualquer configuração para aplicar a 100% das páginas */
 :root {
     /* Cores principais (Extraídas do Bradesco) */
-    --cor-primaria: #CC092F; /* O vermelho principal */ 
-    --cor-primaria-hover: #C01056; /* Um dos seus tons mais escuros para quando passar o mouse */
+    --cor-primaria: #CC092F;
+    /* O vermelho principal */
+    --cor-primaria-hover: #C01056;
+    /* Um dos seus tons mais escuros para quando passar o mouse */
 
     /* Cores secundárias (Colocarei aqui, caso exista em outros momentos do site*/
     --cor-secundaria: #29388C;
 
     /* Cores Estruturais (Cores de fundo e a superfície) */
-    --cor-fundo: rgb(235, 235, 235); /* Cinza gelo para o fundo da tela */
-    --cor-superficie: #FFFFFF; /* Branco puro para o fundo do formulário de login */
+    --cor-fundo: rgb(235, 235, 235);
+    /* Cinza gelo para o fundo da tela */
+    --cor-superficie: #FFFFFF;
+    /* Branco puro para o fundo do formulário de login */
 
     /* Cores do Texto (Leitura) */
     --cor-texto-principal: #4D4D4D;
@@ -56,9 +60,22 @@
             var(--gradiente-cor-3),
             var(--gradiente-cor-4),
             var(--gradiente-cor-5));
+
+    --meu-background-3: linear-gradient(135deg,
+            var(--gradiente-cor-1) 0%,
+            var(--gradiente-cor-3) 50%,
+            var(--gradiente-cor-5) 100%);
+    
+    --meu-background-4: linear-gradient(90deg,
+         #D9184B 50%, 
+         #BF2188, 
+         #7F24A6);
+
+    --meu-background-rodape-1: linear-gradient(90deg, #c21647 0%, #76238b 100%);
 }
 
 body {
     font-family: var(--fonte-padrao);
     -webkit-font-smoothing: antialiased;
 }
+

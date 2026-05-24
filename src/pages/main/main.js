@@ -3,19 +3,24 @@ function iniciarValidacaoNumerica() {
 
     inputs.forEach(input => {
         // 1. Bloqueia a digitação ao vivo (Tecla por tecla)
-        input.addEventListener('keypress', function(e) {
+        input.addEventListener('keypress', function (e) {
             // Se o que foi digitado NÃO for um número de 0 a 9...
-            if (!/^[0-9]$/.test(e.key)) {
-                e.preventDefault(); // Impede a letra de aparecer no campo!
+            const isNumber = /^[0-9]$/.test(e.key);
+
+            // Verifica se a tecla é "Enter"
+            const isEnter = e.key === 'Enter';
+
+            if (!isNumber && !isEnter) {
+                e.preventDefault();
                 alert("Favor digitar somente caracteres numéricos");
             }
         });
 
         // 2. Proteção contra o "Copiar e Colar" (Ctrl+V)
-        input.addEventListener('input', function(e) {
+        input.addEventListener('input', function (e) {
             // Pega o valor e arranca tudo que não for número (usando Regex)
-            const valorLimpo = this.value.replace(/\D/g, ''); 
-            
+            const valorLimpo = this.value.replace(/\D/g, '');
+
             // Se o valor mudou (ou seja, tinha letra misturada no meio)
             if (this.value !== valorLimpo) {
                 this.value = valorLimpo; // Devolve só os números pro campo
@@ -25,22 +30,113 @@ function iniciarValidacaoNumerica() {
     });
 }
 
+function iniciarAutenticacaoTeste() {
+    const formulario = document.getElementById('form-login-bradesco');
+
+    // Capturamos os campos de entrada de dados
+    const campoAgencia = document.getElementById('campo-agencia');
+    const campoConta = document.getElementById('campo-conta');
+    const campoDigito = document.getElementById('campo-digito');
+
+    if (!formulario || !campoAgencia || !campoConta || !campoDigito) return;
+
+    formulario.addEventListener('submit', function (evento) {
+        // 1. IMPORTANTE: Para o envio nativo para a página não acontecer antes da nossa validação
+        evento.preventDefault();
+
+        // 2. Nossos dados de teste (MOCK)
+        const AGENCIA_TESTE = "1234";
+        const CONTA_TESTE = "56789";
+        const DIGITO_TESTE = "0";
+
+        // 3. Pegamos os valores que o usuário digitou limpando espaços em branco
+        const agenciaDigitada = campoAgencia.value.trim();
+        const contaDigitada = campoConta.value.trim();
+        const digitoDigitado = campoDigito.value.trim();
+
+        // 4. Testamos se os campos estão vazios
+        if (agenciaDigitada === "" || contaDigitada === "" || digitoDigitado === "") {
+            alert("Por favor, preencha todos os campos de acesso.");
+            return;
+        }
+
+        // 5. A VALIDAÇÃO: Verifica se bate com a conta de teste simulada
+        if (agenciaDigitada === AGENCIA_TESTE && contaDigitada === CONTA_TESTE && digitoDigitado === DIGITO_TESTE) {
+            // O 'this.action' pega o caminho "pages/loading/loading.html" que colocamos no HTML
+
+            // Temporariamente: 🔥 SALVANDO OS DADOS ANTES DE SAIR DA PÁGINA
+            localStorage.setItem('agencia', agenciaDigitada);
+            localStorage.setItem('conta', contaDigitada + "-" + digitoDigitado);
+            localStorage.setItem('nomeUsuario', 'Miguel Martinho Rebequi');
+            window.location.href = this.action;
+
+        } else {
+            // Se errar a agência ou conta simulada
+            alert("Agência, Conta ou Dígito inválido. (Dica de teste: Ag: 1234 | Ct: 56789 | Dg: 0)");
+        }
+    });
+}
+
+
+
 function iniciarMenuAcessibilidade() {
-    const btnAbrir = document.querySelector('.header-acessibilidade a');
+    // 🌟 Mudamos para buscar diretamente pelo ID exato do botão
+    const btnAbrir = document.getElementById('btn-abrir-acessibilidade');
     const menuAcessibilidade = document.getElementById('menu-acessibilidade');
     const btnFechar = document.getElementById('btn-fechar-acessibilidade');
 
-    // Validação de segurança: Só roda se os elementos existirem na tela
     if (btnAbrir && menuAcessibilidade && btnFechar) {
+
         btnAbrir.addEventListener('click', function (evento) {
             evento.preventDefault();
-            menuAcessibilidade.classList.toggle('mostrar');
+            evento.stopPropagation(); // Impede o clique de propagar e bugar o layout
+
+            const estaAberto = menuAcessibilidade.classList.toggle('mostrar');
+            btnAbrir.setAttribute('aria-expanded', estaAberto ? 'true' : 'false');
+
+            if (estaAberto) {
+                btnFechar.focus();
+            }
         });
 
-        btnFechar.addEventListener('click', function () {
+        btnFechar.addEventListener('click', function (evento) {
+            evento.stopPropagation();
             menuAcessibilidade.classList.remove('mostrar');
+            btnAbrir.setAttribute('aria-expanded', 'false');
+            btnAbrir.focus();
         });
     }
+}
+
+function iniciarDropdownsHeader() {
+    const botoesPerfil = document.querySelectorAll('.btn-perfil');
+
+    botoesPerfil.forEach(botao => {
+        botao.addEventListener('click', function (evento) {
+            evento.preventDefault();
+            const menu = this.nextElementSibling;
+
+            document.querySelectorAll('.dropdown-escondido').forEach(outroMenu => {
+                if (outroMenu !== menu) {
+                    outroMenu.classList.remove('mostrar-dropdown');
+                    outroMenu.previousElementSibling.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            const estaAberto = menu.classList.toggle('mostrar-dropdown');
+
+            this.setAttribute('aria-expanded', estaAberto ? 'true' : 'false');
+        });
+    });
+
+    document.addEventListener('click', function (evento) {
+        if (!evento.target.closest('.dropdown-perfil')) {
+            document.querySelectorAll('.dropdown-escondido').forEach(menu => {
+                menu.classList.remove('mostrar-dropdown');
+                menu.previousElementSibling.setAttribute('aria-expanded', 'false');
+            });
+        }
+    });
 }
 
 function iniciarMenuLateral() {
@@ -50,19 +146,33 @@ function iniciarMenuLateral() {
     const painelCanais = document.getElementById('painel-canais');
 
     if (btnProdutos && painelProdutos) {
-        btnProdutos.addEventListener('click', function () {
+        btnProdutos.addEventListener('click', function (evento) {
+            evento.preventDefault();
+            evento.stopPropagation(); // Impede o clique de subir para o document
+
+            // Se o de canais estiver aberto, fecha ele primeiro
             if (painelCanais) painelCanais.classList.remove('mostrar');
+
+            // Alterna o de produtos de forma limpa
             painelProdutos.classList.toggle('mostrar');
         });
     }
 
     if (btnCanais && painelCanais) {
-        btnCanais.addEventListener('click', function () {
+        btnCanais.addEventListener('click', function (evento) {
+            evento.preventDefault();
+            evento.stopPropagation();
+
+            // Se o de produtos estiver aberto, fecha ele primeiro
             if (painelProdutos) painelProdutos.classList.remove('mostrar');
+
+            // Alterna o de canais de forma limpa
             painelCanais.classList.toggle('mostrar');
         });
     }
 }
+
+
 
 function iniciarPainelBusca() {
     const btnAbrirBusca = document.querySelector('.btn-busca-topo');
@@ -156,7 +266,7 @@ function iniciarCarrossel() {
 
 function iniciarBarraFlutuante() {
     const barra = document.getElementById('abra-conta-link');
-    
+
     if (!barra) return;
 
     window.addEventListener('scroll', () => {
@@ -166,11 +276,11 @@ function iniciarBarraFlutuante() {
 
         const zonaDoRodape = 150;
 
-        
+
         if (scrollAtual > 300 && scrollAtual < (limiteMaximoRolagem - zonaDoRodape)) {
-            barra.classList.add('mostrar'); 
+            barra.classList.add('mostrar');
         } else {
-            barra.classList.remove('mostrar'); 
+            barra.classList.remove('mostrar');
         }
     });
 }
@@ -178,32 +288,70 @@ function iniciarBarraFlutuante() {
 function iniciarInteracaoBia() {
     const estadoDescanso = document.getElementById('bia-estado-descanso');
     const estadoAtivo = document.getElementById('bia-estado-ativo');
-    
-
     const btnAbrir = document.getElementById('btn-abrir-bia');
     const btnFechar = document.getElementById('btn-fechar-bia-retangulo');
-
 
     if (!estadoDescanso || !estadoAtivo || !btnAbrir || !btnFechar) return;
 
     btnAbrir.addEventListener('click', () => {
         estadoDescanso.classList.add('esconde-bia');
         estadoAtivo.classList.remove('esconde-bia');
+
+        btnAbrir.setAttribute('aria-expanded', 'true');
+        estadoAtivo.setAttribute('aria-hidden', 'false');
+        btnFechar.focus();
     });
 
     btnFechar.addEventListener('click', () => {
         estadoAtivo.classList.add('esconde-bia');
         estadoDescanso.classList.remove('esconde-bia');
+
+        btnAbrir.setAttribute('aria-expanded', 'false');
+        estadoAtivo.setAttribute('aria-hidden', 'true');
+        btnAbrir.focus();
+    });
+}
+
+function iniciarAbasRodape() {
+    const botoesAba = document.querySelectorAll('.btn-aba');
+
+    botoesAba.forEach(botao => {
+        botao.addEventListener('click', () => {
+            // 🌟 A TRAVA DEFINITIVA: Se a aba clicada já está aberta, 
+            // interrompemos a função imediatamente. Não fecha nada, apenas ignora.
+            if (botao.classList.contains('ativo')) {
+                return;
+            }
+
+            // Comportamento normal: Se clicou em uma aba DIFERENTE da atual,
+            // limpa o estado ativo de todas as outras para abrir a nova.
+            document.querySelectorAll('.btn-aba').forEach(b => {
+                b.classList.remove('ativo');
+                b.setAttribute('aria-expanded', 'false');
+            });
+            document.querySelectorAll('.painel-conteudo').forEach(p => p.classList.remove('ativo'));
+
+            // Ativa milimetricamente a nova aba clicada e o seu respectivo painel
+            botao.classList.add('ativo');
+            botao.setAttribute('aria-expanded', 'true');
+            const painelAlvo = document.getElementById(botao.getAttribute('aria-controls'));
+            if (painelAlvo) {
+                painelAlvo.classList.add('ativo');
+            }
+        });
     });
 }
 
 
 document.addEventListener('DOMContentLoaded', function () {
     iniciarValidacaoNumerica();
+    iniciarAutenticacaoTeste();
     iniciarMenuAcessibilidade();
+    iniciarDropdownsHeader();
     iniciarMenuLateral();
     iniciarPainelBusca();
     iniciarCarrossel();
     iniciarBarraFlutuante();
     iniciarInteracaoBia();
+    iniciarAbasRodape();
 });
