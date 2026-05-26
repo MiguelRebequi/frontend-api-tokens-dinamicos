@@ -145,31 +145,42 @@ function iniciarMenuLateral() {
     const painelProdutos = document.getElementById('painel-produtos');
     const painelCanais = document.getElementById('painel-canais');
 
-    if (btnProdutos && painelProdutos) {
-        btnProdutos.addEventListener('click', function (evento) {
-            evento.preventDefault();
-            evento.stopPropagation(); // Impede o clique de subir para o document
+    if (!btnProdutos || !painelProdutos || !btnCanais || !painelCanais) return;
 
-            // Se o de canais estiver aberto, fecha ele primeiro
-            if (painelCanais) painelCanais.classList.remove('mostrar');
-
-            // Alterna o de produtos de forma limpa
-            painelProdutos.classList.toggle('mostrar');
-        });
+    // 📱 Lógica de movimentação adaptativa para Mobile (Accordion)
+    if (window.innerWidth <= 767) {
+        // Move os painéis para ficarem logo abaixo dos seus respectivos botões na lista
+        btnProdutos.after(painelProdutos);
+        btnCanais.after(painelCanais);
     }
 
-    if (btnCanais && painelCanais) {
-        btnCanais.addEventListener('click', function (evento) {
-            evento.preventDefault();
-            evento.stopPropagation();
+    // Clique em Produtos e Serviços
+    btnProdutos.addEventListener('click', function (evento) {
+        evento.preventDefault();
+        evento.stopPropagation();
 
-            // Se o de produtos estiver aberto, fecha ele primeiro
-            if (painelProdutos) painelProdutos.classList.remove('mostrar');
+        // Fecha o outro painel
+        painelCanais.classList.remove('mostrar');
+        btnCanais.setAttribute('aria-expanded', 'false');
 
-            // Alterna o de canais de forma limpa
-            painelCanais.classList.toggle('mostrar');
-        });
-    }
+        // Alterna o atual
+        const estaAberto = painelProdutos.classList.toggle('mostrar');
+        this.setAttribute('aria-expanded', estaAberto ? 'true' : 'false');
+    });
+
+    // Clique em Canais
+    btnCanais.addEventListener('click', function (evento) {
+        evento.preventDefault();
+        evento.stopPropagation();
+
+        // Fecha o outro painel
+        painelProdutos.classList.remove('mostrar');
+        btnProdutos.setAttribute('aria-expanded', 'false');
+
+        // Alterna o atual
+        const estaAberto = painelCanais.classList.toggle('mostrar');
+        this.setAttribute('aria-expanded', estaAberto ? 'true' : 'false');
+    });
 }
 
 
@@ -342,6 +353,62 @@ function iniciarAbasRodape() {
     });
 }
 
+function iniciarPainelLoginMobile() {
+    const btn = document.getElementById('btn-acessar-mobile');
+    const painel = document.getElementById('painel-login-mobile');
+    const btnSubmit = document.getElementById('btn-submit-mobile');
+
+    if (!btn || !painel) return;
+
+    btn.addEventListener('click', function () {
+        const aberto = painel.classList.toggle('aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        painel.setAttribute('aria-hidden', aberto ? 'false' : 'true');
+    });
+
+    // Reutiliza a mesma lógica de autenticação do desktop
+    if (btnSubmit) {
+        btnSubmit.addEventListener('click', function () {
+            const agencia = document.getElementById('campo-agencia-m').value.trim();
+            const conta = document.getElementById('campo-conta-m').value.trim();
+            const digito = document.getElementById('campo-digito-m').value.trim();
+
+            if (!agencia || !conta || !digito) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            if (agencia === '1234' && conta === '56789' && digito === '0') {
+                localStorage.setItem('agencia', agencia);
+                localStorage.setItem('conta', conta + '-' + digito);
+                localStorage.setItem('nomeUsuario', 'Miguel Martinho Rebequi');
+                window.location.href = 'pages/loading/loading.html';
+            } else {
+                alert('Agência, Conta ou Dígito inválido. (Dica: Ag: 1234 | Ct: 56789 | Dg: 0)');
+            }
+        });
+    }
+}
+
+function iniciarMenuHamburguerMobile() {
+    const btnHamburguer = document.getElementById('btn-menu-hamburguer');
+    const menuLateral = document.getElementById('menu-lateral-bradesco');
+
+    if (btnHamburguer && menuLateral) {
+        btnHamburguer.addEventListener('click', function (e) {
+            e.stopPropagation();
+            menuLateral.classList.toggle('menu-aberto-fullscreen');
+        });
+
+        // Fecha o menu se clicar na parte escura (fora da área branca do menu)
+        menuLateral.addEventListener('click', function (e) {
+            if (e.target === menuLateral) {
+                menuLateral.classList.remove('menu-aberto-fullscreen');
+            }
+        });
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
     iniciarValidacaoNumerica();
@@ -354,4 +421,8 @@ document.addEventListener('DOMContentLoaded', function () {
     iniciarBarraFlutuante();
     iniciarInteracaoBia();
     iniciarAbasRodape();
+
+    // Mobile
+    iniciarPainelLoginMobile();
+    iniciarMenuHamburguerMobile();
 });

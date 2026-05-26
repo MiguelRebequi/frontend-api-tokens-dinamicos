@@ -19,7 +19,15 @@
 <body>
     <header id="cabecalho-global" role="banner">
 
-        <form class="header_login-form" id="form-login-bradesco" action="pages/loading/loading.html" aria-label="Formulário de acesso à conta" autocomplete="off">
+        <button type="button" id="btn-menu-hamburguer" class="btn-hamburguer-mobile"
+            aria-label="Abrir menu de navegação">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <form class="header_login-form" id="form-login-bradesco" action="pages/loading/loading.html"
+            aria-label="Formulário de acesso à conta" autocomplete="off">
 
             <button type="button" class="btn-acessar" aria-label="Abrir opções de acesso à conta">
                 <img src="assets/images/button_cadeado/cadeado.svg" alt="" aria-hidden="true"> Acessar sua conta
@@ -58,7 +66,38 @@
                 <img src="assets/icons/acessibilidade/icon_acessibilidade.svg" alt="" aria-hidden="true">
             </a>
         </div>
+
+        <button class="btn-acessar-mobile" id="btn-acessar-mobile" aria-expanded="false"
+            aria-controls="painel-login-mobile">
+            <img src="assets/images/button_cadeado/cadeado.svg" alt="" aria-hidden="true"> ACESSAR
+        </button>
     </header>
+
+    <div id="painel-login-mobile" class="painel-login-mobile" aria-hidden="true">
+        <div class="input-group">
+            <label for="campo-agencia-m">Agência:</label>
+            <input type="text" class="somente-numeros" id="campo-agencia-m" maxlength="4">
+        </div>
+        <div class="linha-conta">
+            <div class="input-group">
+                <label for="campo-conta-m">Conta:</label>
+                <input type="text" class="somente-numeros" id="campo-conta-m" maxlength="5">
+            </div>
+            <div class="input-group">
+                <label for="campo-digito-m">Dígito:</label>
+                <input type="text" class="somente-numeros" id="campo-digito-m" maxlength="1">
+            </div>
+        </div>
+        <button class="btn-submit-mobile" id="btn-submit-mobile">Acessar conta</button>
+        <div class="rodape-painel">
+            <div class="checkbox-group">
+                <input type="checkbox" id="lembrar-dados-m">
+                <label for="lembrar-dados-m">Lembrar-me</label>
+            </div>
+            <a href="#" class="como-usar">Como usar <img src="assets/icons/nav/arrow-right.svg" alt=""
+                    aria-hidden="true"></a>
+        </div>
+    </div>
 
 
     <div id="menu-acessibilidade" class="menu-acessibilidade-escondido" role="dialog" aria-modal="true"
@@ -271,29 +310,9 @@
         </picture>
     </section>
 
-    
 
-    <nav class="menu-principal-mobile">
-        <div class="menu-topo-destaques">
-            <span>Para você</span>
-            <ul>
-                <li><a href="#">Classic</a></li>
-                <li><a href="#">Exclusive</a></li>
-                <li><a href="#">Prime</a></li>
-                <li><a href="#">Principal</a></li>
-                <li><a href="#">Global Private</a></li>
-                <li><a href="#">&nbsp; Mais opções</a></li>
-            </ul>
 
-            <hr>
 
-            <span>Para sua empresa</span>
-            <ul>
-                <li><a href="#">Empresa e Negócios</a></li>
-                <li><a href="#">Bradesco Corporate</a></li>
-            </ul>
-        </div>
-    </nav>
 
 
     <section class="banner" id="hero-banner" role="region" aria-roledescription="carousel"
@@ -301,10 +320,7 @@
 
         <div class="slide ativa" id="slide-0" role="group" aria-roledescription="slide" aria-label="1 de 5"
             aria-hidden="false">
-            <picture>
-                <source media="(max-width: 1024px)" srcset="assets/banners/banner1-mobile.webp">
-                <img src="assets/banners/home/Banner_Renegocie_V4.webp" alt="Promoção Desenrola Brasil" loading="lazy">
-            </picture>
+            <img src="assets/banners/home/Banner_Renegocie_V4.webp" alt="Promoção Desenrola Brasil" loading="lazy">
         </div>
 
         <div class="slide" id="slide-1" role="group" aria-roledescription="slide" aria-label="2 de 5"

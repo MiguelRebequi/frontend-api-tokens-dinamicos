@@ -13,19 +13,20 @@ body {
     align-items: center;
     gap: 10px;
 
-    /* Cores e o fundo*/
     background-image: var(--meu-background);
     height: 50px;
     padding: 0px 30px;
 
 
 
-    width: 100%;
-    box-sizing: border-box;
-
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    /* Em vez de width: 100% */
+    max-width: 100vw;
+    /* Garante que nunca passe da largura da janela */
+    box-sizing: border-box;
     z-index: 1000;
 
 }
@@ -34,6 +35,7 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
+    min-width: 0;
 }
 
 .input-group,
@@ -1632,7 +1634,7 @@ button.btn-acessar {
     }
 }
 
-/* RODAPÉ (FOOTER)                           */
+/* RODAPÉ (FOOTER) */
 .container-footer {
     max-width: 1100px;
     margin: 0 auto;
@@ -1876,5 +1878,634 @@ button.btn-acessar {
 
     to {
         opacity: 1;
+    }
+}
+
+/* Esconde o Botão Acessar no Desktop */
+.btn-acessar-mobile {
+    display: none !important;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-family: var(--fonte-padrao);
+}
+
+/* Esconde o botão hambúrguer no Desktop */
+.btn-hamburguer-mobile {
+    display: none !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 22px;
+    height: 16px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 2100;
+}
+
+
+
+.btn-hamburguer-mobile span {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.btn-hamburguer-mobile .linha-hamb {
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: left center;
+}
+
+/* Esconde Painel de Mobile no mobile */
+.painel-login-mobile {
+    display: none !important;
+}
+
+/* =============================================
+   HEADER E CONTEÚDO RESPONSIVO
+   Desktop: layout original mantido
+   Telas menores/Tablets Paisagem (≤ 1200px): ajuste dos cartões de destaque
+   Tablet (≤1024px): labels sumem, só inputs + cartões e footer adaptados
+   Mobile (≤767px): form some, botão abre painel + empilhamentos do footer
+   ============================================= */
+
+/* --- COMPUTADORES MENORES OU TABLETS PAISAGEM (≤ 1200px) --- */
+@media (max-width: 1200px) {
+    .container-cartoes-destaque {
+        height: auto;
+        margin-top: -40px;
+        padding: 0 20px;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+
+    .card-destaque {
+        flex: 1 1 calc(25% - 20px);
+        /* Encaixa até 4 cartões por linha */
+        min-width: 150px;
+        height: var(--altura-base);
+    }
+}
+
+/* --- TABLET (768px a 1024px) --- */
+@media (max-width: 1024px) {
+
+    #cabecalho-global {
+        padding: 0 15px;
+        gap: 5px;
+    }
+
+    .header_login-form {
+        gap: 5px;
+    }
+
+    /* Esconde labels, checkbox e "Como usar" */
+    .header_login-form label,
+    .checkbox-group,
+    .header_login-form>a {
+        display: none;
+    }
+
+    /* Reduz gap do form */
+    .header_login-form {
+        gap: 8px;
+    }
+
+    /* Botão "Acessar sua conta" vira só o ícone de cadeado */
+    button.btn-acessar {
+        font-size: 0;
+        /* Esconde o texto */
+        gap: 0;
+    }
+
+    button.btn-acessar img {
+        display: block;
+        /* Mantém só o ícone */
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Texto "Acessibilidade" some, mantém só o ícone */
+    .header-acessibilidade a {
+        font-size: 0;
+        gap: 0;
+    }
+
+    .header-acessibilidade img {
+        display: block;
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Inputs um pouco menores */
+    #campo-agencia {
+        width: 50px;
+    }
+
+    #campo-conta {
+        width: 60px;
+    }
+
+    #campo-digito {
+        width: 22px;
+    }
+
+    /* CARTÕES DE DESTAQUE NO TABLET */
+    .container-cartoes-destaque {
+        margin-top: -20px;
+        gap: 15px;
+    }
+
+    .card-destaque {
+        flex: 1 1 calc(33.333% - 15px);
+        /* Organiza em 3 colunas */
+    }
+
+    /* CORREÇÃO DO SUSPEITO: MENU LATERAL NO TABLET */
+    #menu-lateral-bradesco {
+        left: 0;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    /* =============================================
+       INTEGRAÇÃO: ÁREA CINZA DO FOOTER NO TABLET
+       ============================================= */
+    .container-footer {
+        padding: 0 20px;
+        /* Reduz espaçamento lateral interno */
+    }
+
+    .grid-info-uteis {
+        grid-template-columns: repeat(2, 1fr);
+        /* Reduz de 3 para 2 colunas */
+        gap: 15px 25px;
+    }
+
+    .flex-atendimento {
+        gap: 30px;
+        /* Aproxima os blocos de telefone */
+        flex-wrap: wrap;
+        /* Permite que o link "Confira mais centrais" desça se faltar espaço */
+    }
+
+    .colunas-alfabeticas {
+        column-count: 3;
+        /* Reduz de 5 para 3 colunas na lista de sites */
+    }
+}
+
+/* --- MOBILE (até 767px) --- */
+@media (max-width: 767px) {
+
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Cabeçalho */
+    #cabecalho-global {
+        padding: 0 15px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+
+
+    #menu-lateral-bradesco {
+        left: 0;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .container-main-header {
+        padding: 20px 15px;
+        /* Reduz margem interna para evitar vazamentos */
+        gap: 10px;
+    }
+
+    .main-nav-direita {
+        gap: 15px;
+        /* Compacta os botões do topo do banner */
+    }
+
+    .btn-busca-topo {
+        padding: 8px 15px;
+        /* Encolhe o botão de busca no mobile */
+    }
+
+    .grid-consorcios {
+        grid-template-columns: 1fr !important;
+        /* Força os 4 cards de consórcio a virarem uma lista vertical de 1 coluna */
+        justify-items: center;
+    }
+
+    .card-consorcio {
+        max-width: 100%;
+        /* Permite que ele se adapte à largura do celular */
+        min-height: auto;
+        /* Remove a altura engessada de 390px */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* CORREÇÃO DOS PRODUTOS NO MOBILE */
+    .benefit-card {
+        grid-template-columns: repeat(2, 1fr) !important;
+        /* Altera de 3 para 2 colunas nos celulares para não esmagar os textos */
+        gap: 10px;
+    }
+
+    .benefit-card li a {
+        height: auto;
+        /* Torna a altura flexível caso o texto seja grande */
+        padding: 15px 10px;
+    }
+
+    #cabecalho-global {
+        padding: 0 15px;
+        justify-content: space-between;
+    }
+
+    /* Esconde o formulário inteiro do header */
+    .header_login-form {
+        display: none;
+    }
+
+    /* Mostra o botão de acesso mobile */
+    .btn-acessar-mobile {
+        display: flex !important;
+    }
+
+    /* Acessibilidade: só ícone */
+    .header-acessibilidade a {
+        font-size: 0;
+        gap: 0;
+    }
+
+    .header-acessibilidade img {
+        display: block;
+        width: 20px;
+        height: 20px;
+    }
+
+    /* ---- PAINEL DE LOGIN MOBILE ---- */
+    .painel-login-mobile {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: var(--cor-superficie, #fff);
+        padding: 20px 16px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 999;
+        transform: translateY(-110%);
+        transition: transform 0.3s ease;
+    }
+
+    .painel-login-mobile.aberto {
+        display: block !important;
+        transform: translateY(0);
+    }
+
+    .painel-login-mobile .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        margin-bottom: 12px;
+    }
+
+    .painel-login-mobile label {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--cor-texto-principal, #333);
+        letter-spacing: 0.5px;
+    }
+
+    .painel-login-mobile input[type="text"] {
+        width: 100%;
+        height: 40px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        padding: 0 12px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    .painel-login-mobile .linha-conta {
+        display: flex;
+        gap: 10px;
+    }
+
+    .painel-login-mobile .linha-conta .input-group:first-child {
+        flex: 1;
+    }
+
+    .painel-login-mobile .linha-conta .input-group:last-child {
+        width: 70px;
+    }
+
+    .painel-login-mobile .btn-submit-mobile {
+        width: 100%;
+        height: 44px;
+        background-color: var(--cor-primaria, #cc092f);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 4px;
+        font-family: var(--fonte-padrao);
+    }
+
+    .painel-login-mobile .rodape-painel {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 12px;
+    }
+
+    .painel-login-mobile .checkbox-group {
+        font-size: 13px;
+        color: var(--cor-texto-principal, #333);
+    }
+
+    .painel-login-mobile .checkbox-group label {
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+
+    .painel-login-mobile a.como-usar {
+        font-size: 12px;
+        color: var(--cor-primaria, #cc092f);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    /* Posição do menu acessibilidade no mobile */
+    #menu-acessibilidade {
+        right: 12px;
+        width: calc(100vw - 24px);
+        max-width: 320px;
+    }
+
+    /* Menu lateral Mobile */
+
+    .btn-hamburguer-mobile {
+        display: flex !important;
+
+    }
+
+    .btn-hamburguer-mobile.ativo .linha-hamb:nth-child(1) {
+        transform: rotate(45deg) translate(1px, -1px);
+    }
+
+    .btn-hamburguer-mobile.ativo .linha-hamb:nth-child(2) {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    .btn-hamburguer-mobile.ativo .linha-hamb:nth-child(3) {
+        transform: rotate(-45deg) translate(1px, 1px);
+    }
+
+    #menu-lateral-bradesco {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100vw;
+        height: 100vw;
+        max-width: 100vw;
+        z-index: 950;
+
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        display: block !important;
+    }
+
+    #menu-lateral-bradesco.menu-aberto-fullscreen {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .menu-principal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80%;
+        max-width: 320px;
+        height: 100vh;
+        background-color: #ffffff;
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.25);
+        padding-top: 0;
+        /* Margem para não cobrir o primeiro link */
+        box-sizing: border-box;
+        overflow-y: auto;
+        /* Permite scroll se tiver muitos links */
+
+        /* Efeito de deslizar da esquerda para a direita */
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+
+    #menu-lateral-bradesco.menu-aberto-fullscreen .menu-principal {
+        transform: translateX(0);
+        /* Desliza o painel para dentro da tela */
+    }
+
+    .btn-acessar-mobile {
+        margin-left: auto;
+        /* Ajuste para empurrar o cadeado de ACESSAR para a direita */
+    }
+
+    /* Submenu virando uma sanfona no menu lateral */
+    .submenu-painel {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        box-shadow: none;
+        background-color: #f9f9f9 !important;
+        /* Um tom levemente diferente para destacar */
+
+        display: none;
+        padding: 10px 0;
+    }
+
+    .submenu-painel.mostrar {
+        display: block !important;
+    }
+
+    .grid-produtos {
+        grid-template-columns: 1fr !important;
+        margin: 10px 15px !important;
+        gap: 8px !important;
+    }
+
+    .grid-produtos li a,
+    .lista-canais li a {
+        min-height: auto !important;
+        padding: 10px 12px !important;
+        font-size: 13px !important;
+    }
+
+    .item-servicos-full {
+        grid-column: span 1 !important;
+    }
+
+    .lista-canais {
+        margin: 10px 15px !important;
+        gap: 8px !important;
+    }
+
+    #btn-produtos,
+    #btn-canais {
+        position: relative;
+        padding-right: 40px;
+    }
+
+    #btn-produtos::after,
+    #btn-canais::after {
+        content: "" !important;
+        position: absolute !important;
+        right: 25px !important;
+        top: 50% !important;
+
+        width: 8px !important;
+        height: 8px !important;
+
+        border-right: 2px solid #cc0000 !important;
+        border-bottom: 2px solid #cc0000 !important;
+        transform: translateY(-50%) rotate(45deg) !important;
+        transform-origin: center !important;
+        transition: transform 0.3s ease !important;
+        z-index: 50 !important;
+    }
+
+    #btn-produtos[aria-expanded="true"]::after,
+    #btn-canais[aria-expanded="true"]::after {
+        transform: translateY(-50%) rotate(-135deg) !important;
+    }
+
+    /* CARTÕES DE DESTAQUE NO MOBILE */
+    .container-cartoes-destaque {
+        margin-top: 20px;
+        gap: 12px;
+    }
+
+    .card-destaque {
+        flex: 1 1 calc(50% - 12px);
+        /* Organiza em 2 colunas */
+    }
+
+    .card-destaque a {
+        font-size: 13px;
+        padding: 15px 8px;
+    }
+
+    /* BIA */
+    #container-flutuante-bia {
+        right: 10px !important;  /* Cola mais no canto direito (estava 30px) */
+    }
+
+
+    .texto-dentro-balao {
+        font-size: 9px !important;
+    }
+
+    /* =============================================
+       INTEGRAÇÃO: ÁREA CINZA DO FOOTER NO MOBILE
+       ============================================= */
+    .footer-area-cinza {
+        padding: 20px 5px;
+    }
+
+    .footer-abas-botoes {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        border-bottom: none;
+    }
+
+    .footer-abas-botoes li {
+        flex: 1 1 auto;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .btn-aba {
+        font-size: 12px;
+        padding: 10px 5px;
+        justify-content: center;
+        width: 100%;
+        border-bottom: 2px solid #ccc;
+    }
+
+    .btn-aba.ativo {
+        border-bottom-color: #cc0000;
+    }
+
+    .btn-aba .seta-aba {
+        margin-left: 4px;
+    }
+
+    .grid-info-uteis {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .flex-atendimento {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .tel-atendimento {
+        font-size: 18px;
+    }
+
+    .colunas-alfabeticas {
+        column-count: 1;
+    }
+
+    /* =============================================
+       CORREÇÃO EXTRA: ÁREA VERMELHA DO FOOTER NO MOBILE
+       ============================================= */
+    .footer-top-vermelho {
+        flex-direction: column;
+        /* Transforma em bloco vertical empilhado */
+        gap: 25px;
+        text-align: center;
+    }
+
+    .footer-follow {
+        flex-direction: column;
+        /* Alinha a palavra ACOMPANHE acima dos ícones */
+        gap: 10px;
+    }
+
+    .footer-follow ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        /* Caso adicione mais redes, elas quebram linha sem vazar */
     }
 }
