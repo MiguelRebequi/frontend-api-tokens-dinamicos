@@ -1,0 +1,10 @@
+<svg id="cartao-debito-credito" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Retângulo_101186" data-name="Retângulo 101186" width="16" height="16" transform="translate(236 160)" fill="#cc092f" opacity="0"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_de_máscara_82939" data-name="Grupo de máscara 82939" transform="translate(-236 -160)" clip-path="url(#clip-path)">
+    <path id="Caminho_79426" data-name="Caminho 79426" d="M5.56,9.6H2.082a.361.361,0,1,1,0-.721H5.56a.361.361,0,0,1,0,.721ZM16,9.527V10.9a2.045,2.045,0,0,1-2.037,2.037H2.037A2.045,2.045,0,0,1,0,10.9V5.1A2.046,2.046,0,0,1,2.037,3.059H13.961A2.045,2.045,0,0,1,16,5.095V6.608a.36.36,0,0,1-.36.36H.671l.05,3.938a1.322,1.322,0,0,0,1.316,1.316H13.961A1.322,1.322,0,0,0,15.279,10.9V9.528a.361.361,0,1,1,.721,0Zm-.674-4.445a1.4,1.4,0,0,0-1.365-1.306H2.037A1.324,1.324,0,0,0,.721,5.1v.04H.757l14.569-.05Zm-.085.676-14.52.05V6.3H.757l14.57-.05-.05-.487ZM2.068,10.2a.361.361,0,0,0,0,.721H4.41a.361.361,0,0,0,0-.721Z" transform="translate(236 160)" fill="#cc092f"/>
+  </g>
+</svg>

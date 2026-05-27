@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2277.104" height="2286.406" viewBox="0 0 2277.104 2286.406">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.007" y1="0.647" x2="0.585" y2="0.437" gradientUnits="objectBoundingBox">
+      <stop offset="0.01" stop-color="#f36279"/>
+      <stop offset="0.52" stop-color="#cc092f"/>
+      <stop offset="0.99" stop-color="#b41a83"/>
+    </linearGradient>
+    <filter id="Caminho_44010" x="0" y="0" width="2277.104" height="2286.406" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#Caminho_44010)">
+    <path id="Caminho_44010-2" data-name="Caminho 44010" d="M1472.359-644.419c20.242-12.263,167.279,57.5,181.778,60.328,33.262,6.493,48.916,41.419,48.916,66.948L880.525,971.139c0,36.366-36.081,65.847-80.588,65.847L53.342,676.058C8.834,676.058,0,665.877,0,629.511L20.21,132.446c0-18.074,3.067-34.309,23.58-46.541Z" transform="matrix(0.44, 0.9, -0.9, 0.44, 941.04, 289.13)" fill="url(#linear-gradient)"/>
+  </g>
+</svg>

@@ -614,3 +614,18 @@ body {
     pointer-events: none;
 }
 
+
+/* ========================================================
+   MEDIA QUERY: MOBILE (Telas de até 767px)
+   ======================================================== */
+@media (max-width: 767px) {
+    
+    /* Configuração de todos do conteúdo dos dashboard */
+    .dashboard-content, .dashboard-linha, .dashboard-linha-2 {
+        grid-template-columns: 1fr !important;
+        margin: 20px auto !important;
+        gap: 20px !important;
+    }
+
+    
+}

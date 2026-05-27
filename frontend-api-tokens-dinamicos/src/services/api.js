@@ -1,0 +1,1 @@
+// Consumir a API, aqui deve estar a conexão com o Backend consumindo a API
