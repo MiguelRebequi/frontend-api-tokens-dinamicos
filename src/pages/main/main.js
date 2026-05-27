@@ -59,7 +59,7 @@ function iniciarAutenticacaoTeste() {
             alert("Por favor, preencha todos os campos de acesso.");
             return;
         }
-
+/*
         // 5. A VALIDAÇÃO: Verifica se bate com a conta de teste simulada
         if (agenciaDigitada === AGENCIA_TESTE && contaDigitada === CONTA_TESTE && digitoDigitado === DIGITO_TESTE) {
             // O 'this.action' pega o caminho "pages/loading/loading.html" que colocamos no HTML
@@ -74,6 +74,9 @@ function iniciarAutenticacaoTeste() {
             // Se errar a agência ou conta simulada
             alert("Agência, Conta ou Dígito inválido. (Dica de teste: Ag: 1234 | Ct: 56789 | Dg: 0)");
         }
+
+ */
+
     });
 }
 
