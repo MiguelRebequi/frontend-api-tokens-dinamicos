@@ -385,79 +385,79 @@ function iniciarAutoTabLogin() {
 
     // 2. Terminou a Conta (5 dígitos) -> Vai para o Dígito
     configurarAutoTab(campoConta, campoDigito);
-    function iniciarPainelLoginMobile() {
-        const btn = document.getElementById('btn-acessar-mobile');
-        const painel = document.getElementById('painel-login-mobile');
-        const btnSubmit = document.getElementById('btn-submit-mobile');
+}
+function iniciarPainelLoginMobile() {
+    const btn = document.getElementById('btn-acessar-mobile');
+    const painel = document.getElementById('painel-login-mobile');
+    const btnSubmit = document.getElementById('btn-submit-mobile');
 
-        if (!btn || !painel) return;
+    if (!btn || !painel) return;
 
-        btn.addEventListener('click', function () {
-            const aberto = painel.classList.toggle('aberto');
-            btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
-            painel.setAttribute('aria-hidden', aberto ? 'false' : 'true');
+    btn.addEventListener('click', function () {
+        const aberto = painel.classList.toggle('aberto');
+        btn.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        painel.setAttribute('aria-hidden', aberto ? 'false' : 'true');
+    });
+
+    // Reutiliza a mesma lógica de autenticação do desktop
+    if (btnSubmit) {
+        btnSubmit.addEventListener('click', function () {
+            const agencia = document.getElementById('campo-agencia-m').value.trim();
+            const conta = document.getElementById('campo-conta-m').value.trim();
+            const digito = document.getElementById('campo-digito-m').value.trim();
+
+            if (!agencia || !conta || !digito) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            if (agencia === '1234' && conta === '56789' && digito === '0') {
+                localStorage.setItem('agencia', agencia);
+                localStorage.setItem('conta', conta + '-' + digito);
+                localStorage.setItem('nomeUsuario', 'Miguel Martinho Rebequi');
+                window.location.href = 'pages/loading/loading.html';
+            } else {
+                alert('Agência, Conta ou Dígito inválido. (Dica: Ag: 1234 | Ct: 56789 | Dg: 0)');
+            }
+        });
+    }
+}
+
+function iniciarMenuHamburguerMobile() {
+    const btnHamburguer = document.getElementById('btn-menu-hamburguer');
+    const menuLateral = document.getElementById('menu-lateral-bradesco');
+
+    if (btnHamburguer && menuLateral) {
+        btnHamburguer.addEventListener('click', function (e) {
+            e.stopPropagation();
+            menuLateral.classList.toggle('menu-aberto-fullscreen');
         });
 
-        // Reutiliza a mesma lógica de autenticação do desktop
-        if (btnSubmit) {
-            btnSubmit.addEventListener('click', function () {
-                const agencia = document.getElementById('campo-agencia-m').value.trim();
-                const conta = document.getElementById('campo-conta-m').value.trim();
-                const digito = document.getElementById('campo-digito-m').value.trim();
-
-                if (!agencia || !conta || !digito) {
-                    alert('Por favor, preencha todos os campos.');
-                    return;
-                }
-
-                if (agencia === '1234' && conta === '56789' && digito === '0') {
-                    localStorage.setItem('agencia', agencia);
-                    localStorage.setItem('conta', conta + '-' + digito);
-                    localStorage.setItem('nomeUsuario', 'Miguel Martinho Rebequi');
-                    window.location.href = 'pages/loading/loading.html';
-                } else {
-                    alert('Agência, Conta ou Dígito inválido. (Dica: Ag: 1234 | Ct: 56789 | Dg: 0)');
-                }
-            });
-        }
+        // Fecha o menu se clicar na parte escura (fora da área branca do menu)
+        menuLateral.addEventListener('click', function (e) {
+            if (e.target === menuLateral) {
+                menuLateral.classList.remove('menu-aberto-fullscreen');
+            }
+        });
     }
-
-    function iniciarMenuHamburguerMobile() {
-        const btnHamburguer = document.getElementById('btn-menu-hamburguer');
-        const menuLateral = document.getElementById('menu-lateral-bradesco');
-
-        if (btnHamburguer && menuLateral) {
-            btnHamburguer.addEventListener('click', function (e) {
-                e.stopPropagation();
-                menuLateral.classList.toggle('menu-aberto-fullscreen');
-            });
-
-            // Fecha o menu se clicar na parte escura (fora da área branca do menu)
-            menuLateral.addEventListener('click', function (e) {
-                if (e.target === menuLateral) {
-                    menuLateral.classList.remove('menu-aberto-fullscreen');
-                }
-            });
-        }
-    }
-
-
-    document.addEventListener('DOMContentLoaded', function () {
-        iniciarValidacaoNumerica();
-        iniciarAutenticacaoTeste();
-        iniciarMenuAcessibilidade();
-        iniciarDropdownsHeader();
-        iniciarMenuLateral();
-        iniciarPainelBusca();
-        iniciarCarrossel();
-        iniciarBarraFlutuante();
-        iniciarInteracaoBia();
-        iniciarAbasRodape();
-
-        // Auto Tab
-        iniciarAutoTabLogin();
-        // Mobile
-        iniciarPainelLoginMobile();
-        iniciarMenuHamburguerMobile();
-    });
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    iniciarValidacaoNumerica();
+    iniciarAutenticacaoTeste();
+    iniciarMenuAcessibilidade();
+    iniciarDropdownsHeader();
+    iniciarMenuLateral();
+    iniciarPainelBusca();
+    iniciarCarrossel();
+    iniciarBarraFlutuante();
+    iniciarInteracaoBia();
+    iniciarAbasRodape();
+
+    // Auto Tab
+    iniciarAutoTabLogin();
+    // Mobile
+    iniciarPainelLoginMobile();
+    iniciarMenuHamburguerMobile();
+});
