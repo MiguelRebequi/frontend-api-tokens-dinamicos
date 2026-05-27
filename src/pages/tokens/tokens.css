@@ -335,31 +335,11 @@ body {
     border: 1px solid rgba(0, 230, 118, 0.3);
 }
 
-/* Bolinha interna verde */
-.tag-status.autenticado::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    background-color: #00E676;
-    border-radius: 50%;
-    display: inline-block;
-}
-
 /* 🟡 SITUAÇÃO 2: Pendente / Expirado */
 .tag-status.pendente {
     background-color: rgba(255, 160, 0, 0.15);
     /* Amarelo ouro visível em fundo escuro */
     border: 1px solid rgba(255, 160, 0, 0.3);
-}
-
-/* Bolinha interna amarela */
-.tag-status.pendente::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    background-color: #FFD54F;
-    border-radius: 50%;
-    display: inline-block;
 }
 
 /* 🔴 SITUAÇÃO 3: Alerta / Bloqueado */
@@ -369,15 +349,7 @@ body {
     border: 1px solid rgba(204, 0, 0, 0.3);
 }
 
-/* Bolinha interna vermelha */
-.tag-status.bloqueado::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    background-color: #FF5252;
-    border-radius: 50%;
-    display: inline-block;
-}
+
 
 /* Diretrizes de alerta */
 .lista-alertas-seguranca {
@@ -780,4 +752,251 @@ body {
 @keyframes dropdownFadeIn {
     from { opacity: 0; transform: translate(-50%, -5px); }
     to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ========================================================
+   MEDIA QUERY: MOBILE (Telas de até 767px)
+   ======================================================== */
+@media (max-width: 767px) {
+    
+    /* --- ESTRUTURAÇÃO GERAL --- */
+    .tokens-content {
+        padding: 0 12px !important;
+        margin: 20px auto !important;
+    }
+
+    .container-tokens {
+        grid-template-columns: 1fr !important; /* Transforma as duas colunas em empilhamento vertical */
+        gap: 20px !important;
+    }
+
+    /* --- TRANSFORMAÇÃO DA SIDEBAR EM MENU DE ABAS HORIZONTAIS --- */
+    .sidebar-tokens {
+        padding: 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Esconde o título "Tokens" na barra lateral apenas no mobile para ganhar espaço */
+    .titulo-sidebar-tokens {
+        display: none !important;
+    }
+
+    .abas-tokens {
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: row !important; /* Coloca as abas lado a lado */
+        width: 100% !important;
+        gap: 8px !important;
+    }
+
+    .aba-item {
+        flex: 1 !important; /* Faz as duas abas dividirem a largura igualmente (50% cada) */
+    }
+
+    .aba-item a {
+        padding: 12px 5px !important;
+        text-align: center !important;
+        font-size: 13px !important;
+        border-left: none !important; /* Remove a linha vermelha da esquerda */
+        border-bottom: 3px solid transparent !important; /* Adiciona suporte para linha vermelha embaixo */
+        border-radius: 4px 4px 0 0 !important;
+    }
+
+    /* Ajusta o indicador ativo para ficar na parte inferior da aba */
+    .aba-item.ativa a {
+        border-bottom-color: #cc0000 !important;
+        background-color: #FFF5F5 !important;
+    }
+
+    /* --- CARD DE CONTEÚDO PRINCIPAL --- */
+    .card-token-funcional {
+        padding: 25px 20px !important; /* Reduz o preenchimento excessivo no celular */
+        min-height: auto !important; /* Libera a altura engessada */
+    }
+
+    .token-header h3 {
+        font-size: 18px !important;
+        text-align: center;
+    }
+
+    .subtitulo-token {
+        font-size: 13px !important;
+        text-align: center;
+        line-height: 1.4 !important;
+    }
+
+    /* --- COMPONENTES DA VALIDAÇÃO (FORMULÁRIO) --- */
+    .token-body-unificado {
+        margin-top: 25px !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    .token-formulario-validacao {
+        flex-direction: column !important; /* Empilha o Input e o Botão de validar */
+        align-items: center !important;
+        gap: 18px !important;
+    }
+
+    .grupo-input-token {
+        max-width: 100% !important; /* Input passa a ocupar toda a largura disponível */
+    }
+
+    .grupo-input-token label {
+        align-self: center !important; /* Centraliza o rótulo acima do campo no mobile */
+        font-size: 12px !important;
+    }
+
+    .grupo-input-token input {
+        text-align: center !important; /* Centraliza a digitação dos números */
+        font-size: 20px !important;
+        letter-spacing: 4px !important; /* Aumenta o espaçamento para ficar mais fácil de ler o token */
+    }
+
+    .btn-validar-token {
+        width: 100% !important; /* Botão ganha largura total para facilitar o clique no celular */
+        height: 46px !important;
+    }
+
+    /* Centraliza as telas de feedback de Sucesso e Erro */
+    .subtitulo-resultado {
+        font-size: 13px !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+    }
+
+    .resultado-footer {
+        display: flex;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    /* Aba do Histórico de Token */
+    /* --- CONTROLES E FILTROS DO HISTÓRICO --- */
+    .token-header-historico {
+        align-items: center !important;
+        text-align: center !important;
+        gap: 12px !important;
+    }
+
+    .btn-toggle-filtros {
+        width: 100% !important; /* Botão de abrir filtros ocupa toda a largura */
+        justify-content: center !important;
+    }
+
+    .secao-filtros-historico {
+        padding: 35px 15px 20px 15px !important; /* Abre mais espaço para o botão "X" de fechar */
+    }
+
+    .linha-busca-historico {
+        flex-direction: column !important; /* Empilha o campo de busca e o botão de reset */
+        align-items: center !important;
+        gap: 15px !important;
+    }
+
+    .grupo-filtro-busca {
+        max-width: 100% !important; /* Busca ocupa a largura inteira */
+    }
+
+    .btn-limpar-filtros {
+        width: 100% !important; /* Botão resetar filtros ocupa largura total */
+    }
+
+    /* --- PÍLULAS E BOTÕES SEGMENTADOS --- */
+    .categoria-filtro-bloco {
+        flex-direction: column !important; /* Coloca o rótulo (ex: Canal:) acima dos botões */
+        align-items: flex-start !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .rotulo-filtro {
+        width: 100% !important;
+        font-size: 12px !important;
+    }
+
+    .grupo-botoes-segmentados {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important; /* 🔥 O SEGREDO: Permite que as pílulas quebrem linha se não couberem */
+        width: 100% !important;
+        background-color: transparent !important; /* Remove o fundo cinza engessado */
+        padding: 0 !important;
+        gap: 8px !important; /* Espaçamento entre cada pílula */
+    }
+
+    .btn-segmento {
+        flex: 1 1 auto !important; /* Faz os botões se adaptarem e preencherem as lacunas */
+        background-color: #eaeaea !important; /* Fundo cinza individual em cada pílula */
+        border-radius: 20px !important; /* Visual arredondado individual */
+        padding: 8px 14px !important;
+        text-align: center !important;
+    }
+
+    .btn-segmento.ativo {
+        background-color: #cc0000 !important; /* Vermelho Bradesco sólido para o ativo */
+        color: #FFFFFF !important;
+    }
+
+    /* Dropdown de meses adaptado para o fluxo em bloco */
+    .dropdown-segmento {
+        flex: 1 1 auto !important;
+        width: 100% !important;
+    }
+
+    .btn-dropdown-toggle {
+        width: 100% !important;
+    }
+
+
+    .painel-historico-aba .tabela-info-token {
+        width: 100% !important;
+        overflow-x: hidden !important;
+        padding: 0 !important;
+        margin-top: 15px !important
+    }
+
+    .painel-historico-aba .tabela-info-token::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .tabela-bradesco {
+        width: 100% !important;
+        min-width: auto !important;
+        table-layout: fixed !important;
+    }
+
+    .tabela-bradesco th:nth-child(1), .tabela-bradesco td:nth-child(1) { width: 16% !important; } /* Código Token */
+    .tabela-bradesco th:nth-child(2), .tabela-bradesco td:nth-child(2) { width: 18% !important; } /* Canal */
+    .tabela-bradesco th:nth-child(3), .tabela-bradesco td:nth-child(3) { width: 22% !important; } /* Data */
+    .tabela-bradesco th:nth-child(4), .tabela-bradesco td:nth-child(4) { width: 14% !important; } /* Hora */
+    .tabela-bradesco th:nth-child(5), .tabela-bradesco td:nth-child(5) { width: 30% !important; } /* Status */
+
+    .tabela-bradesco th, 
+    .tabela-bradesco td {
+        padding: 10px 2px !important; /* Compacta levemente o espaçamento interno */
+        font-size: 11px !important;
+        text-align: center !important;
+        word-wrap: break-word; /* Permite quebra de texto interna se necessário */
+    }
+
+    .tabela-bradesco td:last-child {
+        width: 30% !important;
+        white-space: normal !important; /* Permite que o badge se adeque ao espaço */
+        padding-right: 2px !important;
+    }
+
+    .tag-status {
+        padding: 4px 6px !important;
+        font-size: 10px !important;
+        border-radius: 12px !important;
+        display: inline-flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 4px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+    }
 }
