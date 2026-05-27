@@ -197,3 +197,37 @@ body {
     object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer as proporções */
     display: block;
 }
+
+
+/* ========================================================
+   MEDIA QUERY: MOBILE (Telas de até 767px)
+   ======================================================== */
+
+@media (max-width: 767px){
+    /* Header */
+    .loading-header {
+        padding: 15px 20px;
+    }
+    
+    #data-atual {
+        display: none !important;
+    }
+
+    .btn-cancelar {
+        font-size: 13px;
+    }
+
+    /* Main */
+    .loading-main {
+        padding: 20px 15px; /* Diminuindo o Padding para aumentar o aproveitamento*/
+    }
+
+    .card-autenticacao {
+        max-width: 400px; /* Impede que a caixa branca fique muito larga em tablets pequenos */
+        border-radius: 12px;
+    }
+
+    .coluna-banner-bia {
+        display: none !important;
+    }
+}
