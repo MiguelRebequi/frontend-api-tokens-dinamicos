@@ -12,7 +12,7 @@ export function garantirLogoffESeguranca(caminhoLogin = "../../index.html") {
         return;
     }
 
-    // 3. EVENTO DO BOTÃO SAIR (LOGOFF REAL DA SESSÃO)
+    // 3. EVENTO DO BOTÃO SAIR (LOGOFF CONFIRMADO)
     const btnSair = document.querySelector('.btn-sair');
     if (btnSair) {
         const novoBtnSair = btnSair.cloneNode(true);
@@ -20,8 +20,20 @@ export function garantirLogoffESeguranca(caminhoLogin = "../../index.html") {
 
         novoBtnSair.addEventListener('click', function (e) {
             e.preventDefault();
-            localStorage.clear();
-            window.location.replace(caminhoLogin);
+            
+            // 🎯 O AJUSTE CRÍTICO: Dispara a caixa de diálogo exibida na imagem_f72d8a.png
+            const usuarioConfirmouSair = window.confirm("Deseja realmente sair da sua conta com segurança?");
+            
+            // Se o usuário clicar em "OK" (Botão Azul)
+            if (usuarioConfirmouSair) {
+                // Limpa absolutamente todas as credenciais gravadas
+                localStorage.clear();
+                
+                // Substitui o histórico e ejeta o usuário para a página de login inicial
+                window.location.replace(caminhoLogin);
+            }
+            
+            // Se o usuário clicar em "Cancelar", a função termina aqui e ele continua navegando no Dashboard normalmente!
         });
     }
 }

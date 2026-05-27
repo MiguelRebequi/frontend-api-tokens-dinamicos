@@ -2,7 +2,7 @@ import { formatarDataAtual } from '../../scripts/commons/utils.js';
 import { gerenciarNavbarAtiva } from '../../scripts/commons/navbar.js';
 
 import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
-garantirLogoffESeguranca("../../index.html");
+
 
 function gerenciarSegurancaNavegacao() {
     if (!localStorage.getItem('conta')) {
