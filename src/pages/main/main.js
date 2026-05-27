@@ -342,6 +342,31 @@ function iniciarAbasRodape() {
     });
 }
 
+function iniciarAutoTabLogin() {
+    const campoAgencia = document.getElementById('campo-agencia');
+    const campoConta = document.getElementById('campo-conta');
+    const campoDigito = document.getElementById('campo-digito');
+
+    if (!campoAgencia || !campoConta || !campoDigito) return;
+
+    function configurarAutoTab(campoAtual, proximoCampo) {
+        campoAtual.addEventListener('input', function () {
+            const limiteMaximo = parseInt(this.getAttribute('maxlength'), 10);
+
+            if (this.value.length >= limiteMaximo){
+                proximoCampo.focus();
+            }
+        });
+    }
+
+    // Configura o fluxo contínuo dos campos:
+    // 1. Terminou a Agência (4 dígitos) -> Vai para a Conta
+    configurarAutoTab(campoAgencia, campoConta);
+    
+    // 2. Terminou a Conta (5 dígitos) -> Vai para o Dígito
+    configurarAutoTab(campoConta, campoDigito);
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
     iniciarValidacaoNumerica();
@@ -354,4 +379,7 @@ document.addEventListener('DOMContentLoaded', function () {
     iniciarBarraFlutuante();
     iniciarInteracaoBia();
     iniciarAbasRodape();
+
+    // Auto Tab
+    iniciarAutoTabLogin();
 });

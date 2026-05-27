@@ -40,9 +40,8 @@ function loadingLogica() {
 
         // 2. Após a mensagem aparecer, redireciona para o Dashboard
         setTimeout(() => {
-            // Ajuste o caminho conforme a estrutura real da sua pasta
-            window.location.href = '../dashboard/dashboard.html';
-        }, TEMPO_REDIRECIONAMENTO);
+            window.location.replace('../dashboard/dashboard.html');
+        }, TEMPO_REDIRECIONAMENTO)
 
     }, TEMPO_CARREGAMENTO);
 }

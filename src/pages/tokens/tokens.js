@@ -1,5 +1,8 @@
 import { gerenciarNavbarAtiva } from '../../scripts/commons/navbar.js';
 import { formatarDataAtual } from '../../scripts/commons/utils.js';
+import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
+
+garantirLogoffESeguranca("../../index.html");
 
 // Variáveis de escopo global do arquivo
 let inputCodigo, telaInicial, telaSucesso, telaAlerta;
