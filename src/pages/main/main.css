@@ -2423,9 +2423,99 @@ button.btn-acessar {
         padding: 15px 8px;
     }
 
+    /* Banner */
+    .banner {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 2 / 1 !important; /* 🎯 Crucial para enquadrar perfeitamente a imagem 768x379 sem barras cinzas */
+        background-color: #cc092f !important;
+        position: relative !important;
+        overflow: visible !important;
+    }
+
+    .slide {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
+    }
+
+    .slide picture {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .slide img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+
+    .banner-paginacao {
+        position: absolute !important;
+        bottom: 15px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        gap: 12px !important;
+        z-index: 99 !important;
+    }
+
+    .dot {
+        width: 10px !important;
+        height: 10px !important;
+        background-color: rgba(255, 255, 255, 0.4) !important;
+    }
+
+    .dot.ativa {
+        width: 22px !important;
+        height: 22px !important;
+        background-color: transparent !important;
+    }
+
+    /* Botão de Contrate on-line */
+    .non-account-holder {
+        width: 100% !important; /* Ocupa toda a largura da tela sem dentes lateralmente */
+        margin: 0 !important;
+        position: relative;
+        z-index: 10;
+    }
+
+    .non-account-holder a {
+        display: flex !important;
+        flex-direction: row !important; /* Garante que texto e seta fiquem lado a lado */
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        padding: 20px 15px !important; 
+        
+        background-color: #EBEBEB !important;
+        color: #333333 !important;
+        font-size: 14px !important; /* Diminui de 20px para 14px para não quebrar feio */
+        font-weight: 700 !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+        transition: background-image 0.2s, color 0.2s;
+    }
+
+    .non-account-holder a img.seta-vermelha,
+    .non-account-holder a img.seta-branca {
+        width: 14px !important;
+        height: auto !important;
+        margin: 0 !important;
+    }
+
+    .non-account-holder a:hover {
+        background-image: var(--meu-background) !important;
+        color: #FFFFFF !important;
+    }
     /* BIA */
     #container-flutuante-bia {
-        right: 10px !important;  /* Cola mais no canto direito (estava 30px) */
+        right: 10px !important;
+        /* Cola mais no canto direito (estava 30px) */
     }
 
 

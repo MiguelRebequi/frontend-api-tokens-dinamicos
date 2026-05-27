@@ -246,10 +246,19 @@ function iniciarCarrossel() {
         slides.forEach(slide => slide.classList.remove('ativa'));
         dots.forEach(dot => dot.classList.remove('ativa'));
 
-        void document.body.offsetWidth;
 
         slides[index].classList.add('ativa');
         dots[index].classList.add('ativa');
+        const pictureAtivo = slides[index].querySelector('picture');
+        if (pictureAtivo) {
+            const imgInterna = pictureAtivo.querySelector('img');
+            // Forçar o re-carregamento do fluxo do source resetando o src momentaneamente
+            if (imgInterna) {
+                const srcAtual = imgInterna.src;
+                imgInterna.src = srcAtual;
+            }
+        }
+
     }
 
     function proximoSlide() {
