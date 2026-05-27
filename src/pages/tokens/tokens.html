@@ -123,13 +123,16 @@
                             <h4>Informações do Token</h4>
                             <table class="tabela-bradesco">
                                 <thead>
-                                    <tr>
-                                        <th># Token</th>
-                                        <th>Tipo de Canal</th>
-                                        <th>Data</th>
-                                        <th>Hora</th>
-                                        <th>Status</th>
-                                    </tr>
+                                <tr>
+                                    <th>#Token</th>
+                                    <th>Tipo de Canal</th>
+                                    <th>Data</th>
+                                    <th>Hora</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody id="linha-dados-sucesso">
+                                </tbody>
                             </table>
                         </div>
 
@@ -382,6 +385,7 @@
             </div>
         </div>
     </footer>
+    <script src="../../scripts/services/api.js"></script>
 
     <script type="module" src="tokens.js"></script>
 </body>

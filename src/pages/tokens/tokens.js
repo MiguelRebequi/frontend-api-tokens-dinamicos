@@ -1,7 +1,6 @@
-import { gerenciarNavbarAtiva } from '../../scripts/commons/navbar.js';
-import { formatarDataAtual } from '../../scripts/commons/utils.js';
+import {gerenciarNavbarAtiva} from '../../scripts/commons/navbar.js';
+import {formatarDataAtual} from '../../scripts/commons/utils.js';
 import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
-
 
 // Variáveis de escopo global do arquivo
 let inputCodigo, telaInicial, telaSucesso, telaAlerta;
@@ -17,6 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     inicializarNavegacaoAbas();
     inicializarFiltrosEAvancados();
     document.getElementById('data-atual').textContent = formatarDataAtual();
+
+    // CHAMADA ADICIONADA: Carrega os dados reais do banco ao abrir a página
+    carregarHistoricoTokens();
 });
 
 function inicializarValidacaoToken() {
@@ -77,15 +79,15 @@ function inicializarFiltrosEAvancados() {
     if (btnToggleFiltros && secaoFiltrosContainer) {
         btnToggleFiltros.addEventListener('click', () => {
             secaoFiltrosContainer.classList.remove('recolhido');
-            btnToggleFiltros.classList.add('btn-oculto');      
+            btnToggleFiltros.classList.add('btn-oculto');
         });
     }
 
     // Fecha os filtros avançados no "X"
     if (btnFecharFiltros && secaoFiltrosContainer && btnToggleFiltros) {
         btnFecharFiltros.addEventListener('click', () => {
-            secaoFiltrosContainer.classList.add('recolhido');   
-            btnToggleFiltros.classList.remove('btn-oculto');    
+            secaoFiltrosContainer.classList.add('recolhido');
+            btnToggleFiltros.classList.remove('btn-oculto');
         });
     }
 
@@ -189,13 +191,13 @@ function configurarDropdownMes() {
 
     if (!btnDropdownToggle || !dropdownPai || !containerMeses) return;
 
-    containerMeses.innerHTML = ''; 
+    containerMeses.innerHTML = '';
 
     for (let i = 0; i < 3; i++) {
         const dataCalculada = new Date();
         dataCalculada.setMonth(dataCalculada.getMonth() - i);
 
-        const nomeMes = dataCalculada.toLocaleDateString('pt-BR', { month: 'long' });
+        const nomeMes = dataCalculada.toLocaleDateString('pt-BR', {month: 'long'});
         const nomeMesCapitalizado = nomeMes.charAt(0).toUpperCase() + nomeMes.slice(1);
         const ano = dataCalculada.getFullYear();
 
@@ -260,17 +262,40 @@ function resetarTodosOsFiltros() {
     filtrarTabelaHistorico();
 }
 
-function processarVerificacao() {
+async function processarVerificacao() {
+    // Pega o valor digitado e remove espaços em branco
     const valorInput = inputCodigo.value.trim();
+
+    // Validação visual de tamanho
     if (valorInput.length < 6) {
         alert('Por favor, insira o código completo de 6 dígitos.');
         return;
     }
-    if (valorInput === '111111') {
-        atualizarDataHoraSucesso();
-        exibirSubTela('sucesso');
-    } else {
-        exibirSubTela('alerta');
+
+    // Mostra um feedback de que está pensando (opcional, mas recomendado)
+    const btnVerificar = document.getElementById('btn-verificar');
+    const textoOriginal = btnVerificar.innerText;
+    btnVerificar.innerText = 'Validando...';
+    btnVerificar.disabled = true;
+
+    try {
+        // Agora ehValido recebe um objeto com os dados
+        const dadosValidacao = await window.validarTokenA3(valorInput);
+
+        if (dadosValidacao) {
+            // Passamos o canal que veio da API para a função da tabela
+            atualizarDataHoraSucesso(dadosValidacao.tipoCanal);
+            exibirSubTela('sucesso');
+
+            // Opcional: Recarrega o histórico após validar para manter a tela atualizada
+            carregarHistoricoTokens();
+        } else {
+            exibirSubTela('alerta');
+        }
+    } finally {
+        // Devolve o botão ao normal independente de sucesso ou erro
+        btnVerificar.innerText = textoOriginal;
+        btnVerificar.disabled = false;
     }
 }
 
@@ -289,12 +314,96 @@ function resetarFormularioValidacao() {
     inputCodigo.focus();
 }
 
-function atualizarDataHoraSucesso() {
-    const campoData = document.getElementById('data-sucesso-tabela');
-    const campoHora = document.getElementById('hora-sucesso-tabela');
-    if (campoData && campoHora) {
+function atualizarDataHoraSucesso(canalDaApi) {
+    const tbodySucesso = document.getElementById('linha-dados-sucesso');
+
+    if (tbodySucesso) {
+        // Pega o código digitado
+        const codigoDigitado = inputCodigo.value.trim();
+
+        // Formata o código para ficar bonito na tabela (ex: "123 456")
+        const codigoFormatado = codigoDigitado.length === 6
+            ? `${codigoDigitado.slice(0, 3)} ${codigoDigitado.slice(3, 6)}`
+            : codigoDigitado;
+
         const agora = new Date();
-        campoData.innerText = agora.toLocaleDateString('pt-BR');
-        campoHora.innerText = agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+        const dataStr = agora.toLocaleDateString('pt-BR');
+        const horaStr = agora.toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'});
+
+        // Usa o canal que veio da API. Se por algum motivo vier vazio, mostra "Desconhecido"
+        const tipoCanal = canalDaApi || "Desconhecido";
+
+        // Injeta a linha completa de HTML dentro do tbody
+        tbodySucesso.innerHTML = `
+            <tr>
+                <td class="col-codigo">${codigoFormatado}</td>
+                <td>${tipoCanal}</td>
+                <td>${dataStr}</td>
+                <td>${horaStr}</td>
+                <td><span class="tag-status autenticado">Autenticado</span></td>
+            </tr>
+        `;
     }
+}
+
+// ==========================================
+// NOVA FUNÇÃO: RENDERIZAR HISTÓRICO DINÂMICO
+// ==========================================
+async function carregarHistoricoTokens() {
+    const tbody = document.getElementById('corpo-tabela-historico');
+    if (!tbody) return;
+
+    // Feedback visual enquanto a API pensa
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px;">Carregando histórico seguro...</td></tr>';
+
+    const historico = await window.buscarHistoricoA3();
+
+    if (!historico || historico.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px;">Nenhum token gerado nos últimos 90 dias.</td></tr>';
+        return;
+    }
+
+    tbody.innerHTML = ''; // Limpa a mensagem de carregamento e as linhas estáticas antigas
+
+    historico.forEach(item => {
+        // 1. Formata o código (123456 -> 123 456)
+        const cod = item.codigo;
+        const codigoFormatado = cod.length === 6 ? `${cod.slice(0, 3)} ${cod.slice(3, 6)}` : cod;
+
+        // 2. Formata Data e Hora para o padrão brasileiro
+        const dataObj = new Date(item.dataGeracao);
+        const dataStr = dataObj.toLocaleDateString('pt-BR');
+        const horaStr = dataObj.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+        // 3. Mapeia os Status do Java para as classes CSS do seu Figma
+        let classeCSS = '';
+        let textoStatus = '';
+
+        if (item.status === 'USADO') {
+            classeCSS = 'autenticado';
+            textoStatus = 'Autenticado';
+        } else if (item.status === 'ATIVO' || item.status === 'EXPIRADO') {
+            classeCSS = 'pendente';
+            textoStatus = 'Pendente/Expirado';
+        } else {
+            classeCSS = 'bloqueado';
+            textoStatus = 'Alerta/Bloqueado';
+        }
+
+        // 4. Corrige a capitalização do Canal (LIGACAO -> Ligação)
+        const canalFormatado = item.canal === 'LIGACAO' ? 'Ligação'
+            : item.canal === 'EMAIL' ? 'Email'
+                : 'SMS';
+
+        // 5. Injeta a linha na tabela
+        tbody.innerHTML += `
+            <tr>
+                <td class="col-codigo">${codigoFormatado}</td>
+                <td>${canalFormatado}</td>
+                <td>${dataStr}</td>
+                <td>${horaStr}</td>
+                <td><span class="tag-status ${classeCSS}">${textoStatus}</span></td>
+            </tr>
+        `;
+    });
 }
