@@ -1,5 +1,5 @@
 // src/scripts/services/api.js
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://api-tokens-dinamicos-90v8.onrender.com";
 
 // Colocamos a função no escopo global (window)
 window.loginApi = async function (agencia, numeroConta, senha) {
