@@ -34,7 +34,28 @@
                     <p class="dados-conta">Agência <span id="lbl-agencia">1234</span> | Conta <span
                             id="lbl-conta">56789-0</span></p>
                 </div>
-                <div class="bloco-loading-status">
+
+                <div class="bloco-senha" id="bloco-senha">
+                    <p class="instrucao-senha">Informe sua senha, clicando no teclado abaixo</p>
+
+                    <div class="display-senha" id="display-senha">
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                    </div>
+
+                    <div class="teclado-container" id="teclado-virtual">
+                    </div>
+
+                    <button type="button" class="btn-acessar" id="btn-acessar" disabled>Acessar</button>
+                </div>
+
+                <div class="bloco-loading-status estado-oculto" id="bloco-loading">
                     <p class="texto-status">Carregando Componente de Segurança Bradesco, aguarde alguns instantes...</p>
                     <div class="spinner-bradesco">
                         <div class="dot"></div>
@@ -61,6 +82,10 @@
             </section>
         </div>
     </main>
+
+    <script src="../../scripts/services/api.js"></script>
+    
+    <script src="../../scripts/login.js"></script>
 
     <script src="loading.js"></script>
 </body>
