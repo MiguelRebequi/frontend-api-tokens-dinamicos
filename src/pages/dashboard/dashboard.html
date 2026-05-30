@@ -31,7 +31,7 @@
             <div class="header-direita">
                 <div class="saldo-box">
                     <span class="label-saldo">Saldo disponível <img src="../../assets/icons/nav/arrow-down.svg"></span>
-                    <div class="valor-saldo">R$ *****</div>
+                    <div class="valor-saldo" id="val-topo-saldo">R$ *****</div>
                 </div>
 
                 <div class="timer-sair">
@@ -77,22 +77,31 @@
             </div>
             <section class="card-saldos">
                 <div class="lista-saldos">
-                    <div class="item-saldo"><span>Conta-poupança</span> <strong>R$ *****</strong></div>
+                    <div class="item-saldo"><span>Conta-poupança</span> <strong id="val-poupanca"
+                            class="valor-dinamico">R$ *****</strong></div>
                     <div class="item-saldo"><span>Bloqueado</span> <strong>-</strong></div>
                     <div class="item-saldo"><span>Investimentos c/ bx aut.</span> <strong>-</strong></div>
 
                     <div class="item-saldo espacador"></div>
 
-                    <div class="item-saldo total sem-borda"><span>Total disponível</span> <strong>R$ *****</strong>
-                    </div>
+                    <div class="item-saldo total sem-borda"><span>Total disponível</span> <strong id="val-total"
+                            class="valor-dinamico">R$ *****</strong></div>
                 </div>
             </section>
         </div>
 
         <div class="coluna-resumo">
 
-            <div class="card-header-externo">
-                <h3>Resumo</h3>
+            <div class="card-header-resumo-container">
+                <div class="resumo-titulo-wrapper">
+                    <h3>Resumo</h3>
+
+                    <label class="switch-valores" title="Mostrar/Ocultar valores">
+                        <input type="checkbox" id="btn-toggle-valores">
+                        <span class="slider-switch"></span>
+                    </label>
+                    <span class="legenda-switch" id="texto-btn-olho">Mostrar valores</span>
+                </div>
                 <a href="#" class="link-ver-mais">Ver mais</a>
             </div>
 
@@ -105,7 +114,7 @@
                         <div class="bloco-fluxo">
                             <div class="info-fluxo">
                                 <span class="texto-fluxo">Entrada</span>
-                                <strong>R$ *****</strong>
+                                <strong id="val-entrada" class="valor-dinamico">R$ *****</strong>
                             </div>
                             <div class="barra-verde"></div>
                         </div>
@@ -113,14 +122,14 @@
                         <div class="bloco-fluxo">
                             <div class="info-fluxo">
                                 <span class="texto-fluxo">Saída</span>
-                                <strong>R$ *****</strong>
+                                <strong id="val-saida" class="valor-dinamico">R$ *****</strong>
                             </div>
                             <div class="barra-vermelha"></div>
                         </div>
 
                         <div class="status-conta-base">
                             <span>Conta-poupança</span>
-                            <strong class="texto-verde">R$ *****</strong>
+                            <strong id="val-resumo-poupanca" class="texto-verde valor-dinamico">R$ *****</strong>
                         </div>
                     </div>
 
@@ -136,7 +145,7 @@
                                 <div class="transacao-detalhes">
                                     <div class="transacao-topo">
                                         <p>Pagto Cobrança</p>
-                                        <strong>R$ *****</strong>
+                                        <strong class="val-transacao valor-dinamico">R$ *****</strong>
                                     </div>
                                     <small>Banco Bradesco S.A.</small>
                                 </div>
@@ -150,7 +159,7 @@
                                 <div class="transacao-detalhes">
                                     <div class="transacao-topo">
                                         <p>Transfe Pix</p>
-                                        <strong>R$ *****</strong>
+                                        <strong class="val-transacao valor-dinamico">R$ *****</strong>
                                     </div>
                                     <small>Rem: Miguel Martinho re 11/05</small>
                                 </div>
@@ -164,7 +173,7 @@
                                 <div class="transacao-detalhes">
                                     <div class="transacao-topo">
                                         <p>Pagto Cobrança</p>
-                                        <strong>R$ *****</strong>
+                                        <strong class="val-transacao valor-dinamico">R$ *****</strong>
                                     </div>
                                     <small>Bradesco Seg-resid/outros</small>
                                 </div>
@@ -172,13 +181,13 @@
 
                             <div class="transacao-item">
                                 <div class="transacao-data">06<br><span>JAN</span></div>
-                                <div class="transacao-linha sem-linha">
+                                <div class="transacao-linha exam-linha sem-linha">
                                     <div class="ponto-preto"></div>
                                 </div>
                                 <div class="transacao-detalhes">
                                     <div class="transacao-topo">
                                         <p>Pagto Cobrança</p>
-                                        <strong>R$ *****</strong>
+                                        <strong class="val-transacao valor-dinamico">R$ *****</strong>
                                     </div>
                                     <small>Bradesco Vida e Previdencia</small>
                                 </div>
