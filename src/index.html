@@ -17,9 +17,9 @@
 </head>
 
 <body>
-<header id="cabecalho-global" role="banner">
+    <header id="cabecalho-global" role="banner">
 
-    <button type="button" id="btn-menu-hamburguer" class="btn-hamburguer-mobile"
+        <button type="button" id="btn-menu-hamburguer" class="btn-hamburguer-mobile"
             aria-label="Abrir menu de navegação">
             <span></span>
             <span></span>
@@ -27,46 +27,49 @@
         </button>
 
         <form class="header_login-form" id="form-login-bradesco" action="pages/loading/loading.html"
-          aria-label="Formulário de acesso à conta" autocomplete="off">
+            aria-label="Formulário de acesso à conta" autocomplete="off">
 
-        <button type="button" class="btn-acessar" aria-label="Abrir opções de acesso à conta">
-            <img src="assets/images/button_cadeado/cadeado.svg" alt="" aria-hidden="true"> Acessar sua conta
-        </button>
+            <button type="button" class="btn-acessar" aria-label="Abrir opções de acesso à conta">
+                <img src="assets/images/button_cadeado/cadeado.svg" alt="" aria-hidden="true"> Acessar sua conta
+            </button>
 
-        <div class="input-group">
-            <label for="campo-agencia">Agência:</label>
-            <input type="text" class="somente-numeros" id="campo-agencia" name="agencia" maxlength="4"
-        autocomplete="off"></div>
-        <div class="input-group">
-            <label for="campo-conta">Conta:</label>
-            <input type="text" class="somente-numeros" id="campo-conta" name="conta" maxlength="5"
-        autocomplete="off"></div>
-        <div class="input-group">
-            <label for="campo-digito" class="sr-only">Dígito:</label>
-            <input type="text" class="somente-numeros" id="campo-digito" name="digito" maxlength="1"autocomplete="off">
+            <div class="input-group">
+                <label for="campo-agencia">Agência:</label>
+                <input type="text" class="somente-numeros" id="campo-agencia" name="agencia" maxlength="4"
+                    autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="campo-conta">Conta:</label>
+                <input type="text" class="somente-numeros" id="campo-conta" name="conta" maxlength="5"
+                    autocomplete="off">
+            </div>
+            <div class="input-group">
+                <label for="campo-digito" class="sr-only">Dígito:</label>
+                <input type="text" class="somente-numeros" id="campo-digito" name="digito" maxlength="1"
+                    autocomplete="off">
+            </div>
+
+            <button type="submit" class="header_submit-button" aria-label="Confirmar dados e acessar conta">OK</button>
+
+            <div class="checkbox-group">
+                <input type="checkbox" name="lembrar" id="lembrar-dados">
+                <label for="lembrar-dados">Lembrar-me</label>
+            </div>
+
+            <a href="#" aria-label="Saiba como usar o acesso à conta">
+                Como usar
+                <img src="assets/icons/nav/arrow-right.svg" alt="" aria-hidden="true">
+            </a>
+        </form>
+
+        <div class="header-acessibilidade">
+            <a href="#" id="btn-abrir-acessibilidade" aria-haspopup="dialog" aria-expanded="false"
+                aria-controls="menu-acessibilidade">
+                Acessibilidade
+                <img src="assets/icons/acessibilidade/icon_acessibilidade.svg" alt="" aria-hidden="true">
+            </a>
         </div>
-
-        <button type="submit" class="header_submit-button" aria-label="Confirmar dados e acessar conta">OK</button>
-
-        <div class="checkbox-group">
-            <input type="checkbox" name="lembrar" id="lembrar-dados">
-            <label for="lembrar-dados">Lembrar-me</label>
-        </div>
-
-        <a href="#" aria-label="Saiba como usar o acesso à conta">
-            Como usar
-            <img src="assets/icons/nav/arrow-right.svg" alt="" aria-hidden="true">
-        </a>
-    </form>
-
-    <div class="header-acessibilidade">
-        <a href="#" id="btn-abrir-acessibilidade" aria-haspopup="dialog" aria-expanded="false"
-           aria-controls="menu-acessibilidade">
-            Acessibilidade
-            <img src="assets/icons/acessibilidade/icon_acessibilidade.svg" alt="" aria-hidden="true">
-        </a>
-    </div>
-<button class="btn-acessar-mobile" id="btn-acessar-mobile" aria-expanded="false"
+        <button class="btn-acessar-mobile" id="btn-acessar-mobile" aria-expanded="false"
             aria-controls="painel-login-mobile">
             <img src="assets/images/button_cadeado/cadeado.svg" alt="" aria-hidden="true"> ACESSAR
         </button>
@@ -99,886 +102,898 @@
     </div>
 
 
-<div id="menu-acessibilidade" class="menu-acessibilidade-escondido" role="dialog" aria-modal="true"
-     aria-labelledby="titulo-menu-acesso">
-    <div class="menu-acessibilidade_topo">
-        <h3 id="titulo-menu-acesso">Acessibilidade</h3>
-        <button id="btn-fechar-acessibilidade" aria-label="Fechar menu de acessibilidade">X</button>
-    </div>
+    <div id="menu-acessibilidade" class="menu-acessibilidade-escondido" role="dialog" aria-modal="true"
+        aria-labelledby="titulo-menu-acesso">
+        <div class="menu-acessibilidade_topo">
+            <h3 id="titulo-menu-acesso">Acessibilidade</h3>
+            <button id="btn-fechar-acessibilidade" aria-label="Fechar menu de acessibilidade">X</button>
+        </div>
 
-    <div class="menu-acessibilidade_grid">
-        <ul role="menu">
-            <li role="presentation">
-                <a href="#" title="Ativar WebLibras" class="btn-acesso-item" role="menuitem">
-                    <img src="assets/icons/acessibilidade/icon_acessibilidade_weblibras.svg" alt=""
-                         aria-hidden="true"> WebLibras
-                </a>
-            </li>
-            <li role="presentation">
-                <a href="#" title="Ativar Voz" class="btn-acesso-item" role="menuitem">
-                    <img src="assets/icons/acessibilidade/icon_acessibilidade_contraste.svg" alt=""
-                         aria-hidden="true"> <span>Voz</span>
-                </a>
-            </li>
-            <li role="presentation">
-                <a href="#" title="Acessar mais Ferramentas" class="btn-acesso-item" role="menuitem">
-                    <img src="assets/icons/acessibilidade/icon_acessibilidade_contraste.svg" alt=""
-                         aria-hidden="true"> <span>Mais Ferramentas</span>
-                </a>
-            </li>
-            <li role="presentation">
-                <a href="#" title="Ler sobre acessibilidades" class="btn-acesso-item" role="menuitem">
-                    <img src="assets/icons/acessibilidade/icon_acessibilidade_produtos_servicos.svg" alt=""
-                         aria-hidden="true"> <span>Sobre Acessibilidade</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="menu-acessibilidade_rodape">
-        <a href="#" class="btn-atendimento-libras" aria-label="Ir para atendimento em Libras">
-            <img src="assets/icons/acessibilidade/icon_acessibilidade_libras.svg" alt="" aria-hidden="true">
-            Atendimento em Libras
-        </a>
-    </div>
-</div>
-
-
-<header id="main-header">
-    <div class="container-main-header">
-
-        <a href="index.html" class="main-logo" aria-label="Bradesco - Ir para a página inicial">
-            <img src="assets/icons/dispositivos/logo-mobile.png" alt="" aria-hidden="true">
-        </a>
-
-        <nav class="main-nav-direita" aria-label="Navegação por perfis e busca">
-            <ul class="lista-perfis-topo">
-
-                <li class="dropdown-perfil">
-                    <a href="#" class="btn-perfil" role="button" aria-haspopup="menu" aria-expanded="false"
-                       aria-controls="submenu-perfis">
-                        <div class="texto-duplo">
-                            <span class="txt-fino">Outros</span>
-                            <span class="txt-grosso">PERFIS
-                                    <img src="assets/icons/nav/arrow-down.svg" alt="" aria-hidden="true">
-                                </span>
-                        </div>
+        <div class="menu-acessibilidade_grid">
+            <ul role="menu">
+                <li role="presentation">
+                    <a href="#" title="Ativar WebLibras" class="btn-acesso-item" role="menuitem">
+                        <img src="assets/icons/acessibilidade/icon_acessibilidade_weblibras.svg" alt=""
+                            aria-hidden="true"> WebLibras
                     </a>
-                    <ul id="submenu-perfis" class="dropdown-escondido" role="menu"
-                        aria-label="Submenu Outros Perfis">
-                        <li role="presentation"><a href="#" role="menuitem">Exclusive</a></li>
-                        <li role="presentation"><a href="#" role="menuitem">Prime</a></li>
-                        <li role="presentation"><a href="#" role="menuitem">Principal</a></li>
-                        <li role="presentation"><a href="#" role="menuitem">Global Private</a></li>
-                        <li role="presentation"><a href="#" role="menuitem">Mais opções</a></li>
-                    </ul>
                 </li>
-
-                <li class="dropdown-perfil">
-                    <a href="#" class="btn-perfil" role="button" aria-haspopup="menu" aria-expanded="false"
-                       aria-controls="submenu-empresa">
-                        <div class="texto-duplo">
-                            <span class="txt-fino">Pra sua</span>
-                            <span class="txt-grosso">EMPRESA
-                                    <img src="assets/icons/nav/arrow-down.svg" alt="" aria-hidden="true">
-                                </span>
-                        </div>
+                <li role="presentation">
+                    <a href="#" title="Ativar Voz" class="btn-acesso-item" role="menuitem">
+                        <img src="assets/icons/acessibilidade/icon_acessibilidade_contraste.svg" alt=""
+                            aria-hidden="true"> <span>Voz</span>
                     </a>
-                    <ul id="submenu-empresa" class="dropdown-escondido" role="menu"
-                        aria-label="Submenu Para Sua Empresa">
-                        <li role="presentation"><a href="#" role="menuitem">Empresas e Negócios</a></li>
-                        <li role="presentation"><a href="#" role="menuitem">Bradesco Corporate</a></li>
-                    </ul>
+                </li>
+                <li role="presentation">
+                    <a href="#" title="Acessar mais Ferramentas" class="btn-acesso-item" role="menuitem">
+                        <img src="assets/icons/acessibilidade/icon_acessibilidade_contraste.svg" alt=""
+                            aria-hidden="true"> <span>Mais Ferramentas</span>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#" title="Ler sobre acessibilidades" class="btn-acesso-item" role="menuitem">
+                        <img src="assets/icons/acessibilidade/icon_acessibilidade_produtos_servicos.svg" alt=""
+                            aria-hidden="true"> <span>Sobre Acessibilidade</span>
+                    </a>
                 </li>
             </ul>
-
-            <button type="button" class="btn-busca-topo" aria-label="Abrir campo de busca do site">
-                Busca
-                <img src="assets/icons/nav/search-red.svg" alt="" aria-hidden="true">
-            </button>
-        </nav>
-
+        </div>
+        <div class="menu-acessibilidade_rodape">
+            <a href="#" class="btn-atendimento-libras" aria-label="Ir para atendimento em Libras">
+                <img src="assets/icons/acessibilidade/icon_acessibilidade_libras.svg" alt="" aria-hidden="true">
+                Atendimento em Libras
+            </a>
+        </div>
     </div>
-</header>
-<section id="painel-busca-global" class="esconder-busca" role="dialog" aria-modal="true"
-         aria-label="Painel de pesquisa global" aria-hidden="true">
 
-    <p class="btn-fechar-busca" role="button" tabindex="0" aria-label="Fechar painel de pesquisa">Fechar X</p>
 
-    <div class="container-input-gigante">
-        <input type="text" id="campo-busca" placeholder="O que você procura?" aria-label="Pesquisar no site"
-               role="searchbox">
+    <header id="main-header">
+        <div class="container-main-header">
 
-        <div class="botoes-input">
-            <button type="button" id="btn-limpar-busca" class="btn-limpar-texto estado-oculto"
+            <a href="index.html" class="main-logo" aria-label="Bradesco - Ir para a página inicial">
+                <img src="assets/icons/dispositivos/logo-mobile.png" alt="" aria-hidden="true">
+            </a>
+
+            <nav class="main-nav-direita" aria-label="Navegação por perfis e busca">
+                <ul class="lista-perfis-topo">
+
+                    <li class="dropdown-perfil">
+                        <a href="#" class="btn-perfil" role="button" aria-haspopup="menu" aria-expanded="false"
+                            aria-controls="submenu-perfis">
+                            <div class="texto-duplo">
+                                <span class="txt-fino">Outros</span>
+                                <span class="txt-grosso">PERFIS
+                                    <img src="assets/icons/nav/arrow-down.svg" alt="" aria-hidden="true">
+                                </span>
+                            </div>
+                        </a>
+                        <ul id="submenu-perfis" class="dropdown-escondido" role="menu"
+                            aria-label="Submenu Outros Perfis">
+                            <li role="presentation"><a href="#" role="menuitem">Exclusive</a></li>
+                            <li role="presentation"><a href="#" role="menuitem">Prime</a></li>
+                            <li role="presentation"><a href="#" role="menuitem">Principal</a></li>
+                            <li role="presentation"><a href="#" role="menuitem">Global Private</a></li>
+                            <li role="presentation"><a href="#" role="menuitem">Mais opções</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-perfil">
+                        <a href="#" class="btn-perfil" role="button" aria-haspopup="menu" aria-expanded="false"
+                            aria-controls="submenu-empresa">
+                            <div class="texto-duplo">
+                                <span class="txt-fino">Pra sua</span>
+                                <span class="txt-grosso">EMPRESA
+                                    <img src="assets/icons/nav/arrow-down.svg" alt="" aria-hidden="true">
+                                </span>
+                            </div>
+                        </a>
+                        <ul id="submenu-empresa" class="dropdown-escondido" role="menu"
+                            aria-label="Submenu Para Sua Empresa">
+                            <li role="presentation"><a href="#" role="menuitem">Empresas e Negócios</a></li>
+                            <li role="presentation"><a href="#" role="menuitem">Bradesco Corporate</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <button type="button" class="btn-busca-topo" aria-label="Abrir campo de busca do site">
+                    Busca
+                    <img src="assets/icons/nav/search-red.svg" alt="" aria-hidden="true">
+                </button>
+            </nav>
+
+        </div>
+    </header>
+    <section id="painel-busca-global" class="esconder-busca" role="dialog" aria-modal="true"
+        aria-label="Painel de pesquisa global" aria-hidden="true">
+
+        <p class="btn-fechar-busca" role="button" tabindex="0" aria-label="Fechar painel de pesquisa">Fechar X</p>
+
+        <div class="container-input-gigante">
+            <input type="text" id="campo-busca" placeholder="O que você procura?" aria-label="Pesquisar no site"
+                role="searchbox">
+
+            <div class="botoes-input">
+                <button type="button" id="btn-limpar-busca" class="btn-limpar-texto estado-oculto"
                     aria-label="Limpar texto da busca">
-                <img src="assets/icons/nav/close.svg" alt="" aria-hidden="true">
-            </button>
+                    <img src="assets/icons/nav/close.svg" alt="" aria-hidden="true">
+                </button>
 
-            <button type="button" class="btn-lupa-busca" aria-label="Realizar busca">
-                <img src="assets/icons/nav/search.svg" alt="" aria-hidden="true">
-            </button>
-        </div>
-    </div>
-
-    <div class="area-dinamica-busca">
-
-        <div id="estado-vazio-busca" class="busca-linha-meio">
-            <div class="busca-coluna">
-                <h1>Mais Buscados</h1>
-                <ul>
-                    <li><a href="#">crédito</a></li>
-                    <li><a href="#">abra sua conta</a></li>
-                    <li><a href="#">boleto</a></li>
-                    <li><a href="#">cartão de crédito</a></li>
-                    <li><a href="#">ipva</a></li>
-                </ul>
-            </div>
-            <div class="busca-coluna coluna-com-linha" aria-live="polite">
-                <h1>Suas Buscas Recentes</h1>
-                <ul id="buscas-recentes-content">
-                    <li class="empty">Você ainda não fez nenhuma busca</li>
-                </ul>
+                <button type="button" class="btn-lupa-busca" aria-label="Realizar busca">
+                    <img src="assets/icons/nav/search.svg" alt="" aria-hidden="true">
+                </button>
             </div>
         </div>
 
-        <div id="estado-digitando-busca" class="estado-oculto" aria-live="assertive">
-            <h1>Sugestões</h1>
-            <button id="ver-resultados" class="btn-ver-resultados">Ver todos os resultados</button>
-        </div>
+        <div class="area-dinamica-busca">
 
-    </div>
-
-    <div class="busca-linha-cartoes">
-        <h1>Separamos para você</h1>
-
-        <div class="grid-cartoes-imagens">
-            <div class="item">
-                <a href="#">Antecipação Imposto de Renda</a>
-                <picture>
-                    <source media="(max-width: 1024px)" srcset="assets/images/content/financiamento-mobile.webp">
-                    <source media="(min-width: 1024px)" srcset="assets/images/content/financiamento-bg.jpg">
-                    <img src="assets/images/content/financiamento-bg.jpg" alt="" aria-hidden="true" loading="lazy">
-                </picture>
+            <div id="estado-vazio-busca" class="busca-linha-meio">
+                <div class="busca-coluna">
+                    <h1>Mais Buscados</h1>
+                    <ul>
+                        <li><a href="#">crédito</a></li>
+                        <li><a href="#">abra sua conta</a></li>
+                        <li><a href="#">boleto</a></li>
+                        <li><a href="#">cartão de crédito</a></li>
+                        <li><a href="#">ipva</a></li>
+                    </ul>
+                </div>
+                <div class="busca-coluna coluna-com-linha" aria-live="polite">
+                    <h1>Suas Buscas Recentes</h1>
+                    <ul id="buscas-recentes-content">
+                        <li class="empty">Você ainda não fez nenhuma busca</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="item">
-                <a href="#">Bradesco Explica</a>
-                <picture>
-                    <source media="(max-width: 1024px)" srcset="assets/images/content/bradesco-explica.webp">
-                    <source media="(min-width: 1024px)" srcset="assets/images/content/bradesco-explica.png">
-                    <img src="assets/images/content/bradesco-explica.png" alt="" aria-hidden="true" loading="lazy">
-                </picture>
-            </div>
-
-            <div class="item">
-                <a href="#">Renegociação de Dívidas</a>
-                <picture>
-                    <source media="(max-width: 1024px)" srcset="assets/images/content/renegocie-bg.webp">
-                    <source media="(min-width: 1024px)" srcset="assets/images/content/renegocie-bg.jpg">
-                    <img src="assets/images/content/renegocie-bg.jpg" alt="" aria-hidden="true" loading="lazy">
-                </picture>
-            </div>
-
-            <div class="item">
-                <a href="#">Rastrear Novo Cartão</a>
-                <picture>
-                    <source media="(max-width: 1024px)" srcset="assets/images/content/cartoes-mobile.webp">
-                    <source media="(min-width: 1024px)" srcset="assets/images/content/cartoes-bg.jpg">
-                    <img src="assets/images/content/cartoes-bg.jpg" alt="" aria-hidden="true" loading="lazy">
-                </picture>
-            </div>
-
-            <div class="item">
-                <a href="#">Investimentos</a>
-                <picture>
-                    <source media="(max-width: 1024px)" srcset="assets/images/content/invertimentos-mobile.webp">
-                    <source media="(min-width: 1024px)" srcset="assets/images/content/investimento-bg.jpg">
-                    <img src="assets/images/content/investimento-bg.jpg" alt="" aria-hidden="true" loading="lazy">
-                </picture>
+            <div id="estado-digitando-busca" class="estado-oculto" aria-live="assertive">
+                <h1>Sugestões</h1>
+                <button id="ver-resultados" class="btn-ver-resultados">Ver todos os resultados</button>
             </div>
 
         </div>
-    </div>
 
-    <picture>
-        <source media="(max-width: 1024px)" srcset="assets/background/bg-busca-mobile.webp" type="image/webp">
-        <source media="(min-width: 1024px)" srcset="assets/background/bg-busca.webp" type="image/webp">
-        <img src="assets/background/bg-busca.png" alt="" aria-hidden="true" loading="lazy" width="1436" height="793"
-             class="background-busca">
-    </picture>
-</section>
+        <div class="busca-linha-cartoes">
+            <h1>Separamos para você</h1>
 
+            <div class="grid-cartoes-imagens">
+                <div class="item">
+                    <a href="#">Antecipação Imposto de Renda</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/financiamento-mobile.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/financiamento-bg.jpg">
+                        <img src="assets/images/content/financiamento-bg.jpg" alt="" aria-hidden="true" loading="lazy">
+                    </picture>
+                </div>
 
-<nav class="menu-principal-mobile">
-    <div class="menu-topo-destaques">
-        <span>Para você</span>
-        <ul>
-            <li><a href="#">Classic</a></li>
-            <li><a href="#">Exclusive</a></li>
-            <li><a href="#">Prime</a></li>
-            <li><a href="#">Principal</a></li>
-            <li><a href="#">Global Private</a></li>
-            <li><a href="#">&nbsp; Mais opções</a></li>
-        </ul>
+                <div class="item">
+                    <a href="#">Bradesco Explica</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/bradesco-explica.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/bradesco-explica.png">
+                        <img src="assets/images/content/bradesco-explica.png" alt="" aria-hidden="true" loading="lazy">
+                    </picture>
+                </div>
 
-        <hr>
+                <div class="item">
+                    <a href="#">Renegociação de Dívidas</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/renegocie-bg.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/renegocie-bg.jpg">
+                        <img src="assets/images/content/renegocie-bg.jpg" alt="" aria-hidden="true" loading="lazy">
+                    </picture>
+                </div>
 
-        <span>Para sua empresa</span>
-        <ul>
-            <li><a href="#">Empresa e Negócios</a></li>
-            <li><a href="#">Bradesco Corporate</a></li>
-        </ul>
-    </div>
-</nav>
+                <div class="item">
+                    <a href="#">Rastrear Novo Cartão</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/cartoes-mobile.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/cartoes-bg.jpg">
+                        <img src="assets/images/content/cartoes-bg.jpg" alt="" aria-hidden="true" loading="lazy">
+                    </picture>
+                </div>
 
+                <div class="item">
+                    <a href="#">Investimentos</a>
+                    <picture>
+                        <source media="(max-width: 1024px)" srcset="assets/images/content/invertimentos-mobile.webp">
+                        <source media="(min-width: 1024px)" srcset="assets/images/content/investimento-bg.jpg">
+                        <img src="assets/images/content/investimento-bg.jpg" alt="" aria-hidden="true" loading="lazy">
+                    </picture>
+                </div>
 
-<section class="banner" id="hero-banner" role="region" aria-roledescription="carousel"
-         aria-label="Banners de destaques promocionais">
+            </div>
+        </div>
 
-    <div class="slide ativa" id="slide-0" role="group" aria-roledescription="slide" aria-label="1 de 5"
-         aria-hidden="false">
         <picture>
-            <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Home-Desk_1368x554_Renegocie_V4.webp" media="(min-width: 570px)" type="image/webp">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Home-Desk_1368x554_Renegocie_V4.jpg" media="(min-width: 570px)" type="image/jpeg">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Responsivo-Home_768x379_Renegocie_V4.webp" media="(max-width: 569px)" type="image/webp">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Responsivo-Home_768x379_Renegocie_V4.jpg" media="(max-width: 569px)" type="image/jpeg">
-            <img src="assets/banners/home/Banner_Renegocie_V4.webp" alt="Promoção Desenrola Brasil" loading="lazy">
+            <source media="(max-width: 1024px)" srcset="assets/background/bg-busca-mobile.webp" type="image/webp">
+            <source media="(min-width: 1024px)" srcset="assets/background/bg-busca.webp" type="image/webp">
+            <img src="assets/background/bg-busca.png" alt="" aria-hidden="true" loading="lazy" width="1436" height="793"
+                class="background-busca">
         </picture>
-    </div>
+    </section>
 
-    <div class="slide" id="slide-1" role="group" aria-roledescription="slide" aria-label="2 de 5"
-         aria-hidden="true">
-        <picture>
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/banner-home_abra-conta-digital_1368x554_OP01_V2.webp" media="(min-width: 570px)" type="image/webp">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/banner-home_abra-conta-digital_1368x554_OP01_V2.jpg" media="(min-width: 570px)" type="image/jpeg">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/banner-mobile_abra-conta-digital_768x379_OP01_V2.webp" media="(max-width: 569px)" type="image/webp">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/banner-mobile_abra-conta-digital_768x379_OP01_V2.jpg" media="(max-width: 569px)" type="image/jpeg">
+
+
+
+    <section class="banner" id="hero-banner" role="region" aria-roledescription="carousel"
+        aria-label="Banners de destaques promocionais">
+
+        <div class="slide ativa" id="slide-0" role="group" aria-roledescription="slide" aria-label="1 de 5"
+            aria-hidden="false">
+            <picture>
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Home-Desk_1368x554_Renegocie_V4.webp"
+                    media="(min-width: 570px)" type="image/webp">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Home-Desk_1368x554_Renegocie_V4.jpg"
+                    media="(min-width: 570px)" type="image/jpeg">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Responsivo-Home_768x379_Renegocie_V4.webp"
+                    media="(max-width: 569px)" type="image/webp">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Responsivo-Home_768x379_Renegocie_V4.jpg"
+                    media="(max-width: 569px)" type="image/jpeg">
+                <img src="assets/banners/home/Banner_Renegocie_V4.webp" alt="Promoção Desenrola Brasil" loading="lazy">
+            </picture>
+        </div>
+
+        <div class="slide" id="slide-1" role="group" aria-roledescription="slide" aria-label="2 de 5"
+            aria-hidden="true">
+            <picture>
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/banner-home_abra-conta-digital_1368x554_OP01_V2.webp"
+                    media="(min-width: 570px)" type="image/webp">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/banner-home_abra-conta-digital_1368x554_OP01_V2.jpg"
+                    media="(min-width: 570px)" type="image/jpeg">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/banner-mobile_abra-conta-digital_768x379_OP01_V2.webp"
+                    media="(max-width: 569px)" type="image/webp">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/banner-mobile_abra-conta-digital_768x379_OP01_V2.jpg"
+                    media="(max-width: 569px)" type="image/jpeg">
                 <img src="assets/banners/home/banner_abra-conta-digital.webp" alt="Abrir conta digital no Bradesco"
-             loading="lazy"></picture>
-    </div>
+                    loading="lazy">
+            </picture>
+        </div>
 
-    <div class="slide" id="slide-2" role="group" aria-roledescription="slide" aria-label="3 de 5"
-         aria-hidden="true">
-        <picture>
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/isencao_de_anuidade_Home_desktop_1368x554.webp" media="(min-width: 570px)" type="image/webp">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/isencao_de_anuidade_Home_desktop_1368x554.jpg" media="(min-width: 570px)" type="image/jpeg">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/isencao_de_anuidade_Home_mobile_768x379.webp" media="(max-width: 569px)" type="image/webp">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/isencao_de_anuidade_Home_mobile_768x379.jpg" media="(max-width: 569px)" type="image/jpeg">
+        <div class="slide" id="slide-2" role="group" aria-roledescription="slide" aria-label="3 de 5"
+            aria-hidden="true">
+            <picture>
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/isencao_de_anuidade_Home_desktop_1368x554.webp"
+                    media="(min-width: 570px)" type="image/webp">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/isencao_de_anuidade_Home_desktop_1368x554.jpg"
+                    media="(min-width: 570px)" type="image/jpeg">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/isencao_de_anuidade_Home_mobile_768x379.webp"
+                    media="(max-width: 569px)" type="image/webp">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/isencao_de_anuidade_Home_mobile_768x379.jpg"
+                    media="(max-width: 569px)" type="image/jpeg">
                 <img src="assets/banners/home/banner_isencao_de_anuidade.webp" alt="Banner de Isenção de anuidade"
-             loading="lazy"></picture>
-    </div>
+                    loading="lazy">
+            </picture>
+        </div>
 
-    <div class="slide" id="slide-3" role="group" aria-roledescription="slide" aria-label="4 de 5"
-         aria-hidden="true">
-        <picture>
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/promocao_cartao_que_da_jogo_desktop.webp" media="(min-width: 570px)" type="image/webp">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/promocao_cartao_que_da_jogo_banner_desktop.jpg" media="(min-width: 570px)" type="image/jpeg">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/promocao_cartao_que_da_jogo_mobile.webp" media="(max-width: 569px)" type="image/webp">
+        <div class="slide" id="slide-3" role="group" aria-roledescription="slide" aria-label="4 de 5"
+            aria-hidden="true">
+            <picture>
                 <img src="assets/banners/home/promocao_cartao_que_da_jogo.webp" alt="Promoção cartão que dá jogo"
-             loading="lazy"></picture>
-    </div>
+                    loading="lazy">
+            </picture>
+        </div>
 
-    <div class="slide" id="slide-4" role="group" aria-roledescription="slide" aria-label="5 de 5"
-         aria-hidden="true">
-        <picture>
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Desktop_Abertura_Conta_MEI_1368x554px_V1.webp" media="(min-width: 570px)" type="image/webp">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Desktop_Abertura_Conta_MEI_1368x554px_V1.jpg" media="(min-width: 570px)" type="image/jpeg">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Mobile_Abertura_Conta_MEI_768x379px_V2.webp" media="(max-width: 569px)" type="image/webp">
-                <source srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Mobile_Abertura_Conta_MEI_768x379px_V2.jpg" media="(max-width: 569px)" type="image/jpeg">
+        <div class="slide" id="slide-4" role="group" aria-roledescription="slide" aria-label="5 de 5"
+            aria-hidden="true">
+            <picture>
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Desktop_Abertura_Conta_MEI_1368x554px_V1.webp"
+                    media="(min-width: 570px)" type="image/webp">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Desktop_Abertura_Conta_MEI_1368x554px_V1.jpg"
+                    media="(min-width: 570px)" type="image/jpeg">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Mobile_Abertura_Conta_MEI_768x379px_V2.webp"
+                    media="(max-width: 569px)" type="image/webp">
+                <source
+                    srcset="https://assets.bradesco/content/dam/banco-bradesco/banners/homes/classic/imagens/Banner_Mobile_Abertura_Conta_MEI_768x379px_V2.jpg"
+                    media="(max-width: 569px)" type="image/jpeg">
                 <img src="assets/banners/home/Banner_Abertura_Conta_MEI.webp" alt="Abra sua conta Mei no Bradesco"
-             loading="lazy"></picture>
-    </div>
+                    loading="lazy">
+            </picture>
+        </div>
 
-    <div class="banner-paginacao" role="tablist" aria-label="Controles do carrossel">
+        <div class="banner-paginacao" role="tablist" aria-label="Controles do carrossel">
             <span class="dot ativa" data-index="0" role="tab" tabindex="0" aria-selected="true" aria-controls="slide-0"
-                  aria-label="Ir para o slide 1">
+                aria-label="Ir para o slide 1">
                 <span class="dot-top" aria-hidden="true"></span>
                 <span class="dot-bottom" aria-hidden="true"></span>
             </span>
 
-        <span class="dot" data-index="1" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-1"
-              aria-label="Ir para o slide 2">
+            <span class="dot" data-index="1" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-1"
+                aria-label="Ir para o slide 2">
                 <span class="dot-top" aria-hidden="true"></span>
                 <span class="dot-bottom" aria-hidden="true"></span>
             </span>
 
-        <span class="dot" data-index="2" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-2"
-              aria-label="Ir para o slide 3">
+            <span class="dot" data-index="2" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-2"
+                aria-label="Ir para o slide 3">
                 <span class="dot-top" aria-hidden="true"></span>
                 <span class="dot-bottom" aria-hidden="true"></span>
             </span>
 
-        <span class="dot" data-index="3" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-3"
-              aria-label="Ir para o slide 4">
+            <span class="dot" data-index="3" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-3"
+                aria-label="Ir para o slide 4">
                 <span class="dot-top" aria-hidden="true"></span>
                 <span class="dot-bottom" aria-hidden="true"></span>
             </span>
 
-        <span class="dot" data-index="4" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-4"
-              aria-label="Ir para o slide 5">
+            <span class="dot" data-index="4" role="tab" tabindex="0" aria-selected="false" aria-controls="slide-4"
+                aria-label="Ir para o slide 5">
                 <span class="dot-top" aria-hidden="true"></span>
                 <span class="dot-bottom" aria-hidden="true"></span>
             </span>
+        </div>
+
+    </section>
+
+
+    <div class="non-account-holder">
+        <a href="#" aria-label="Contrate on-line, mesmo sem conta-corrente">
+            <span>Contrate on-line, mesmo sem conta-corrente</span>
+            <img src="assets/icons/nav/arrow_red.svg" alt="" aria-hidden="true" class="seta-vermelha">
+            <img src="assets/icons/nav/arrow_white.svg" alt="" aria-hidden="true" class="seta-branca">
+        </a>
     </div>
 
-</section>
+    <section class="container-cartoes-destaque" role="region" aria-label="Atalhos para contratação online">
+
+        <div class="card-destaque">
+            <a href="#">
+                <img width="193" height="150" src="assets/images/online-hire/renegociacao-de-dividas.svg" alt=""
+                    aria-hidden="true" loading="lazy">
+                <p>Renegocie suas dívidas</p>
+            </a>
+        </div>
+
+        <div class="card-destaque">
+            <a href="#">
+                <img width="103" height="99" src="assets/images/online-hire/ilustra-cartoes.svg" alt=""
+                    aria-hidden="true">
+                <p>Peça seu cartão sem anuidade</p>
+            </a>
+        </div>
+
+        <div class="card-destaque">
+            <a href="#">
+                <img width="195" height="150" src="assets/images/online-hire/ilustra-consorcio-1.svg" alt=""
+                    aria-hidden="true">
+                <p>Simule seu consórcio</p>
+            </a>
+        </div>
+
+        <div class="card-destaque">
+            <a href="#">
+                <img width="118" height="98" src="assets/images/online-hire/seguro-dental.svg" alt=""
+                    aria-hidden="true">
+                <p>Contrate seu plano dental</p>
+            </a>
+        </div>
+
+        <div class="card-destaque">
+            <a href="#">
+                <img width="193" height="150" src="assets/images/online-hire/bilhete-residencial.svg" alt=""
+                    aria-hidden="true">
+                <p>Proteja seu lar <br> Simule aqui</p>
+            </a>
+        </div>
+
+        <div class="card-destaque">
+            <a href="#">
+                <img width="193" height="150" src="assets/images/online-hire/ilustra-agora.svg" alt=""
+                    aria-hidden="true">
+                <p>Invista com Ágora</p>
+            </a>
+        </div>
+
+        <div class="card-destaque">
+            <a href="#">
+                <img width="193" height="150" src="assets/images/online-hire/nao-correntista.svg" alt=""
+                    aria-hidden="true">
+                <p>Conheça mais opções</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="secao-produtos-servicos" aria-labelledby="titulo-produtos-servicos">
+
+        <div class="container-produtos">
+
+            <div class="produtos-texto">
+                <h2 id="titulo-produtos-servicos">Produtos e serviços pra agilizar seu dia a dia</h2>
+                <h3>Confira algumas das soluções que preparamos pra você</h3>
+            </div>
+
+            <div class="produtos-grid-wrapper">
+                <ul class="benefit-card" role="list">
+                    <li><a href="#"><img src="assets/icons/vantagens/icone-fale-conosco.svg" alt=""
+                                aria-hidden="true">Atendimento</a></li>
+                    <li><a href="#"><img src="assets/icons/vantagens/icone-2a-via-boleto.svg" alt=""
+                                aria-hidden="true">2ª via do boleto</a></li>
+                    <li><a href="#"><img src="assets/icons/vantagens/icone-pagamentos.svg" alt=""
+                                aria-hidden="true">Pagamentos</a></li>
+                    <li><a href="#"><img src="assets/icons/vantagens/icone-desbloqueio-cartao.svg" alt=""
+                                aria-hidden="true">Desbloqueio de Cartão</a></li>
+                    <li><a href="#"><img src="assets/icons/vantagens/icone-renegociacao-de-dividas.svg" alt=""
+                                aria-hidden="true">Renegociação de Dívidas</a></li>
+                    <li><a href="#"><img src="assets/icons/vantagens/icone-seguranca.svg" alt=""
+                                aria-hidden="true">Segurança</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="container-consorcios">
+
+            <div class="consorcios-titulo">
+                <p>Você não precisa ser correntista<br>pra ter um Consórcio Bradesco.</p>
+            </div>
+
+            <div class="grid-consorcios">
+
+                <div class="card-consorcio">
+                    <div class="card-cabecalho-horizontal">
+                        <img src="assets/icons/consorcio/icone-carro.svg" alt="" aria-hidden="true">
+                        <h3>Automóveis</h3>
+                    </div>
+                    <p>Com esse crédito, você pode ter seu carro 0km, seminovo ou blindado e moto a partir de 600
+                        cilindradas, 0km ou seminova (com até 5 anos de uso). Além disso, é possível usar o crédito pra
+                        quitar seu financiamento.</p>
+                    <a href="#" class="btn-simular">Simular</a>
+                </div>
+
+                <div class="card-consorcio">
+                    <div class="card-cabecalho-horizontal">
+                        <img src="assets/icons/consorcio/icone-casa.svg" alt="" aria-hidden="true">
+                        <h3>Imóveis</h3>
+                    </div>
+
+                    <p>Pra quem busca comprar casas, apartamentos, terrenos, reformas, construções, sítios e fazendas.
+                        Também é possível usar o crédito pra quitar o financiamento.</p>
+                    <a href="#" class="btn-simular">Simular</a>
+                </div>
+
+                <div class="card-consorcio">
+                    <div class="card-cabecalho-horizontal">
+                        <img src="assets/icons/consorcio/icone-caminhao.svg" alt="" aria-hidden="true">
+                        <h3>Caminhões e Tratores</h3>
+                    </div>
+
+                    <p>Quer renovar sua frota ou ter o primeiro veículo pesado? Use o crédito pra comprar caminhões,
+                        veículos utilitários, furgões, picapes e tratores.</p>
+                    <a href="#" class="btn-simular">Simular</a>
+                </div>
+
+                <div class="card-consorcio">
+                    <div class="card-cabecalho-horizontal">
+                        <img src="assets/icons/consorcio/icone-moto.svg" alt="" aria-hidden="true">
+                        <h3>Moto</h3>
+                    </div>
+                    <p>Seja qual for o estilo que você mais gosta, com o Consórcio Bradesco você pode comprar uma moto 0
+                        km a partir de 250 cilindradas.</p>
+                    <a href="#" class="btn-simular">Simular</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <nav id="menu-lateral-bradesco" aria-label="Menu principal de navegação" aria-hidden="true">
+
+        <div class="menu-principal">
+
+            <div class="menu-topo-destaques">
+                <a href="#">
+                    Abra sua conta
+                    <img src="assets/icons/nav/arrow_white.svg" alt="" class="seta-abra-conta" aria-hidden="true">
+                </a>
+                <a href="#">
+                    CONTRATE ON-LINE
+                    <img src="assets/icons/nav/arrow_white.svg" alt="" class="seta-abra-conta" aria-hidden="true">
+                </a>
+            </div>
+
+            <ul class="lista-icones" role="list">
+
+                <li class="item-menu-content" id="btn-produtos" tabindex="0">
+                    <img src="assets/icons/nav/icon-produtos-servicos.svg" alt="" aria-hidden="true">
+                    <span>Produtos e Serviços</span>
+                </li>
+
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/icon-shop.svg" alt="" aria-hidden="true" width="29px" height="28px"
+                            loading="lazy">Shop
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/acessibilidade.svg" alt="" aria-hidden="true" width="29px"
+                            height="28px" loading="lazy">Acessibilidade
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/educ-financeira.svg" alt="" aria-hidden="true" width="29px"
+                            height="28px" loading="lazy">Cidadania Financeira
+                    </a>
+                </li>
+
+                <li class="item-menu-content" id="btn-canais" tabindex="0">
+                    <img src="assets/icons/nav/canais-digitais.svg" alt="" aria-hidden="true">
+                    <span>Canais</span>
+                </li>
+
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/atendimento.svg" alt="" aria-hidden="true" width="29px" height="28px"
+                            loading="lazy">Atendimento
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="item-menu-content">
+                        <img src="assets/icons/nav/pin-endereco.svg" alt="" aria-hidden="true" width="29px"
+                            height="28px" loading="lazy">Encontrar Agências Bradesco
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container-submenus">
+
+            <div class="submenu-painel" id="painel-produtos" aria-label="Submenu de Produtos">
+
+                <h3 class="submenu-titulo" id="titulo-produtos">Produtos</h3>
+
+                <ul class="grid-produtos" role="menu" aria-labelledby="titulo-produtos">
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/clover.png" alt=""
+                                aria-hidden="true">Capitalização</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img
+                                src="assets/icons/nav/global-exchange-banking.png" alt="" aria-hidden="true">Câmbio</a>
+                    </li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/card.png" alt=""
+                                aria-hidden="true">Cartões</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/cesta.png" alt=""
+                                aria-hidden="true">Cestas de Serviços e Tarifas</a>
+                    </li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/consorcio.svg" alt=""
+                                aria-hidden="true">Consórcio</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/coin.svg" alt=""
+                                aria-hidden="true">Empréstimos
+                            Financiamento</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/line-chart.svg"
+                                alt="" aria-hidden="true">Investimentos</a>
+                    </li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/gavel.png" alt=""
+                                aria-hidden="true">Leilões</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/refinance.png" alt=""
+                                aria-hidden="true">Renegociação de Dívidas</a>
+                    </li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/holding-house.png"
+                                alt="" aria-hidden="true">Seguros</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/payment.png" alt=""
+                                aria-hidden="true">Tipos de Contas</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/leaf.png" alt=""
+                                aria-hidden="true">Vida e Previdência</a></li>
+
+                    <li class="item-servicos-full" role="presentation"><a href="#" role="menuitem"><img
+                                src="assets/icons/nav/gear-in-hand.png" alt="" aria-hidden="true">Serviços</a></li>
+                </ul>
+            </div>
+
+            <div class="submenu-painel" id="painel-canais" aria-label="Submenu de Canais">
+                <ul class="lista-canais" role="menu" aria-label="Opções de Canais">
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/question-button.svg"
+                                alt="" aria-hidden="true">Como usar minha conta
+                            bradesco</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/laptop.png" alt=""
+                                aria-hidden="true">Internet Banking</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/mobile.png" alt=""
+                                aria-hidden="true">Aplicativo Bradesco</a></li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/atm-machine.svg"
+                                alt="" aria-hidden="true">Caixa Eletrônico</a>
+                    </li>
+
+                    <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/comment.png" alt=""
+                                aria-hidden="true">BIA</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
 
 
-<div class="non-account-holder">
-    <a href="#" aria-label="Contrate on-line, mesmo sem conta-corrente">
-        <span>Contrate on-line, mesmo sem conta-corrente</span>
-        <img src="assets/icons/nav/arrow_red.svg" alt="" aria-hidden="true" class="seta-vermelha">
-        <img src="assets/icons/nav/arrow_white.svg" alt="" aria-hidden="true" class="seta-branca">
+    <a id="abra-conta-link" href="#" aria-label="Iniciar processo de abertura de conta">
+        Abra sua conta
+        <img src="assets/icons/nav/arrow_white.svg" alt="" aria-hidden="true" class="seta-abra-conta">
     </a>
-</div>
 
-<section class="container-cartoes-destaque" role="region" aria-label="Atalhos para contratação online">
+    <div id="container-flutuante-bia">
 
-    <div class="card-destaque">
-        <a href="#">
-            <img width="193" height="150" src="assets/images/online-hire/renegociacao-de-dividas.svg" alt=""
-                 aria-hidden="true" loading="lazy">
-            <p>Renegocie suas dívidas</p>
-        </a>
-    </div>
-
-    <div class="card-destaque">
-        <a href="#">
-            <img width="103" height="99" src="assets/images/online-hire/ilustra-cartoes.svg" alt=""
-                 aria-hidden="true">
-            <p>Peça seu cartão sem anuidade</p>
-        </a>
-    </div>
-
-    <div class="card-destaque">
-        <a href="#">
-            <img width="195" height="150" src="assets/images/online-hire/ilustra-consorcio-1.svg" alt=""
-                 aria-hidden="true">
-            <p>Simule seu consórcio</p>
-        </a>
-    </div>
-
-    <div class="card-destaque">
-        <a href="#">
-            <img width="118" height="98" src="assets/images/online-hire/seguro-dental.svg" alt=""
-                 aria-hidden="true">
-            <p>Contrate seu plano dental</p>
-        </a>
-    </div>
-
-    <div class="card-destaque">
-        <a href="#">
-            <img width="193" height="150" src="assets/images/online-hire/bilhete-residencial.svg" alt=""
-                 aria-hidden="true">
-            <p>Proteja seu lar <br> Simule aqui</p>
-        </a>
-    </div>
-
-    <div class="card-destaque">
-        <a href="#">
-            <img width="193" height="150" src="assets/images/online-hire/ilustra-agora.svg" alt=""
-                 aria-hidden="true">
-            <p>Invista com Ágora</p>
-        </a>
-    </div>
-
-    <div class="card-destaque">
-        <a href="#">
-            <img width="193" height="150" src="assets/images/online-hire/nao-correntista.svg" alt=""
-                 aria-hidden="true">
-            <p>Conheça mais opções</p>
-        </a>
-    </div>
-</section>
-
-<section class="secao-produtos-servicos" aria-labelledby="titulo-produtos-servicos">
-
-    <div class="container-produtos">
-
-        <div class="produtos-texto">
-            <h2 id="titulo-produtos-servicos">Produtos e serviços pra agilizar seu dia a dia</h2>
-            <h3>Confira algumas das soluções que preparamos pra você</h3>
-        </div>
-
-        <div class="produtos-grid-wrapper">
-            <ul class="benefit-card" role="list">
-                <li><a href="#"><img src="assets/icons/vantagens/icone-fale-conosco.svg" alt=""
-                                     aria-hidden="true">Atendimento</a></li>
-                <li><a href="#"><img src="assets/icons/vantagens/icone-2a-via-boleto.svg" alt=""
-                                     aria-hidden="true">2ª via do boleto</a></li>
-                <li><a href="#"><img src="assets/icons/vantagens/icone-pagamentos.svg" alt=""
-                                     aria-hidden="true">Pagamentos</a></li>
-                <li><a href="#"><img src="assets/icons/vantagens/icone-desbloqueio-cartao.svg" alt=""
-                                     aria-hidden="true">Desbloqueio de Cartão</a></li>
-                <li><a href="#"><img src="assets/icons/vantagens/icone-renegociacao-de-dividas.svg" alt=""
-                                     aria-hidden="true">Renegociação de Dívidas</a></li>
-                <li><a href="#"><img src="assets/icons/vantagens/icone-seguranca.svg" alt=""
-                                     aria-hidden="true">Segurança</a></li>
-            </ul>
-        </div>
-
-    </div>
-
-    <div class="container-consorcios">
-
-        <div class="consorcios-titulo">
-            <p>Você não precisa ser correntista<br>pra ter um Consórcio Bradesco.</p>
-        </div>
-
-        <div class="grid-consorcios">
-
-            <div class="card-consorcio">
-                <div class="card-cabecalho-horizontal">
-                    <img src="assets/icons/consorcio/icone-carro.svg" alt="" aria-hidden="true">
-                    <h3>Automóveis</h3>
-                </div>
-                <p>Com esse crédito, você pode ter seu carro 0km, seminovo ou blindado e moto a partir de 600
-                    cilindradas, 0km ou seminova (com até 5 anos de uso). Além disso, é possível usar o crédito pra
-                    quitar seu financiamento.</p>
-                <a href="#" class="btn-simular">Simular</a>
-            </div>
-
-            <div class="card-consorcio">
-                <div class="card-cabecalho-horizontal">
-                    <img src="assets/icons/consorcio/icone-casa.svg" alt="" aria-hidden="true">
-                    <h3>Imóveis</h3>
-                </div>
-
-                <p>Pra quem busca comprar casas, apartamentos, terrenos, reformas, construções, sítios e fazendas.
-                    Também é possível usar o crédito pra quitar o financiamento.</p>
-                <a href="#" class="btn-simular">Simular</a>
-            </div>
-
-            <div class="card-consorcio">
-                <div class="card-cabecalho-horizontal">
-                    <img src="assets/icons/consorcio/icone-caminhao.svg" alt="" aria-hidden="true">
-                    <h3>Caminhões e Tratores</h3>
-                </div>
-
-                <p>Quer renovar sua frota ou ter o primeiro veículo pesado? Use o crédito pra comprar caminhões,
-                    veículos utilitários, furgões, picapes e tratores.</p>
-                <a href="#" class="btn-simular">Simular</a>
-            </div>
-
-            <div class="card-consorcio">
-                <div class="card-cabecalho-horizontal">
-                    <img src="assets/icons/consorcio/icone-moto.svg" alt="" aria-hidden="true">
-                    <h3>Moto</h3>
-                </div>
-                <p>Seja qual for o estilo que você mais gosta, com o Consórcio Bradesco você pode comprar uma moto 0
-                    km a partir de 250 cilindradas.</p>
-                <a href="#" class="btn-simular">Simular</a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<nav id="menu-lateral-bradesco" aria-label="Menu principal de navegação" aria-hidden="true">
-
-    <div class="menu-principal">
-
-        <div class="menu-topo-destaques">
-            <a href="#">
-                Abra sua conta
-                <img src="assets/icons/nav/arrow_white.svg" alt="" class="seta-abra-conta" aria-hidden="true">
-            </a>
-            <a href="#">
-                CONTRATE ON-LINE
-                <img src="assets/icons/nav/arrow_white.svg" alt="" class="seta-abra-conta" aria-hidden="true">
-            </a>
-        </div>
-
-        <ul class="lista-icones" role="list">
-
-            <li class="item-menu-content" id="btn-produtos" tabindex="0">
-                <img src="assets/icons/nav/icon-produtos-servicos.svg" alt="" aria-hidden="true">
-                <span>Produtos e Serviços</span>
-            </li>
-
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/icon-shop.svg" alt="" aria-hidden="true" width="29px" height="28px"
-                         loading="lazy">Shop
-                </a>
-            </li>
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/acessibilidade.svg" alt="" aria-hidden="true" width="29px"
-                         height="28px" loading="lazy">Acessibilidade
-                </a>
-            </li>
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/educ-financeira.svg" alt="" aria-hidden="true" width="29px"
-                         height="28px" loading="lazy">Cidadania Financeira
-                </a>
-            </li>
-
-            <li class="item-menu-content" id="btn-canais" tabindex="0">
-                <img src="assets/icons/nav/canais-digitais.svg" alt="" aria-hidden="true">
-                <span>Canais</span>
-            </li>
-
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/atendimento.svg" alt="" aria-hidden="true" width="29px" height="28px"
-                         loading="lazy">Atendimento
-                </a>
-            </li>
-            <li>
-                <a href="#" class="item-menu-content">
-                    <img src="assets/icons/nav/pin-endereco.svg" alt="" aria-hidden="true" width="29px"
-                         height="28px" loading="lazy">Encontrar Agências Bradesco
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="container-submenus">
-
-        <div class="submenu-painel" id="painel-produtos" aria-label="Submenu de Produtos">
-
-            <h3 class="submenu-titulo" id="titulo-produtos">Produtos</h3>
-
-            <ul class="grid-produtos" role="menu" aria-labelledby="titulo-produtos">
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/clover.png" alt=""
-                                                                         aria-hidden="true">Capitalização</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img
-                        src="assets/icons/nav/global-exchange-banking.png" alt="" aria-hidden="true">Câmbio</a>
-                </li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/card.png" alt=""
-                                                                         aria-hidden="true">Cartões</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/cesta.png" alt=""
-                                                                         aria-hidden="true">Cestas de Serviços e Tarifas</a>
-                </li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/consorcio.svg" alt=""
-                                                                         aria-hidden="true">Consórcio</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/coin.svg" alt=""
-                                                                         aria-hidden="true">Empréstimos
-                    Financiamento</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/line-chart.svg"
-                                                                         alt="" aria-hidden="true">Investimentos</a>
-                </li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/gavel.png" alt=""
-                                                                         aria-hidden="true">Leilões</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/refinance.png" alt=""
-                                                                         aria-hidden="true">Renegociação de Dívidas</a>
-                </li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/holding-house.png"
-                                                                         alt="" aria-hidden="true">Seguros</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/payment.png" alt=""
-                                                                         aria-hidden="true">Tipos de Contas</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/leaf.png" alt=""
-                                                                         aria-hidden="true">Vida e Previdência</a></li>
-
-                <li class="item-servicos-full" role="presentation"><a href="#" role="menuitem"><img
-                        src="assets/icons/nav/gear-in-hand.png" alt="" aria-hidden="true">Serviços</a></li>
-            </ul>
-        </div>
-
-        <div class="submenu-painel" id="painel-canais" aria-label="Submenu de Canais">
-            <ul class="lista-canais" role="menu" aria-label="Opções de Canais">
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/question-button.svg"
-                                                                         alt="" aria-hidden="true">Como usar minha conta
-                    bradesco</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/laptop.png" alt=""
-                                                                         aria-hidden="true">Internet Banking</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/mobile.png" alt=""
-                                                                         aria-hidden="true">Aplicativo Bradesco</a></li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/atm-machine.svg"
-                                                                         alt="" aria-hidden="true">Caixa Eletrônico</a>
-                </li>
-
-                <li role="presentation"><a href="#" role="menuitem"><img src="assets/icons/nav/comment.png" alt=""
-                                                                         aria-hidden="true">BIA</a></li>
-            </ul>
-        </div>
-
-    </div>
-</nav>
-
-
-<a id="abra-conta-link" href="#" aria-label="Iniciar processo de abertura de conta">
-    Abra sua conta
-    <img src="assets/icons/nav/arrow_white.svg" alt="" aria-hidden="true" class="seta-abra-conta">
-</a>
-
-<div id="container-flutuante-bia">
-
-    <div id="bia-estado-descanso" class="bia-descanso">
-        <button id="btn-abrir-bia" class="bia-circulo"
+        <div id="bia-estado-descanso" class="bia-descanso">
+            <button id="btn-abrir-bia" class="bia-circulo"
                 aria-label="Abrir painel de atendimento com a BIA no WhatsApp" aria-haspopup="dialog"
                 aria-expanded="false" aria-controls="bia-estado-ativo">
-            <img src="assets/bia/logo/bia.png" alt="" aria-hidden="true" class="img-balao-bia">
-            <span class="texto-dentro-balao" aria-hidden="true"><strong>BIA</strong> no<br>WhatsApp</span>
-        </button>
-    </div>
-
-    <div id="bia-estado-ativo" class="bia-ativa esconde-bia" role="dialog" aria-modal="false" aria-hidden="true"
-         aria-labelledby="titulo-contato-bia">
-        <div class="bia-retangulo">
-
-            <button id="btn-fechar-bia-retangulo" class="bia-fecha-retangulo"
-                    aria-label="Fechar painel de atendimento da BIA">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                     aria-hidden="true">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                          stroke-linejoin="round"></path>
-                </svg>
+                <img src="assets/bia/logo/bia.png" alt="" aria-hidden="true" class="img-balao-bia">
+                <span class="texto-dentro-balao" aria-hidden="true"><strong>BIA</strong> no<br>WhatsApp</span>
             </button>
+        </div>
 
-            <div class="bia-qr-container">
-                <img src="assets/bia/qrcode/qrcode-bia 1.png"
-                     alt="QR Code para escanear com a câmera do celular e iniciar conversa">
-            </div>
+        <div id="bia-estado-ativo" class="bia-ativa esconde-bia" role="dialog" aria-modal="false" aria-hidden="true"
+            aria-labelledby="titulo-contato-bia">
+            <div class="bia-retangulo">
 
-            <div class="bia-separador" role="presentation" aria-hidden="true"></div>
+                <button id="btn-fechar-bia-retangulo" class="bia-fecha-retangulo"
+                    aria-label="Fechar painel de atendimento da BIA">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
 
-            <div class="bia-texto-container">
-                <p class="bia-titulo-retangulo" id="titulo-contato-bia">Fale com a BIA</p>
-                <p class="bia-desc-retangulo">Leia o QR Code ou mande mensagem pra 11 3335 0237.</p>
+                <div class="bia-qr-container">
+                    <img src="assets/bia/qrcode/qrcode-bia 1.png"
+                        alt="QR Code para escanear com a câmera do celular e iniciar conversa">
+                </div>
+
+                <div class="bia-separador" role="presentation" aria-hidden="true"></div>
+
+                <div class="bia-texto-container">
+                    <p class="bia-titulo-retangulo" id="titulo-contato-bia">Fale com a BIA</p>
+                    <p class="bia-desc-retangulo">Leia o QR Code ou mande mensagem pra 11 3335 0237.</p>
+                </div>
             </div>
         </div>
+
     </div>
 
-</div>
+    <footer id="rodape-global">
 
-<footer id="rodape-global">
+        <div class="footer-area-cinza">
+            <div class="container-footer">
 
-    <div class="footer-area-cinza">
-        <div class="container-footer">
-
-            <ul class="footer-abas-botoes" role="tablist">
-                <li role="presentation">
-                    <button class="btn-aba" id="aba-info" aria-expanded="false" aria-controls="painel-info"
+                <ul class="footer-abas-botoes" role="tablist">
+                    <li role="presentation">
+                        <button class="btn-aba" id="aba-info" aria-expanded="false" aria-controls="painel-info"
                             role="tab">
-                        INFORMAÇÕES ÚTEIS <span class="seta-aba"></span>
-                    </button>
-                </li>
-                <li role="presentation">
-                    <button class="btn-aba ativo" id="aba-atendimento" aria-expanded="true"
+                            INFORMAÇÕES ÚTEIS <span class="seta-aba"></span>
+                        </button>
+                    </li>
+                    <li role="presentation">
+                        <button class="btn-aba ativo" id="aba-atendimento" aria-expanded="true"
                             aria-controls="painel-atendimento" role="tab">
-                        ATENDIMENTO <span class="seta-aba"></span>
-                    </button>
-                </li>
-                <li role="presentation">
-                    <button class="btn-aba" id="aba-sites" aria-expanded="false" aria-controls="painel-sites"
+                            ATENDIMENTO <span class="seta-aba"></span>
+                        </button>
+                    </li>
+                    <li role="presentation">
+                        <button class="btn-aba" id="aba-sites" aria-expanded="false" aria-controls="painel-sites"
                             role="tab">
-                        SITES BRADESCO <span class="seta-aba"></span>
-                    </button>
-                </li>
-            </ul>
+                            SITES BRADESCO <span class="seta-aba"></span>
+                        </button>
+                    </li>
+                </ul>
 
-            <div class="footer-paineis">
+                <div class="footer-paineis">
 
-                <div id="painel-info" class="painel-conteudo" role="tabpanel" aria-labelledby="aba-info">
-                    <ul class="grid-info-uteis">
-                        <li><a href="#"><span>Cestas de Serviços e Tarifas</span></a></li>
-                        <li><a href="#"><span>Diretivas de Privacidade</span></a></li>
-                        <li><a href="#"><span>Código de Defesa do Consumidor</span></a></li>
-                        <li><a href="#"><span>Consumidor.gov.br</span></a></li>
-                        <li><a href="#"><span>Sistema de Informação de Crédito (SCR)</span></a></li>
-                        <li><a href="#"><span>Lei Geral de Proteção de Dados</span></a></li>
-                        <li><a href="#"><span>Canal Corporativo de Denúncias</span></a></li>
-                        <li><a href="#"><span>Taxa de Juros de Operações de Crédito - BACEN</span></a></li>
-                    </ul>
+                    <div id="painel-info" class="painel-conteudo" role="tabpanel" aria-labelledby="aba-info">
+                        <ul class="grid-info-uteis">
+                            <li><a href="#"><span>Cestas de Serviços e Tarifas</span></a></li>
+                            <li><a href="#"><span>Diretivas de Privacidade</span></a></li>
+                            <li><a href="#"><span>Código de Defesa do Consumidor</span></a></li>
+                            <li><a href="#"><span>Consumidor.gov.br</span></a></li>
+                            <li><a href="#"><span>Sistema de Informação de Crédito (SCR)</span></a></li>
+                            <li><a href="#"><span>Lei Geral de Proteção de Dados</span></a></li>
+                            <li><a href="#"><span>Canal Corporativo de Denúncias</span></a></li>
+                            <li><a href="#"><span>Taxa de Juros de Operações de Crédito - BACEN</span></a></li>
+                        </ul>
+                    </div>
+
+                    <div id="painel-atendimento" class="painel-conteudo ativo" role="tabpanel"
+                        aria-labelledby="aba-atendimento">
+                        <ul class="flex-atendimento">
+                            <li>
+                                <span class="titulo-atendimento">SAC Alô Bradesco</span>
+                                <a href="tel:08007048383" class="tel-atendimento">0800 704 8383</a>
+                            </li>
+                            <li>
+                                <span class="titulo-atendimento">Ouvidoria</span>
+                                <a href="tel:08007279933" class="tel-atendimento">0800 727 9933</a>
+                            </li>
+                            <li>
+                                <span class="titulo-atendimento">Fale com a BIA pelo WhatsApp:</span>
+                                <a href="tel:1133350237" class="tel-atendimento">11 3335 0237</a>
+                            </li>
+                            <li class="link-centrais">
+                                <a href="#">Confira mais centrais de atendimento <strong>aqui</strong></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="painel-sites" class="painel-conteudo" role="tabpanel" aria-labelledby="aba-sites">
+                        <div class="colunas-alfabeticas">
+                            <div class="grupo-letra">
+                                <h3>A</h3>
+                                <ul>
+                                    <li><a href="#">Ágora Investimentos</a></li>
+                                    <li><a href="#">Agronegócio</a></li>
+                                    <li><a href="#">Autoline</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>B</h3>
+                                <ul>
+                                    <li><a href="#">BBI</a></li>
+                                    <li><a href="#">BEM DTVM</a></li>
+                                    <li><a href="#">Bradescard</a></li>
+                                    <li><a href="#">Bradespar</a></li>
+                                    <li><a href="#">BRAM - Bradesco Asset Management</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>C</h3>
+                                <ul>
+                                    <li><a href="#">Custódia</a></li>
+                                    <li><a href="#">Cultura Bradesco</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>D</h3>
+                                <ul>
+                                    <li><a href="#">Despachantes e Autoescolas</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>E</h3>
+                                <ul>
+                                    <li><a href="#">Economia em Dia</a></li>
+                                    <li><a href="#">Energia</a></li>
+                                    <li><a href="#">Europa</a></li>
+                                    <li><a href="#">Expresso</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>F</h3>
+                                <ul>
+                                    <li><a href="#">Financiamentos</a></li>
+                                    <li><a href="#">Fornecedores</a></li>
+                                    <li><a href="#">Fundação Bradesco</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>H</h3>
+                                <ul>
+                                    <li><a href="#">Hospital Edmundo Vasconcelos</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>I</h3>
+                                <ul>
+                                    <li><a href="#">InovaBRA</a></li>
+                                    <li><a href="#">Integridade</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>M</h3>
+                                <ul>
+                                    <li><a href="#">MEI</a></li>
+                                    <li><a href="#">Museu Histórico</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>N</h3>
+                                <ul>
+                                    <li><a href="#">Next</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>O</h3>
+                                <ul>
+                                    <li><a href="#">Órgãos Públicos - Extrato FUNDEB</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>R</h3>
+                                <ul>
+                                    <li><a href="#">Relação com Investidores</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>S</h3>
+                                <ul>
+                                    <li><a href="#">Bradesco Shop</a></li>
+                                    <li><a href="#">Segurança</a></li>
+                                    <li><a href="#">Seguros</a></li>
+                                    <li><a href="#">Servidor Público</a></li>
+                                </ul>
+                            </div>
+                            <div class="grupo-letra">
+                                <h3>U</h3>
+                                <ul>
+                                    <li><a href="#">Unibrad</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+            </div>
+        </div>
 
-                <div id="painel-atendimento" class="painel-conteudo ativo" role="tabpanel"
-                     aria-labelledby="aba-atendimento">
-                    <ul class="flex-atendimento">
-                        <li>
-                            <span class="titulo-atendimento">SAC Alô Bradesco</span>
-                            <a href="tel:08007048383" class="tel-atendimento">0800 704 8383</a>
-                        </li>
-                        <li>
-                            <span class="titulo-atendimento">Ouvidoria</span>
-                            <a href="tel:08007279933" class="tel-atendimento">0800 727 9933</a>
-                        </li>
-                        <li>
-                            <span class="titulo-atendimento">Fale com a BIA pelo WhatsApp:</span>
-                            <a href="tel:1133350237" class="tel-atendimento">11 3335 0237</a>
-                        </li>
-                        <li class="link-centrais">
-                            <a href="#">Confira mais centrais de atendimento <strong>aqui</strong></a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="footer-area-vermelha">
+            <div class="container-footer">
 
-                <div id="painel-sites" class="painel-conteudo" role="tabpanel" aria-labelledby="aba-sites">
-                    <div class="colunas-alfabeticas">
-                        <div class="grupo-letra">
-                            <h3>A</h3>
-                            <ul>
-                                <li><a href="#">Ágora Investimentos</a></li>
-                                <li><a href="#">Agronegócio</a></li>
-                                <li><a href="#">Autoline</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>B</h3>
-                            <ul>
-                                <li><a href="#">BBI</a></li>
-                                <li><a href="#">BEM DTVM</a></li>
-                                <li><a href="#">Bradescard</a></li>
-                                <li><a href="#">Bradespar</a></li>
-                                <li><a href="#">BRAM - Bradesco Asset Management</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>C</h3>
-                            <ul>
-                                <li><a href="#">Custódia</a></li>
-                                <li><a href="#">Cultura Bradesco</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>D</h3>
-                            <ul>
-                                <li><a href="#">Despachantes e Autoescolas</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>E</h3>
-                            <ul>
-                                <li><a href="#">Economia em Dia</a></li>
-                                <li><a href="#">Energia</a></li>
-                                <li><a href="#">Europa</a></li>
-                                <li><a href="#">Expresso</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>F</h3>
-                            <ul>
-                                <li><a href="#">Financiamentos</a></li>
-                                <li><a href="#">Fornecedores</a></li>
-                                <li><a href="#">Fundação Bradesco</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>H</h3>
-                            <ul>
-                                <li><a href="#">Hospital Edmundo Vasconcelos</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>I</h3>
-                            <ul>
-                                <li><a href="#">InovaBRA</a></li>
-                                <li><a href="#">Integridade</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>M</h3>
-                            <ul>
-                                <li><a href="#">MEI</a></li>
-                                <li><a href="#">Museu Histórico</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>N</h3>
-                            <ul>
-                                <li><a href="#">Next</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>O</h3>
-                            <ul>
-                                <li><a href="#">Órgãos Públicos - Extrato FUNDEB</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>R</h3>
-                            <ul>
-                                <li><a href="#">Relação com Investidores</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>S</h3>
-                            <ul>
-                                <li><a href="#">Bradesco Shop</a></li>
-                                <li><a href="#">Segurança</a></li>
-                                <li><a href="#">Seguros</a></li>
-                                <li><a href="#">Servidor Público</a></li>
-                            </ul>
-                        </div>
-                        <div class="grupo-letra">
-                            <h3>U</h3>
-                            <ul>
-                                <li><a href="#">Unibrad</a></li>
-                            </ul>
-                        </div>
+                <div class="footer-top-vermelho">
+                    <div class="footer-follow">
+                        <span>ACOMPANHE:</span>
+                        <ul>
+                            <li><a href="#"><img src="assets/icons/redes/linkedin-01.svg" alt="LinkedIn"></a></li>
+                            <li><a href="#"><img src="assets/icons/redes/facebook-01.svg" alt="Facebook"></a></li>
+                            <li><a href="#"><img src="assets/icons/redes/x.png" alt="X"></a></li>
+                            <li><a href="#"><img src="assets/icons/redes/youtube-01.svg" alt="YouTube"></a></li>
+                            <li><a href="#"><img src="assets/icons/redes/instagram-01.svg" alt="Instagram"></a></li>
+                            <li><a href="#"><img src="assets/icons/redes/tiktok-01.svg" alt="TikTok"></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-address">
+                        <p>Banco Bradesco SA | CNPJ: 60.746.948.0001-12></p>
+                        <p>Cidade de Deus, s/nº Vila Yara | Osasco | SP
+                            | CEP: 06029-900</p>
+                    </div>
+
+                    <div class="footer-brand">
+                        <img src="assets/images/logo/logo-bradesco.svg" alt="Logo Bradesco">
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="footer-area-vermelha">
-        <div class="container-footer">
-
-            <div class="footer-top-vermelho">
-                <div class="footer-follow">
-                    <span>ACOMPANHE:</span>
+                <div class="footer-bottom-links">
                     <ul>
-                        <li><a href="#"><img src="assets/icons/redes/linkedin-01.svg" alt="LinkedIn"></a></li>
-                        <li><a href="#"><img src="assets/icons/redes/facebook-01.svg" alt="Facebook"></a></li>
-                        <li><a href="#"><img src="assets/icons/redes/x.png" alt="X"></a></li>
-                        <li><a href="#"><img src="assets/icons/redes/youtube-01.svg" alt="YouTube"></a></li>
-                        <li><a href="#"><img src="assets/icons/redes/instagram-01.svg" alt="Instagram"></a></li>
-                        <li><a href="#"><img src="assets/icons/redes/tiktok-01.svg" alt="TikTok"></a></li>
+                        <li><a href="#">SOBRE O BRADESCO</a></li>
+                        <li><a href="#">BRADESCO IMPRENSA</a></li>
+                        <li><a href="#">TRABALHE CONOSCO</a></li>
+                        <li><a href="#">SEGURANÇA</a></li>
+                        <li><a href="#">INTEGRIDADE</a></li>
+                        <li><a href="#">RELAÇÃO COM INVESTIDORES</a></li>
+                        <li><a href="#">SUSTENTABILIDADE</a></li>
+                        <li><a href="#">FUNDEB</a></li>
+                        <li><a href="#">PREFERÊNCIA COOKIES</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-address">
-                    <p>Banco Bradesco SA | CNPJ: 60.746.948.0001-12></p>
-                    <p>Cidade de Deus, s/nº Vila Yara | Osasco | SP
-                        | CEP: 06029-900</p>
-                </div>
-
-                <div class="footer-brand">
-                    <img src="assets/images/logo/logo-bradesco.svg" alt="Logo Bradesco">
-                </div>
             </div>
-
-            <div class="footer-bottom-links">
-                <ul>
-                    <li><a href="#">SOBRE O BRADESCO</a></li>
-                    <li><a href="#">BRADESCO IMPRENSA</a></li>
-                    <li><a href="#">TRABALHE CONOSCO</a></li>
-                    <li><a href="#">SEGURANÇA</a></li>
-                    <li><a href="#">INTEGRIDADE</a></li>
-                    <li><a href="#">RELAÇÃO COM INVESTIDORES</a></li>
-                    <li><a href="#">SUSTENTABILIDADE</a></li>
-                    <li><a href="#">FUNDEB</a></li>
-                    <li><a href="#">PREFERÊNCIA COOKIES</a></li>
-                </ul>
-            </div>
-
         </div>
-    </div>
-</footer>
-<script src="scripts/services/api.js"></script>
+    </footer>
+    <script src="scripts/services/api.js"></script>
 
-<script src="scripts/login.js"></script>
+    <script src="scripts/login.js"></script>
 
-<script src="pages/main/main.js"></script>
+    <script src="pages/main/main.js"></script>
 </body>
 
 </html>
