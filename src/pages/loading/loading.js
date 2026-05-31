@@ -250,6 +250,8 @@ function recuperarDadosUsuario() {
     }
 }
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
     dataAtual();
     recuperarDadosUsuario();
@@ -259,5 +261,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnAcessar = document.getElementById('btn-acessar');
     if (btnAcessar) {
         btnAcessar.addEventListener('click', loadingLogica);
+    }
+
+    const linkEsqueci = document.getElementById('link-esqueci-senha');
+    if (linkEsqueci) {
+        linkEsqueci.addEventListener('click', function(evento) {
+            evento.preventDefault();
+            alert("🔒 Redirecionamento de Segurança:\n\nPara sua proteção, a recuperação de senhas de canais internos deve ser efetuada diretamente no aplicativo Bradesco Celular (Menu Segurança > Chave de Segurança) ou em uma Agência Bradesco física.");
+        });
     }
 });

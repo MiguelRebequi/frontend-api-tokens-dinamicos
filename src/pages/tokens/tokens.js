@@ -1,9 +1,14 @@
-import {gerenciarNavbarAtiva} from '../../scripts/commons/navbar.js';
-import {formatarDataAtual} from '../../scripts/commons/utils.js';
+import { gerenciarNavbarAtiva } from '../../scripts/commons/navbar.js';
+import { formatarDataAtual } from '../../scripts/commons/utils.js';
 import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
 
+import { gerenciarTemporizadorSessao } from '../../scripts/commons/sessao.js';
+
+import { inicializarDropdownExtrato } from '../../scripts/commons/cabecalho_saldo.js';
+
+
 // Variáveis de escopo global do arquivo
-let inputCodigo, telaInicial, telaSucesso, telaAlerta;
+let inputCodigo, telaInicial, telaSucesso, telaAlerta, telaUsado;
 let painelValidacao, painelHistorico, abaValidacao, abaHistorico;
 let filtroBusca, btnResetarFiltros, segmentosFiltro, secaoFiltrosContainer, btnToggleFiltros, btnFecharFiltros;
 
@@ -15,10 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
     inicializarValidacaoToken();
     inicializarNavegacaoAbas();
     inicializarFiltrosEAvancados();
+
+    sincronizarSaldoCabecalho();
+    inicializarDropdownExtrato();
+
+    
+
     document.getElementById('data-atual').textContent = formatarDataAtual();
 
-    // CHAMADA ADICIONADA: Carrega os dados reais do banco ao abrir a página
     carregarHistoricoTokens();
+    gerenciarTemporizadorSessao();
 });
 
 function inicializarValidacaoToken() {
@@ -29,6 +40,7 @@ function inicializarValidacaoToken() {
     telaInicial = document.getElementById('tela-validacao-inicial');
     telaSucesso = document.getElementById('tela-resultado-sucesso');
     telaAlerta = document.getElementById('tela-resultado-alerta');
+    telaUsado = document.getElementById('tela-resultado-usado');
 
     painelValidacao = document.getElementById('painel-validacao-aba');
     painelHistorico = document.getElementById('painel-historico-aba');
@@ -65,7 +77,7 @@ function inicializarNavegacaoAbas() {
 }
 
 /**
- * Inicializa os controles de visualização e filtros da aba de histórico
+ * Inicializa os controls de visualização e filtros da aba de histórico
  */
 function inicializarFiltrosEAvancados() {
     filtroBusca = document.getElementById('filtro-busca');
@@ -197,7 +209,7 @@ function configurarDropdownMes() {
         const dataCalculada = new Date();
         dataCalculada.setMonth(dataCalculada.getMonth() - i);
 
-        const nomeMes = dataCalculada.toLocaleDateString('pt-BR', {month: 'long'});
+        const nomeMes = dataCalculada.toLocaleDateString('pt-BR', { month: 'long' });
         const nomeMesCapitalizado = nomeMes.charAt(0).toUpperCase() + nomeMes.slice(1);
         const ano = dataCalculada.getFullYear();
 
@@ -263,37 +275,44 @@ function resetarTodosOsFiltros() {
 }
 
 async function processarVerificacao() {
-    // Pega o valor digitado e remove espaços em branco
     const valorInput = inputCodigo.value.trim();
 
-    // Validação visual de tamanho
     if (valorInput.length < 6) {
         alert('Por favor, insira o código completo de 6 dígitos.');
         return;
     }
 
-    // Mostra um feedback de que está pensando (opcional, mas recomendado)
     const btnVerificar = document.getElementById('btn-verificar');
     const textoOriginal = btnVerificar.innerText;
     btnVerificar.innerText = 'Validando...';
     btnVerificar.disabled = true;
 
     try {
-        // Agora ehValido recebe um objeto com os dados
+        // Dispara a chamada para o Spring Boot
         const dadosValidacao = await window.validarTokenA3(valorInput);
 
         if (dadosValidacao) {
-            // Passamos o canal que veio da API para a função da tabela
-            atualizarDataHoraSucesso(dadosValidacao.tipoCanal);
-            exibirSubTela('sucesso');
 
-            // Opcional: Recarrega o histórico após validar para manter a tela atualizada
+            // Verifique se o seu backend avisa na propriedade 'mensagem' ou 'status' se o token já foi consumido
+            if (dadosValidacao.mensagem && dadosValidacao.mensagem.toLowerCase().includes("já utilizado")) {
+                exibirSubTela('usado');
+            } else {
+                // Se o token for válido e inédito, exibe a tela de sucesso verde
+                atualizarDataHoraSucesso(dadosValidacao.tipoCanal);
+                exibirSubTela('sucesso');
+            }
+
             carregarHistoricoTokens();
         } else {
+            // Se o retorno for nulo ou der erro de token inexistente/falso, exibe alerta de fraude vermelho
             exibirSubTela('alerta');
         }
+    } catch (error) {
+        // Trata erros físicos de rede ou falhas de comunicação com o Render
+        console.error("Erro na validação do token:", error);
+        exibirSubTela('alerta');
     } finally {
-        // Devolve o botão ao normal independente de sucesso ou erro
+        // 🌟 CORRIGIDO: Escrita do bloco corrigida para 'finally' com dois "ll"
         btnVerificar.innerText = textoOriginal;
         btnVerificar.disabled = false;
     }
@@ -303,9 +322,12 @@ function exibirSubTela(estado) {
     telaInicial.classList.add('estado-oculto');
     telaSucesso.classList.add('estado-oculto');
     telaAlerta.classList.add('estado-oculto');
+    telaUsado.classList.add('estado-oculto');
+
     if (estado === 'inicial') telaInicial.classList.remove('estado-oculto');
     if (estado === 'sucesso') telaSucesso.classList.remove('estado-oculto');
     if (estado === 'alerta') telaAlerta.classList.remove('estado-oculto');
+    if (estado === 'usado') telaUsado.classList.remove('estado-oculto');
 }
 
 function resetarFormularioValidacao() {
@@ -328,7 +350,7 @@ function atualizarDataHoraSucesso(canalDaApi) {
 
         const agora = new Date();
         const dataStr = agora.toLocaleDateString('pt-BR');
-        const horaStr = agora.toLocaleTimeString('pt-BR', {hour: '2-digit', minute: '2-digit'});
+        const horaStr = agora.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
 
         // Usa o canal que veio da API. Se por algum motivo vier vazio, mostra "Desconhecido"
         const tipoCanal = canalDaApi || "Desconhecido";
@@ -347,7 +369,7 @@ function atualizarDataHoraSucesso(canalDaApi) {
 }
 
 // ==========================================
-// NOVA FUNÇÃO: RENDERIZAR HISTÓRICO DINÂMICO
+// RENDERIZAR HISTÓRICO DINÂMICO
 // ==========================================
 async function carregarHistoricoTokens() {
     const tbody = document.getElementById('corpo-tabela-historico');
@@ -406,4 +428,16 @@ async function carregarHistoricoTokens() {
             </tr>
         `;
     });
+}
+
+function sincronizarSaldoCabecalho() {
+    const contaLogada = localStorage.getItem('conta') || "generica";
+    // Recupera o saldo exato que o Dashboard gerou para esta conta
+    const saldoSalvo = localStorage.getItem(`saldo_topo_atual_${contaLogada}`);
+    const elSaldoCabecalho = document.getElementById('val-topo-saldo');
+
+    if (elSaldoCabecalho && saldoSalvo) {
+        const valorNumerico = parseFloat(saldoSalvo);
+        elSaldoCabecalho.textContent = valorNumerico.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
 }

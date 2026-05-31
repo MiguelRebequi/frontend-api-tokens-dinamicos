@@ -135,6 +135,90 @@
     gap: 8px;
 }
 
+/* Dropdown do Saldo Disponível */
+
+.saldo-container-dropdown {
+    position: relative; /* Ancoragem para a caixa flutuante */
+    cursor: pointer;
+}
+
+/* Transição suave na setinha do ícone */
+.seta-saldo-icon {
+    transition: transform 0.2s ease;
+}
+
+/* Gira a setinha quando o menu estiver ativo */
+.saldo-container-dropdown.ativo .seta-saldo-icon {
+    transform: rotate(180deg);
+}
+
+/* Janela Flutuante do Extrato */
+.mini-extrato-painel {
+    display: none; /* Inicia oculto */
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    background-color: #FFFFFF;
+    min-width: 260px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    border: 1px solid #EAEAEA;
+    padding: 20px;
+    z-index: 999;
+    animation: slideMiniExtrato 0.2s ease-out;
+}
+
+/* Exibe a janela quando a classe ativo for injetada via JS */
+.saldo-container-dropdown.ativo .mini-extrato-painel {
+    display: block;
+}
+
+.extrato-linha-detalhe {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #444444;
+    margin-bottom: 10px;
+}
+
+.extrato-linha-detalhe strong {
+    font-weight: bold;
+    color: #111111;
+}
+
+.divisor-mini-extrato {
+    height: 1px;
+    background-color: #EAEAEA;
+    margin: 12px 0;
+}
+
+.titulo-mini-lançamentos {
+    font-size: 11px;
+    font-weight: bold;
+    color: #888888;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.lista-mini-lancamentos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.lista-mini-lancamentos li {
+    display: flex;
+    justify-content: space-between;
+    color: #555555;
+}
+
+@keyframes slideMiniExtrato {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* NAVBAR */
 .nav-dashboard {
     background-color: #FFFFFF;
@@ -188,6 +272,7 @@
 .btn-mais-opcoes img {
     width: 12px;
 }
+
 
 /* Rodapé */
 .footer-dashboard {
@@ -336,6 +421,8 @@
 .footer-bar img {
     width: 10px;
 }
+
+
 
 /* ========================================================
    MEDIA QUERY: MOBILE (Telas de até 767px)

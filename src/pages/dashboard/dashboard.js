@@ -3,7 +3,11 @@ import { gerenciarNavbarAtiva } from '../../scripts/commons/navbar.js';
 
 import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
 
-let valoresOcultados = true; // Inicia mascarado por padrão conforme pedido
+import { gerenciarTemporizadorSessao } from '../../scripts/commons/sessao.js';
+
+import { inicializarDropdownExtrato } from '../../scripts/commons/cabecalho_saldo.js';
+
+let valoresOcultados = false; // Inicia mascarado por padrão conforme pedido
 let saldosDaConta = { poupanca: 0, entrada: 0, saida: 0 };
 
 function gerenciarSegurancaNavegacao() {
@@ -17,10 +21,10 @@ function gerenciarSegurancaNavegacao() {
     window.addEventListener('popstate', function (evento) {
         // Mostra a caixa de diálogo nativa do navegador para confirmação segura
         const desejaSair = confirm("Atenção: Voltar para a página anterior irá encerrar sua sessão atual de forma segura. Deseja mesmo deslogar?");
-        
+
         if (desejaSair) {
             // 🔥 LOGOFF TOTAL: Limpa a sessão simulada antes de redirecionar
-            localStorage.clear(); 
+            localStorage.clear();
             window.location.replace("../../index.html"); // Substitua pelo caminho correto do seu login
         } else {
             // Se ele cancelar, reintroduzimos o estado para manter os botões ativos para a próxima tentativa
@@ -60,7 +64,7 @@ function iniciarDropdownMaisOpcoesMobile() {
     dropdownMobile.className = 'dropdown-mais-opcoes-mobile';
 
     const todosItens = navLinksContainer.querySelectorAll('li');
-    
+
 
     for (let i = 6; i < todosItens.length - 1; i++) {
         const itemClonado = todosItens[i].cloneNode(true);
@@ -95,9 +99,9 @@ function inicializarValoresPersistentes() {
     // Garante que o saldo mude ou se mantenha com base na conta que fez o login
     const contaAtual = localStorage.getItem('conta') || "generica";
     const chaveLocalStorage = `saldos_mockados_conta_${contaAtual}`;
-    
+
     const dadosExistentes = localStorage.getItem(chaveLocalStorage);
-    
+
     if (dadosExistentes) {
         // Puxa o saldo gerado no acesso anterior deste dispositivo
         saldosDaConta = JSON.parse(dadosExistentes);
@@ -116,12 +120,14 @@ function inicializarValoresPersistentes() {
         // Salva localmente para persistir nos próximos F5
         localStorage.setItem(chaveLocalStorage, JSON.stringify(saldosDaConta));
     }
+
+    localStorage.setItem(`saldo_topo_atual_${contaAtual}`, saldosDaConta.poupanca);
 }
 
 function renderizarValoresInterface() {
     const txtBtn = document.getElementById('texto-btn-olho');
-    
-    // Captura todos os espaços de saldo do HTML
+
+    // Captura todos os espaços sensíveis do HTML
     const valTopo = document.getElementById('val-topo-saldo');
     const valPoupanca = document.getElementById('val-poupanca');
     const valTotal = document.getElementById('val-total');
@@ -129,6 +135,10 @@ function renderizarValoresInterface() {
     const valSaida = document.getElementById('val-saida');
     const valResumoPoupanca = document.getElementById('val-resumo-poupanca');
     const transacoesLista = document.querySelectorAll('.val-transacao');
+    const elNomePix = document.getElementById('txt-nome-cliente-pix');
+    const miniCorrente = document.querySelector('.val-mini-corrente');
+    const miniPoupanca = document.querySelector('.val-mini-poupanca');
+    const miniLancamentosValores = document.querySelectorAll('.lista-mini-lancamentos strong');
 
     if (valoresOcultados) {
         // Aplica as máscaras padrão do Bradesco
@@ -138,46 +148,55 @@ function renderizarValoresInterface() {
         if (valEntrada) valEntrada.textContent = "R$ *****";
         if (valSaida) valSaida.textContent = "R$ *****";
         if (valResumoPoupanca) valResumoPoupanca.textContent = "R$ *****";
-        
+        if (elNomePix) elNomePix.textContent = "Rem: ***** re 11/05";
+        if (miniCorrente) miniCorrente.textContent = "R$ *****";
+        if (miniPoupanca) miniPoupanca.textContent = "R$ *****";
+        miniLancamentosValores.forEach(l => l.textContent = "R$ *****");
+
         transacoesLista.forEach(t => t.textContent = "R$ *****");
         if (txtBtn) txtBtn.textContent = "Mostrar valores";
     } else {
         // Exibe os saldos mockados e calculados
         const formatadoPoupanca = formatarMoeda(saldosDaConta.poupanca);
-        
+
         if (valTopo) valTopo.textContent = formatadoPoupanca;
         if (valPoupanca) valPoupanca.textContent = formatadoPoupanca;
         if (valTotal) valTotal.textContent = formatadoPoupanca;
         if (valResumoPoupanca) valResumoPoupanca.textContent = formatadoPoupanca;
-        
+
         if (valEntrada) valEntrada.textContent = formatarMoeda(saldosDaConta.entrada);
         if (valSaida) valSaida.textContent = formatarMoeda(saldosDaConta.saida);
+        const nomeUsuario = localStorage.getItem('nomeUsuario') || "José Silva";
+        if (elNomePix) elNomePix.textContent = `Rem: ${nomeUsuario} re 11/05`;
 
         // Alimenta a lista de últimas transações de forma lógica
         transacoesLista.forEach((item, idx) => {
             const particao = parseFloat((saldosDaConta.saida / (idx + 2.5)).toFixed(2));
             item.textContent = formatarMoeda(particao);
         });
-        
+
+        if (typeof atualizarDadosMiniExtrato === "function") {
+            atualizarDadosMiniExtrato();
+        }
+
         if (txtBtn) txtBtn.textContent = "Ocultar valores";
     }
 }
 
 function ativarToggleValores() {
     inicializarValoresPersistentes();
-    
-    // Configura o estado visual inicial do checkbox (desmarcado porque inicia oculto)
+
     const checkboxSwitch = document.getElementById('btn-toggle-valores');
     if (checkboxSwitch) {
-        checkboxSwitch.checked = !valoresOcultados; 
+        checkboxSwitch.checked = valoresOcultados;
     }
-    
+
     renderizarValoresInterface();
 
     // Escuta o movimento de arrastar/clicar do Toggle Switch
     if (checkboxSwitch) {
         checkboxSwitch.addEventListener('change', (evento) => {
-            valoresOcultados = !evento.target.checked;
+            valoresOcultados = evento.target.checked;
             renderizarValoresInterface();
         });
     }
@@ -192,8 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ativarToggleValores();
 
     gerenciarSegurancaNavegacao();
+    gerenciarTemporizadorSessao();
+    inicializarDropdownExtrato();
     // Mobile
     iniciarDropdownMaisOpcoesMobile();
 
-    
+
 });

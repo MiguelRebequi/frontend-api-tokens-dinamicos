@@ -29,14 +29,35 @@
             </div>
 
             <div class="header-direita">
-                <div class="saldo-box">
-                    <span class="label-saldo">Saldo disponível <img src="../../assets/icons/nav/arrow-down.svg"></span>
-                    <div class="valor-saldo">R$ *****</div>
+                <div class="saldo-container-dropdown" id="dropdown-saldo-gatilho">
+                    <div class="saldo-box">
+                        <span class="label-saldo">Saldo disponível <img src="../../assets/icons/nav/arrow-down.svg"
+                                class="seta-saldo-icon"></span>
+                        <div class="valor-saldo" id="val-topo-saldo">R$ *****</div>
+                    </div>
+
+                    <div class="mini-extrato-painel" id="mini-extrato-janela">
+                        <div class="extrato-linha-detalhe">
+                            <span>Conta Corrente:</span>
+                            <strong class="val-mini-corrente">R$ 0,00</strong>
+                        </div>
+                        <div class="extrato-linha-detalhe">
+                            <span>Conta Poupança:</span>
+                            <strong class="val-mini-poupanca">R$ 0,00</strong>
+                        </div>
+                        <div class="divisor-mini-extrato"></div>
+                        <p class="titulo-mini-lançamentos">Últimos Lançamentos</p>
+                        <ul class="lista-mini-lancamentos">
+                            <li><span>Pix Recebido</span> <strong class="texto-verde">+ R$ 150,00</strong></li>
+                            <li><span>Comp. Netflx</span> <strong style="color: #cc0000;">- R$ 55,90</strong></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="timer-sair">
                     <div class="timer-circulo">16 MIN</div>
-                    <a href="../dashboard/dashboard.html" class="btn-sair">Sair <img src="../../assets/icons/nav/logout.svg"></a>
+                    <a href="../dashboard/dashboard.html" class="btn-sair">Sair <img
+                            src="../../assets/icons/nav/logout.svg"></a>
                 </div>
             </div>
         </div>
@@ -123,13 +144,13 @@
                             <h4>Informações do Token</h4>
                             <table class="tabela-bradesco">
                                 <thead>
-                                <tr>
-                                    <th>#Token</th>
-                                    <th>Tipo de Canal</th>
-                                    <th>Data</th>
-                                    <th>Hora</th>
-                                    <th>Status</th>
-                                </tr>
+                                    <tr>
+                                        <th>#Token</th>
+                                        <th>Tipo de Canal</th>
+                                        <th>Data</th>
+                                        <th>Hora</th>
+                                        <th>Status</th>
+                                    </tr>
                                 </thead>
                                 <tbody id="linha-dados-sucesso">
                                 </tbody>
@@ -160,6 +181,32 @@
                                 <li>Desconsidere imediatamente o conteúdo da mensagem, e-mail ou SMS recebido.</li>
                                 <li>Não clique em nenhum link enviado e nunca compartilhe senhas, tokens ou dados
                                     pessoais adicionais.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resultado-footer">
+                            <button type="button" class="btn-voltar-token btn-secundario-link">← Voltar para
+                                verificação</button>
+                        </div>
+                    </div>
+
+                    <div id="tela-resultado-usado" class="sub-tela-token estado-oculto">
+                        <div class="token-header-resultado centro">
+                            <div class="badge-status perigo" style="background-color: #FF9900;">⚠️</div>
+                            <h3 style="color: #FF9900;">Atenção: Token já utilizado!</h3>
+                            <p class="subtitulo-resultado">
+                                O código informado **já foi validado e consumido** anteriormente em nossos sistemas. Por
+                                motivos de segurança, cada token gerado é de uso único e possui validade de apenas
+                                alguns minutos.
+                            </p>
+                        </div>
+
+                        <div class="diretrizes-seguranca">
+                            <ul class="lista-alertas-seguranca">
+                                <li>Se você acabou de realizar uma operação e esta é uma segunda tentativa, por favor,
+                                    **solicite um novo código**.</li>
+                                <li>Caso você não reconheça a validação anterior deste código, entre em contato
+                                    imediatamente com os canais de atendimento Fone Fácil.</li>
                             </ul>
                         </div>
 

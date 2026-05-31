@@ -29,9 +29,29 @@
             </div>
 
             <div class="header-direita">
-                <div class="saldo-box">
-                    <span class="label-saldo">Saldo disponível <img src="../../assets/icons/nav/arrow-down.svg"></span>
-                    <div class="valor-saldo" id="val-topo-saldo">R$ *****</div>
+                <div class="saldo-container-dropdown" id="dropdown-saldo-gatilho">
+                    <div class="saldo-box">
+                        <span class="label-saldo">Saldo disponível <img src="../../assets/icons/nav/arrow-down.svg"
+                                class="seta-saldo-icon"></span>
+                        <div class="valor-saldo" id="val-topo-saldo">R$ *****</div>
+                    </div>
+
+                    <div class="mini-extrato-painel" id="mini-extrato-janela">
+                        <div class="extrato-linha-detalhe">
+                            <span>Conta Corrente:</span>
+                            <strong class="val-mini-corrente">R$ 0,00</strong>
+                        </div>
+                        <div class="extrato-linha-detalhe">
+                            <span>Conta Poupança:</span>
+                            <strong class="val-mini-poupanca">R$ 0,00</strong>
+                        </div>
+                        <div class="divisor-mini-extrato"></div>
+                        <p class="titulo-mini-lançamentos">Últimos Lançamentos</p>
+                        <ul class="lista-mini-lancamentos">
+                            <li><span>Pagto Cobrança</span> <strong>R$ *****</strong></li>
+                            <li><span>Transfe Pix</span> <strong>R$ *****</strong></li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="timer-sair">
@@ -161,7 +181,7 @@
                                         <p>Transfe Pix</p>
                                         <strong class="val-transacao valor-dinamico">R$ *****</strong>
                                     </div>
-                                    <small>Rem: Miguel Martinho re 11/05</small>
+                                    <small id="txt-nome-cliente-pix">Rem: Miguel Martinho re 11/05</small>
                                 </div>
                             </div>
 

@@ -281,6 +281,19 @@ body {
     background-color: #AA0000;
 }
 
+.link-esqueci {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #007bb6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-esqueci:hover {
+    text-decoration: underline;
+    color: #cc0000;
+}
+
 /* Banner da BIA */
 
 .coluna-banner-bia {
