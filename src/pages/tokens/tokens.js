@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     inicializarValidacaoToken();
     inicializarNavegacaoAbas();
     inicializarFiltrosEAvancados();
-
+    
     sincronizarSaldoCabecalho();
     inicializarDropdownExtrato();
 
-    
+    garantirLogoffESeguranca();
 
     document.getElementById('data-atual').textContent = formatarDataAtual();
 
