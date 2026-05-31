@@ -96,10 +96,12 @@ button.btn-acessar {
 
 #campo-agencia {
     width: 60px;
+    text-align: center;
 }
 
 #campo-conta {
-    width: 70px;
+    width: 85px;
+    text-align: center;
 }
 
 #campo-digito {

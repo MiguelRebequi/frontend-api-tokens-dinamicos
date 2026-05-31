@@ -30,55 +30,7 @@ function iniciarValidacaoNumerica() {
     });
 }
 
-function iniciarAutenticacaoTeste() {
-    const formulario = document.getElementById('form-login-bradesco');
 
-    // Capturamos os campos de entrada de dados
-    const campoAgencia = document.getElementById('campo-agencia');
-    const campoConta = document.getElementById('campo-conta');
-    const campoDigito = document.getElementById('campo-digito');
-
-    if (!formulario || !campoAgencia || !campoConta || !campoDigito) return;
-
-    formulario.addEventListener('submit', function (evento) {
-        // 1. IMPORTANTE: Para o envio nativo para a página não acontecer antes da nossa validação
-        evento.preventDefault();
-
-        // 2. Nossos dados de teste (MOCK)
-        const AGENCIA_TESTE = "1234";
-        const CONTA_TESTE = "56789";
-        const DIGITO_TESTE = "0";
-
-        // 3. Pegamos os valores que o usuário digitou limpando espaços em branco
-        const agenciaDigitada = campoAgencia.value.trim();
-        const contaDigitada = campoConta.value.trim();
-        const digitoDigitado = campoDigito.value.trim();
-
-        // 4. Testamos se os campos estão vazios
-        if (agenciaDigitada === "" || contaDigitada === "" || digitoDigitado === "") {
-            alert("Por favor, preencha todos os campos de acesso.");
-            return;
-        }
-/*
-        // 5. A VALIDAÇÃO: Verifica se bate com a conta de teste simulada
-        if (agenciaDigitada === AGENCIA_TESTE && contaDigitada === CONTA_TESTE && digitoDigitado === DIGITO_TESTE) {
-            // O 'this.action' pega o caminho "pages/loading/loading.html" que colocamos no HTML
-
-            // Temporariamente: 🔥 SALVANDO OS DADOS ANTES DE SAIR DA PÁGINA
-            localStorage.setItem('agencia', agenciaDigitada);
-            localStorage.setItem('conta', contaDigitada + "-" + digitoDigitado);
-            localStorage.setItem('nomeUsuario', 'Miguel Martinho Rebequi');
-            window.location.href = this.action;
-
-        } else {
-            // Se errar a agência ou conta simulada
-            alert("Agência, Conta ou Dígito inválido. (Dica de teste: Ag: 1234 | Ct: 56789 | Dg: 0)");
-        }
-
- */
-
-    });
-}
 
 
 
@@ -446,9 +398,20 @@ function iniciarMenuHamburguerMobile() {
 }
 
 
+function desativarAvisosNativosRequired() {
+    // Seleciona todos os inputs que possuem o atributo required
+    const camposObrigatorios = document.querySelectorAll('input[required]');
+
+    camposObrigatorios.forEach(campo => {
+        campo.addEventListener('invalid', function (evento) {
+            // remove COMPLETAMENTE o balão de "Preencha este campo"
+            evento.preventDefault();
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     iniciarValidacaoNumerica();
-    iniciarAutenticacaoTeste();
     iniciarMenuAcessibilidade();
     iniciarDropdownsHeader();
     iniciarMenuLateral();
@@ -457,6 +420,8 @@ document.addEventListener('DOMContentLoaded', function () {
     iniciarBarraFlutuante();
     iniciarInteracaoBia();
     iniciarAbasRodape();
+
+    desativarAvisosNativosRequired();
 
     // Auto Tab
     iniciarAutoTabLogin();

@@ -1,5 +1,5 @@
 let senhaDigitada = "";
-const TAMANHO_SENHA = 8;
+const TAMANHO_SENHA = 4;
 
 let ultimoBotaoClicado = null;
 let indiceCaractereAtual = 0;
@@ -34,22 +34,22 @@ function inicializarTeclado() {
     const tecladoContainer = document.getElementById('teclado-virtual');
     if (!tecladoContainer) return;
 
-    const grupos = [
-        "1 A B", "2 C D", "3 E F", "4 G H", "5 I J K",
-        "6 L M", "7 N O P", "8 Q R S", "9 T U V", "0 W X Y Z"
-    ];
+    // Array contém apenas os números isolados, sem nenhuma letra acoplada
+    const números = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-    grupos.sort(() => Math.random() - 0.5);
+    // Embaralha os botões numerados aleatoriamente a cada carregamento (Padrão Bradesco)
+    números.sort(() => Math.random() - 0.5);
 
     tecladoContainer.innerHTML = "";
 
-    grupos.forEach(grupo => {
+    números.forEach(num => {
         const btn = document.createElement('button');
         btn.type = "button";
         btn.className = "teclado-btn";
-        btn.textContent = grupo;
+        btn.textContent = num;
 
-        btn.addEventListener('click', () => tratarCliqueVirtual(grupo, btn));
+        // Como não há mais grupos de letras, o clique insere o número puro instantaneamente
+        btn.addEventListener('click', () => tratarCliqueVirtualNumérico(num));
         tecladoContainer.appendChild(btn);
     });
 
@@ -60,36 +60,17 @@ function inicializarTeclado() {
     btnLimpar.addEventListener('click', limparSenha);
     tecladoContainer.appendChild(btnLimpar);
 
-    // Aceita para fins acadêmicos o teclado!!
     document.removeEventListener('keydown', capturarTecladoFisico);
     document.addEventListener('keydown', capturarTecladoFisico);
 }
 
-function tratarCliqueVirtual(grupo, botao) {
+function tratarCliqueVirtualNumérico(numero) {
+    // Bloqueia se a senha já atingiu o teto de dígitos
     if (senhaDigitada.length >= TAMANHO_SENHA) return;
 
-    const opcoes = grupo.split(' ');
-
-    if (ultimoBotaoClicado && ultimoBotaoClicado !== botao) {
-        consolidarCaractere();
-    }
-
-    clearTimeout(temporizadorConsolidacao);
-
-    if (ultimoBotaoClicado === botao) {
-        indiceCaractereAtual = (indiceCaractereAtual + 1) % opcoes.length;
-    } else {
-        ultimoBotaoClicado = botao;
-        indiceCaractereAtual = 0;
-    }
-
-    caractereProvisorio = opcoes[indiceCaractereAtual];
-
-    atualizarDisplayProvisorio();
-
-    temporizadorConsolidacao = setTimeout(() => {
-        consolidarCaractere();
-    }, 1000);
+    // Adiciona o número digitado diretamente na string da senha
+    senhaDigitada += numero;
+    atualizarDisplaySenha();
 }
 
 function consolidarCaractere() {
@@ -163,9 +144,10 @@ function capturarTecladoFisico(evento) {
         return;
     }
 
-    const ehAlfanumerico = /^[a-zA-Z0-9]$/.test(tecla);
+    // A expressão regular agora aceita estritamente apenas números (0-9)
+    const ehApenasNumero = /^[0-9]$/.test(tecla);
 
-    if (ehAlfanumerico) {
+    if (ehApenasNumero) {
         pressionarTeclaFisica(tecla);
     }
 }
