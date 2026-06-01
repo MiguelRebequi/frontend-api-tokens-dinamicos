@@ -47,8 +47,6 @@ window.decodificarJwt = function (token) {
  */
 window.validarTokenA3 = async function (codigoToken) {
     const jwt = localStorage.getItem("token_a3");
-
-    // PEGANDO O ID DA CONTA SALVO NO LOGIN
     const contaIdString = localStorage.getItem("idConta");
 
     if (!jwt || !contaIdString) {
@@ -65,16 +63,28 @@ window.validarTokenA3 = async function (codigoToken) {
             },
             body: JSON.stringify({
                 codigo: codigoToken,
-                contaId: parseInt(contaIdString) // ENVIANDO O ID CONVERTIDO PARA NÚMERO!
+                contaId: parseInt(contaIdString)
             })
         });
 
+        // 🟢 Se o Token for válido e inédito (HTTP 200)
         if (response.ok) {
-            const dadosToken = await response.json(); // Lê o JSON do Java
-            return dadosToken; // Retorna o objeto { mensagem, tipoCanal }
+            return await response.json(); 
         }
 
-        return null; // Retorna null se der erro 401/400
+        // 🟡 Se o Java respondeu erro de negócio (HTTP 400) como Token Usado/Expirado
+        if (response.status === 400) {
+            try {
+                const dadosErro = await response.json(); // Captura o DTO de erro enviado pelo Spring Boot
+                return dadosErro; // Retorna o objeto para o tokens.js decidir a tela
+            } catch (e) {
+                console.error("Erro ao processar JSON de erro do backend:", e);
+                return null;
+            }
+        }
+
+        // Qualquer outro erro crítico (500, 404, etc)
+        return null;
 
     } catch (error) {
         console.error("Erro ao comunicar com a API de tokens:", error);
