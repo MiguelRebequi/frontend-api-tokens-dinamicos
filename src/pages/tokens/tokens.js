@@ -376,8 +376,7 @@ function atualizarDataHoraSucesso(canalDaApi) {
                 <td>${tipoCanal}</td>
                 <td>${dataStr}</td>
                 <td>${horaStr}</td>
-                <td><span class="tag-status autenticado">Autenticado</span></td>
-            </tr>
+                <td><span class="tag-status autenticado">Validado</span></td> </tr>
         `;
     }
 }
@@ -418,8 +417,8 @@ async function carregarHistoricoTokens() {
         let textoStatus = '';
 
         switch (item.status) {
-            case 'ATIVO': classeCSS = 'pendente'; textoStatus = 'Ativo'; break;
-            case 'USADO': classeCSS = 'autenticado'; textoStatus = 'Usado'; break;
+            case 'ATIVO': classeCSS = 'pendente'; textoStatus = 'Pendente'; break;
+            case 'USADO': classeCSS = 'autenticado'; textoStatus = 'Autenticado'; break;
             case 'EXPIRADO': classeCSS = 'expirado'; textoStatus = 'Expirado'; break;
             case 'SUSPEITO': classeCSS = 'bloqueado'; textoStatus = 'Suspeito'; break;
             default: classeCSS = 'pendente'; textoStatus = 'Desconhecido';
