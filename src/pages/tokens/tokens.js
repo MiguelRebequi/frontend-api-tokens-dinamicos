@@ -291,60 +291,46 @@ async function processarVerificacao() {
         const dadosValidacao = await window.validarTokenA3(valorInput);
 
         if (dadosValidacao) {
+            // Captura a mensagem inteligente que o Spring Boot enviou
             const mensagemTexto = dadosValidacao.mensagem ? dadosValidacao.mensagem.toLowerCase() : "";
 
-            const jaFoiUsado = dadosValidacao.status === 'USADO' ||
-                dadosValidacao.status === 400 ||
-                mensagemTexto.includes("anteriormente") ||
-                mensagemTexto.includes("utilizado") ||
-                mensagemTexto.includes("usado");
-
-            const ehSuspeito = dadosValidacao.status === 'SUSPEITO';
-
-            if (jaFoiUsado) {
-                exibirSubTela('usado');
-            } else if (ehSuspeito) {
-                // Se a API explicitamente responder que é suspeito
-                registrarFraudeLocal(valorInput);
-                exibirSubTela('alerta');
-            } else {
+            // Cenário 1: Sucesso (HTTP 200)
+            if (!dadosValidacao.status || dadosValidacao.status === 200) {
                 atualizarDataHoraSucesso(dadosValidacao.tipoCanal || dadosValidacao.canal);
                 exibirSubTela('sucesso');
             }
-
-            carregarHistoricoTokens();
+            // Cenário 2: O Spring avisou que é Fraude/Golpe
+            else if (mensagemTexto.includes("golpe") || mensagemTexto.includes("fraude")) {
+                exibirSubTela('alerta');
+            }
+            // Cenário 3: O Spring avisou que já foi validado
+            else if (mensagemTexto.includes("anteriormente") || mensagemTexto.includes("utilizado")) {
+                exibirSubTela('usado');
+            }
+            // Cenário 4: O Spring avisou que expirou
+            else if (mensagemTexto.includes("expirou") || mensagemTexto.includes("expirado")) {
+                alert(dadosValidacao.mensagem);
+                exibirSubTela('inicial');
+            }
+            else {
+                exibirSubTela('alerta');
+            }
         } else {
-            // 🚨 CASO DO SEU PRINT: API retornou null (Token Inválido/Inexistente como o 1111)
-            registrarFraudeLocal(valorInput);
             exibirSubTela('alerta');
-            carregarHistoricoTokens();
         }
+
+        // Recarrega a tabela e garante que ela obedece aos filtros
+        await carregarHistoricoTokens();
+
     } catch (error) {
         console.error("Erro na validação do token:", error);
-        registrarFraudeLocal(valorInput);
         exibirSubTela('alerta');
-        carregarHistoricoTokens();
+        await carregarHistoricoTokens();
     } finally {
         btnVerificar.innerText = textoOriginal;
         btnVerificar.disabled = false;
     }
 }
-
-// 📝 Função auxiliar para salvar a fraude na sessão local
-function registrarFraudeLocal(codigoFalso) {
-    const fraudesLocais = JSON.parse(localStorage.getItem('fraudes_tokens_local') || '[]');
-    
-    const novoLogSuspeito = {
-        codigo: codigoFalso,
-        dataGeracao: new Date().toISOString(), // Grava o momento exato e real do seu relógio
-        status: "SUSPEITO",
-        canal: "DESCONHECIDO (EXTERNO)"
-    };
-    
-    fraudesLocais.unshift(novoLogSuspeito);
-    localStorage.setItem('fraudes_tokens_local', JSON.stringify(fraudesLocais));
-}
-
 
 function exibirSubTela(estado) {
     telaInicial.classList.add('estado-oculto');
@@ -405,104 +391,54 @@ async function carregarHistoricoTokens() {
 
     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px;">Carregando histórico seguro...</td></tr>';
 
-    // Puxa o histórico real da API do Render
+    // FIM DA GAMBIARRA: Puxa o histórico EXCLUSIVAMENTE da API (Fonte Única da Verdade)
     let historicoServidor = await window.buscarHistoricoA3();
-    if (!historicoServidor) historicoServidor = [];
 
-    // Recupera as fraudes locais capturadas na sessão
-    const fraudesLocais = JSON.parse(localStorage.getItem('fraudes_tokens_local') || '[]');
-
-    // 🔀 MESCLA E ORDENA: Junta as duas listas e ordena pela data mais recente
-    const historicoCompleto = [...fraudesLocais, ...historicoServidor].sort((a, b) => {
-        // Garante que o interpretador do JavaScript avalie ambas as strings sob a mesma base de fuso
-        const converterParaTimestamp = (item) => {
-            let dataInput = item.dataGeracao;
-            if (typeof dataInput === 'string' && !dataInput.endsWith('Z') && !dataInput.includes('+')) {
-                dataInput = dataInput.replace(' ', 'T') + 'Z'; 
-            }
-            return new Date(dataInput).getTime();
-        };
-
-        return converterParaTimestamp(b) - converterParaTimestamp(a);
-    });
-
-    if (historicoCompleto.length === 0) {
+    if (!historicoServidor || historicoServidor.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 20px;">Nenhum token gerado nos últimos 90 dias.</td></tr>';
         return;
     }
 
-    tbody.innerHTML = ''; // Limpa a tabela para renderizar
+    tbody.innerHTML = '';
 
-    historicoCompleto.forEach(item => {
-        // 1. Formata o código (123456 -> 123 456)
+    historicoServidor.forEach(item => {
         const cod = item.codigo;
         const codigoFormatado = cod.length === 6 ? `${cod.slice(0, 3)} ${cod.slice(3, 6)}` : cod;
 
-        // 2. Formata Data e Hora para o padrão brasileiro
         let dataInput = item.dataGeracao;
         if (typeof dataInput === 'string' && !dataInput.endsWith('Z') && !dataInput.includes('+')) {
-            // Substitui o espaço por 'T' e adiciona o 'Z' se o Java mandar formato SQL puro
-            dataInput = dataInput.replace(' ', 'T') + 'Z'; 
+            dataInput = dataInput.replace(' ', 'T') + 'Z';
         }
 
         const dataObj = new Date(dataInput);
         const dataStr = dataObj.toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-        const horaStr = dataObj.toLocaleTimeString('pt-BR', { 
-            hour: '2-digit', 
-            minute: '2-digit',
-            timeZone: 'America/Sao_Paulo'
-        });
+        const horaStr = dataObj.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
 
-        // 3. Mapeia os Status para as classes CSS
         let classeCSS = '';
         let textoStatus = '';
 
         switch (item.status) {
-            case 'ATIVO':
-                classeCSS = 'pendente';
-                textoStatus = 'Ativo';
-                break;
-            case 'USADO':
-                classeCSS = 'autenticado';
-                textoStatus = 'Usado';
-                break;
-            case 'EXPIRADO':
-                classeCSS = 'expirado';
-                textoStatus = 'Expirado';
-                break;
-            case 'SUSPEITO':
-                classeCSS = 'bloqueado'; // Classe vermelha do Bradesco
-                textoStatus = 'Suspeito';
-                break;
-            default:
-                classeCSS = 'pendente';
-                textoStatus = 'Desconhecido';
+            case 'ATIVO': classeCSS = 'pendente'; textoStatus = 'Ativo'; break;
+            case 'USADO': classeCSS = 'autenticado'; textoStatus = 'Usado'; break;
+            case 'EXPIRADO': classeCSS = 'expirado'; textoStatus = 'Expirado'; break;
+            case 'SUSPEITO': classeCSS = 'bloqueado'; textoStatus = 'Suspeito'; break;
+            default: classeCSS = 'pendente'; textoStatus = 'Desconhecido';
         }
 
-        // 4. Mapeia o Canal com destaque visual para fraude
         const canalOriginal = item.canal || item.tipoCanal || '';
         let canalFormatado = '';
 
         switch (canalOriginal) {
-            case 'LIGACAO':
-                canalFormatado = 'Ligação';
-                break;
-            case 'EMAIL':
-                canalFormatado = 'Email';
-                break;
-            case 'SMS':
-                canalFormatado = 'SMS';
-                break;
+            case 'LIGACAO': canalFormatado = 'Ligação'; break;
+            case 'EMAIL': canalFormatado = 'Email'; break;
+            case 'SMS': canalFormatado = 'SMS'; break;
             case 'DESCONHECIDO (EXTERNO)':
             case 'DESCONHECIDO':
-                // Destaca com o ícone de aviso que seu colega sugeriu no mapa!
                 canalFormatado = '<span style="font-weight: bold;">Externo</span>';
                 break;
-            default:
-                canalFormatado = canalOriginal;
+            default: canalFormatado = canalOriginal;
         }
 
-        // 5. Injeta a linha
         tbody.innerHTML += `
             <tr>
                 <td class="col-codigo">${codigoFormatado}</td>
@@ -517,6 +453,9 @@ async function carregarHistoricoTokens() {
             </tr>
         `;
     });
+
+    // 🔥 A CORREÇÃO DO "PISCA-PISCA": Reaplica os filtros visuais após recriar a tabela!
+    filtrarTabelaHistorico();
 }
 
 function sincronizarSaldoCabecalho() {
