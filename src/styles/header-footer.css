@@ -503,15 +503,74 @@
         order: 2 !important;
     }
 
+    /* Dropdown do Saldo */
+
+    .saldo-container-dropdown {
+        position: relative !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+    
     .saldo-box {
         width: 100% !important;
         background: rgba(255, 255, 255, 0.08);
-        padding: 10px 12px !important;
+        padding: 8px 12px !important;
+        cursor: pointer;
         border-radius: 6px !important;
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
         box-sizing: border-box !important;
+    }
+
+    .mini-extrato-painel {
+        position: absolute !important;
+        top: 100% !important; /* Coloca logo abaixo do saldo-box */
+        left: 50% !important;
+        transform: translateX(-50%) !important; /* Centraliza o painel perfeitamente na tela do celular */
+        
+        /* Define uma largura confortável para telas menores sem estourar a blindagem */
+        width: 92vw !important; 
+        max-width: 340px !important; 
+        
+        background-color: #FFFFFF !important;
+        border-radius: 8px !important;
+        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15) !important;
+        padding: 15px !important;
+        z-index: 2100 !important; /* Garante que fique por cima de banners e outros cards */
+        box-sizing: border-box !important;
+    }
+
+    .extrato-linha-detalhe {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 8px 0 !important;
+        font-size: 14px !important;
+    }
+
+    .divisor-mini-extrato {
+        margin: 10px 0 !important;
+        border-top: 1px solid #EAEAEA !important;
+    }
+
+    .titulo-mini-lançamentos {
+        font-size: 13px !important;
+        margin-bottom: 8px !important;
+        font-weight: bold !important;
+    }
+
+    .lista-mini-lancamentos {
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+    }
+
+    .lista-mini-lancamentos li {
+        display: flex !important;
+        justify-content: space-between !important;
+        padding: 6px 0 !important;
+        font-size: 13px !important;
     }
 
     .label-saldo {
@@ -525,6 +584,7 @@
         font-size: 15px !important;
         font-weight: bold !important;
     }
+
 
     .timer-sair {
         position: absolute;
