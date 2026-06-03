@@ -1,4 +1,4 @@
-import { gerenciarNavbarAtiva } from '../../scripts/commons/navbar.js';
+import { gerenciarNavbarAtiva, iniciarDropdownMaisOpcoesMobile } from '../../scripts/commons/navbar.js';
 import { formatarDataAtual } from '../../scripts/commons/utils.js';
 import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
 
@@ -17,6 +17,9 @@ let mesOffsetSelecionado = -1;
 
 document.addEventListener('DOMContentLoaded', () => {
     gerenciarNavbarAtiva();
+    iniciarDropdownMaisOpcoesMobile();
+    window.addEventListener('resize', iniciarDropdownMaisOpcoesMobile);
+    
     inicializarValidacaoToken();
     inicializarNavegacaoAbas();
     inicializarFiltrosEAvancados();
