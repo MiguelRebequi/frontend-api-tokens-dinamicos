@@ -1,0 +1,723 @@
+/* Configurações do Corpo */
+body {
+    background-color: #eeeff1;
+}
+
+
+/* Dashboard 1 */
+.dashboard-content {
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.card-resumo {
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex: 1;
+}
+
+.card-saldos {
+    background: #FFFFFF;
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.lista-saldos {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-header-externo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+
+.card-header-externo h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.link-ver-mais {
+    color: #007bb6;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.item-saldo.espacador {
+    flex: 1;
+    min-height: 60px;
+    padding: 0;
+}
+
+.item-saldo strong {
+    font-weight: 600;
+}
+
+.container-saldos {
+    display: flex;
+    flex-direction: column;
+}
+
+.coluna-saldos,
+.coluna-resumo {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.item-saldo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 30px;
+    border-bottom: 1px solid #EAEAEA;
+    font-size: 15px;
+    color: #333;
+}
+
+.item-saldo.sem-borda {
+    border-bottom: none;
+}
+
+.resumo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+
+.col-graficos {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Garante que a coluna ocupe todo o espaço do card */
+}
+
+.col-transacoes {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+
+.barra-verde {
+    height: 4px;
+    background-color: #0bcc56;
+    border-radius: 2px;
+}
+
+.barra-vermelha {
+    height: 4px;
+    background-color: #ff0000;
+    border-radius: 2px;
+}
+
+.titulo-sessao {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.bloco-fluxo {
+    margin-bottom: 20px;
+}
+
+.info-fluxo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.texto-fluxo {
+    color: #555;
+    /* Tira o negrito e deixa cinza escuro */
+}
+
+.status-conta-base {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    /* Empurra para o final da coluna */
+    padding-top: 20px;
+    border-top: 1px solid #EAEAEA;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.texto-verde {
+    color: #28a745;
+}
+
+/* Linha do tempo de transações */
+.lista-transacoes {
+    display: flex;
+    flex-direction: column;
+}
+
+.transacao-item {
+    display: flex;
+    align-items: stretch;
+}
+
+.transacao-data {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2;
+    width: 35px;
+    padding-top: 2px;
+}
+
+.transacao-data span {
+    font-size: 11px;
+    color: #888;
+}
+
+/* A Linha Cinza Vertical */
+.transacao-linha {
+    position: relative;
+    width: 1px;
+    background-color: #d9d9d9;
+    margin: 0 20px;
+    height: 100%;
+    min-height: 60px;
+}
+
+.transacao-item:last-child .transacao-linha {
+    height: 20px;
+    /* A linha termina logo após a última bolinha */
+}
+
+.transacao-linha.sem-linha {
+    background-color: transparent;
+}
+
+.ponto-preto,
+.ponto-vazado {
+    position: absolute;
+    top: 0px;
+    left: -4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    /* Garante que a borda não aumente o tamanho da bolinha */
+}
+
+.ponto-preto {
+    background-color: #333;
+}
+
+.ponto-vazado {
+    background-color: #fff;
+    border: 2px solid #d9d9d9;
+    /* Corrigido para ficar igual à oficial */
+}
+
+.transacao-detalhes {
+    flex: 1;
+    padding-bottom: 45px;
+}
+
+.transacao-topo {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.transacao-detalhes p {
+    color: #333;
+}
+
+.transacao-detalhes small {
+    color: #888;
+    font-size: 12px;
+}
+
+.card-header-resumo-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 0 5px;
+}
+
+/* Agrupa o Título H3, a Chavinha e a Legenda na mesma linha */
+.resumo-titulo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.resumo-titulo-wrapper h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333333;
+}
+
+/* Estrutura base do Switch (Esconder o checkbox nativo) */
+.switch-valores {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+}
+
+.switch-valores input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* O fundo do slider (Desativado / Oculto) */
+.slider-switch {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #CCCCCC;
+    transition: .3s;
+    border-radius: 22px;
+}
+
+/* A bolinha branca interna do slider */
+.slider-switch:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+/* Quando o switch estiver ativado (Valores Visíveis) - Muda para o Vermelho Bradesco */
+.switch-valores input:checked + .slider-switch {
+    background-color: #CC0000;
+}
+
+/* Move a bolinha para a direita quando ativado */
+.switch-valores input:checked + .slider-switch:before {
+    transform: translateX(18px);
+}
+
+/* Texto de legenda ao lado do Switch */
+.legenda-switch {
+    font-size: 12px;
+    color: #666666;
+    font-weight: 500;
+}
+
+/* Dashboard Linha */
+   
+/* Container Principal Invertido */
+.dashboard-linha {
+    max-width: 1100px;
+    margin: 0 auto 50px auto;
+    display: grid; 
+    grid-template-columns: 1fr 320px; 
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* A Coluna de Atalhos (Direita) */
+
+.card-lista-atalhos {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px 0;
+}
+
+.card-lista-atalhos li {
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.card-lista-atalhos li.sem-borda {
+    border-bottom: none;
+}
+
+.card-lista-atalhos a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 25px; /* Devolve o respiro para o texto */
+    font-size: 14px; /* Fonte um pouco menor e mais discreta */
+    color: #555;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.card-lista-atalhos a:hover {
+    background-color: #f9f9f9;
+    color: #cc0000;
+}
+
+.card-lista-atalhos img {
+    width: 14px; /* Tamanho da setinha azul */
+    opacity: 0.7;
+}
+
+/* A Coluna de Serviços (Esquerda) */
+
+.card-servico {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.wrapper-icone-circulo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.wrapper-icone-circulo.prime {
+    background-color: #3b69ff;
+}
+
+.icone-servico {
+    width: 24px; /* Tamanho do ícone dentro do círculo */
+    height: auto;
+    
+    filter: brightness(0) invert(1); /* Deixar o ícone branco */
+    opacity: 0.9;
+}
+
+.servico-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    cursor: pointer;
+    border-bottom: 1px solid #EAEAEA;
+}
+
+.servico-titulo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.icone-azul {
+    width: 32px;
+}
+
+.servico-body {
+    display: none;
+    padding: 20px 30px 30px 30px; /* Em cima 0, para não afastar do header */
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card-servico.expandido .servico-body {
+    display: flex; 
+}
+
+.servico-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.icone-destaque {
+    width: 45px;
+    margin-bottom: 15px;
+}
+
+.servico-conteudo p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.servico-conteudo strong {
+    font-weight: bold;
+}
+
+.btn-visualizar {
+    border: 1px solid #cc0000; /* Borda vermelha Bradesco */
+    color: #cc0000;
+    background-color: transparent;
+    padding: 8px 30px;
+    border-radius: 20px; /* Arredondado nas pontas */
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-visualizar:hover {
+    background-color: #fff0f0; /* Fundo vermelho bem clarinho ao passar o mouse */
+}
+
+.servico-imagem img {
+    width: 220px; /* Largura fixa para não deformar */
+    height: 200px;
+    object-fit: cover; /* Corta a imagem perfeitamente se ela for de outro tamanho */
+    border-radius: 8px;
+}
+
+/* Dashboard linha 2: Logo, Seguros e Avisos */
+
+.dashboard-linha-2 {
+    max-width: 1100px;
+    margin: 0 auto 50px auto; /* Mantém a margem do rodapé */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* Três colunas de tamanhos iguais */
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.coluna-logo-bg, .coluna-seguros, .coluna-avisos {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-logo-vazio {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex: 1; /* Estica para igualar a altura dos outros */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    margin-top: 35px; /* 🌟 TRUQUE: Compensa a altura do título (h3) dos outros cards para as caixas brancas alinharem no topo */
+}
+
+#logo-bradesco-v {
+    width: 250px; 
+    height: 220px;
+    /* Define a cor cinza que você queria */
+    background-color: #dadada;
+
+    /* Aplica a máscara usando o seu arquivo png */
+    -webkit-mask-image: url('../../assets/images/logo/logo-bradesco-v-white.png');
+    mask-image: url('../../assets/images/logo/logo-bradesco-v-white.png');
+    
+    /* Garante que a imagem fique centralizada e não se repita */
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.card-bloco-centralizado {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.icone-vermelho-grande {
+    width: 65px;
+    margin-bottom: 25px;
+}
+
+.texto-centralizado p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.texto-centralizado strong {
+    font-weight: bold;
+}
+
+/* Botão de visualizar */
+.btn-largo {
+    width: 100%;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.card-aviso {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    padding: 30px;
+    position: relative; /* 🌟 Necessário para ancorar o efeito de pilha embaixo dele */
+    display: flex;
+    flex-direction: column;
+    z-index: 2; /* Garante que o card fica acima da "pilha" falsa */
+}
+
+.aviso-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.aviso-header h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    flex: 1; /* Não deixa o texto empurrar as setas para fora */
+    line-height: 1.4;
+}
+
+.controles-carrossel {
+    display: flex;
+    flex-shrink: 0; 
+    gap: 10px;
+    padding-top: 2px;
+}
+
+.controles-carrossel img {
+    width: 20px;   /* Aumentei um pouco para garantir nitidez */
+    height: 20px;
+    cursor: pointer;
+    display: block; /* Garante que a imagem se comporte como bloco */
+    opacity: 0.8;
+}
+
+.aviso-body p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.link-saiba-mais {
+    color: #007bb6;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.aviso-footer {
+    margin-top: auto; /* Joga os botões para o chão do card */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 25px;
+}
+
+/* Botão do footer de Avisos */
+.btn-acao-primaria {
+    background-color: #cc0000; /* Fundo sólido vermelho */
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-acao-primaria:hover {
+    background-color: #990000;
+}
+
+.btn-acao-secundaria {
+    color: #007bb6;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* O Efeito de Folhas Empilhadas */
+.efeito-pilha {
+    position: absolute;
+    /* Faz a folha ter exatamente a mesma largura do card principal */
+    left: 0;
+    right: 0;
+    
+    /* A altura é pequena, para parecer apenas uma espessura de papel */
+    height: 10px; 
+    
+    /* A folha de baixo começa logo abaixo do final do card de cima */
+    bottom: -10px; 
+    
+    background: #FFFFFF;
+    
+    /* IMPORTANTE: Simula a sombra do card de cima caindo sobre o papel de baixo */
+    box-shadow: 0px -2px 5px rgba(0,0,0,0.05); 
+    
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #EAEAEA;
+    
+    z-index: -1; 
+    pointer-events: none;
+}
+
+
+/* ========================================================
+   MEDIA QUERY: MOBILE (Telas de até 767px)
+   ======================================================== */
+@media (max-width: 767px) {
+    
+    /* Configuração de todos do conteúdo dos dashboard */
+    .dashboard-content, .dashboard-linha, .dashboard-linha-2 {
+        grid-template-columns: 1fr !important;
+        margin: 20px auto !important;
+        gap: 20px !important;
+    }
+    .card-header-resumo-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .resumo-titulo-wrapper {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .card-header-resumo-container .link-ver-mais {
+        align-self: flex-end;
+        margin-top: -5px;
+    }
+    
+}

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Bradesco | Tokens</title>
+    <link rel="shortcut icon" href="../../assets/icons/favicon/faviconV2.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="../../styles/vendor/reset.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="../../styles/header-footer.css">
+</head>
+
+<body>
+    <header class="header-dashboard">
+        <div class="header-conteudo">
+            <div class="header-esquerda">
+                <img src="../../assets/images/logo/logo-bradesco.svg" alt="Bradesco">
+                <span id="data-atual">TERÇA-FEIRA, 19/05/2026</span>
+            </div>
+
+            <div class="header-centro">
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar">
+                    <img src="../../assets/icons/nav/search.svg" alt="Buscar">
+                </div>
+            </div>
+
+            <div class="header-direita">
+                <div class="saldo-container-dropdown" id="dropdown-saldo-gatilho">
+                    <div class="saldo-box">
+                        <span class="label-saldo">Saldo disponível <img src="../../assets/icons/nav/arrow-down.svg"
+                                class="seta-saldo-icon"></span>
+                        <div class="valor-saldo" id="val-topo-saldo">R$ *****</div>
+                    </div>
+
+                    <div class="mini-extrato-painel" id="mini-extrato-janela">
+                        <div class="extrato-linha-detalhe">
+                            <span>Conta Corrente:</span>
+                            <strong class="val-mini-corrente">R$ 0,00</strong>
+                        </div>
+                        <div class="extrato-linha-detalhe">
+                            <span>Conta Poupança:</span>
+                            <strong class="val-mini-poupanca">R$ 0,00</strong>
+                        </div>
+                        <div class="divisor-mini-extrato"></div>
+                        <p class="titulo-mini-lançamentos">Últimos Lançamentos</p>
+                        <ul class="lista-mini-lancamentos">
+                            <li><span>Pix Recebido</span> <strong class="texto-verde">+ R$ 150,00</strong></li>
+                            <li><span>Comp. Netflx</span> <strong style="color: #cc0000;">- R$ 55,90</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timer-sair">
+                    <div class="timer-circulo">16 MIN</div>
+                    <a href="#" class="btn-sair">Sair <img src="../../assets/icons/nav/logout.svg"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <nav class="nav-dashboard">
+        <div class="nav-conteudo">
+            <ul class="nav-links">
+                <li><a href="../dashboard/dashboard.html" class="ativo">Início</a></li>
+                <li><a href="#">Saldos e Extratos</a></li>
+                <li><a href="#">Pagamentos</a></li>
+                <li><a href="#">Pix</a></li>
+                <li><a href="#">Transferências</a></li>
+                <li><a href="../tokens/tokens.html">Tokens</a></li>
+                <li><a href="#">Cartões</a></li>
+                <li><a href="#">Empréstimos</a></li>
+                <li><a href="#">Ágora Home Broker</a></li>
+                <li><a href="#">Investimentos</a></li>
+                <li><a href="#">Open Finance</a></li>
+
+                <li><a href="#">Imposto de Renda</a></li>
+
+                <li>
+                    <a href="#" class="btn-mais-opcoes">
+                        Mais opções
+                        <img src="../../assets/icons/nav/arrow-down-blue-v2.svg" alt="Mais opções">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="tokens-content">
+        <div class="container-tokens">
+
+            <aside class="sidebar-tokens">
+                <h3 class="titulo-sidebar-tokens">Tokens</h3>
+                <ul class="abas-tokens">
+                    <li id="aba-validacao" class="aba-item ativa"><a href="#validacao">Validação de Tokens</a></li>
+                    <li id="aba-historico" class="aba-item"><a href="#historico">Histórico de Tokens</a></li>
+                </ul>
+            </aside>
+
+            <section class="painel-tokens">
+
+                <div id="painel-validacao-aba" class="card-token-funcional">
+
+                    <div id="tela-validacao-inicial" class="sub-tela-token">
+                        <div class="token-header">
+                            <h3>Validação de Tokens</h3>
+                            <p class="subtitulo-token">
+                                Insira o seu token recebido na comunicação no campo abaixo para verificar sua
+                                autenticidade.
+                            </p>
+                        </div>
+
+                        <div class="token-body-unificado">
+                            <div class="token-formulario-validacao">
+                                <div class="grupo-input-token">
+                                    <label for="input-token-codigo">Código do Token</label>
+                                    <input type="text" id="input-token-codigo" maxlength="6" placeholder="000 000"
+                                        autocomplete="one-time-code" inputmode="numeric" pattern="[0-9]*"
+                                        oninput="this.value = this.value.replace(/\D/g, '')">
+                                </div>
+                                <button type="button" id="btn-verificar" class="btn-validar-token">Validar
+                                    Token</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tela-resultado-sucesso" class="sub-tela-token estado-oculto">
+                        <div class="token-header-resultado centro">
+                            <div class="badge-status sucesso">✓</div>
+                            <h3>Comunicação Autêntica com sucesso!</h3>
+                            <p class="subtitulo-resultado">
+                                O código inserido é válido e foi confirmado em nossos sistemas. Esta comunicação é
+                                legítima e foi originada oficialmente pela nossa instituição. Você pode confiar no
+                                conteúdo desta mensagem e seguir com as orientações com segurança.
+                            </p>
+                        </div>
+
+                        <div class="tabela-info-token">
+                            <h4>Informações do Token</h4>
+                            <table class="tabela-bradesco">
+                                <thead>
+                                    <tr>
+                                        <th>#Token</th>
+                                        <th>Tipo de Canal</th>
+                                        <th>Data</th>
+                                        <th>Hora</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="linha-dados-sucesso">
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="resultado-footer">
+                            <button type="button" class="btn-voltar-token btn-secundario-link">← Voltar para
+                                verificação</button>
+                        </div>
+                    </div>
+
+                    <div id="tela-resultado-alerta" class="sub-tela-token estado-oculto">
+                        <div class="token-header-resultado centro">
+                            <div class="badge-status perigo">!</div>
+                            <h3 class="texto-vermelho">Alerta de segurança:<br>Tentativa de Fraude/Golpe!</h3>
+                            <p class="subtitulo-resultado">
+                                O código inserido é <strong>inválido ou inexistente</strong>. Esta comunicação
+                                <strong>NÃO</strong> foi enviada pelo nosso banco e trata-se de uma tentativa de
+                                fraude/golpe.
+                            </p>
+                        </div>
+
+                        <div class="diretrizes-seguranca">
+                            <ul class="lista-alertas-seguranca">
+                                <li>Se você estiver em uma ligação neste momento, <strong>desligue
+                                        imediatamente</strong>.</li>
+                                <li>Desconsidere imediatamente o conteúdo da mensagem, e-mail ou SMS recebido.</li>
+                                <li>Não clique em nenhum link enviado e nunca compartilhe senhas, tokens ou dados
+                                    pessoais adicionais.</li>
+                            </ul>
+                        </div>
+
+                        <div class="resultado-footer">
+                            <button type="button" class="btn-voltar-token btn-secundario-link">← Voltar para
+                                verificação</button>
+                        </div>
+                    </div>
+
+                    <div id="tela-resultado-usado" class="sub-tela-token estado-oculto">
+                        <div class="token-header-resultado centro">
+                            <div class="badge-status perigo" style="background-color: #FF9900; display: flex; align-items: center; justify-content: center;">⚠️</div>
+                            <h3 style="color: #FF9900;">Atenção: Token já utilizado!</h3>
+                            <p class="subtitulo-resultado">
+                                O token informado <strong>já foi validado e consumido</strong> anteriormente em nossos sistemas. Por motivos de segurança, cada token gerado é de uso único e possui uma validade.
+                            </p>
+                        </div>
+
+                        <div class="resultado-footer">
+                            <button type="button" class="btn-voltar-token btn-secundario-link">← Voltar para verificação</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="painel-historico-aba" class="card-token-funcional estado-oculto">
+
+                    <div class="token-header-historico">
+                        <h3>Histórico de Tokens</h3>
+                        <p class="subtitulo-token">
+                            Consulte abaixo o registro de todas as validações efetuadas no sistema para monitoramento de
+                            segurança.
+                        </p>
+                        <button type="button" id="btn-toggle-filtros" class="btn-toggle-filtros">
+                            Filtros Avançados
+                        </button>
+                    </div>
+
+                    <div id="secao-filtros-container" class="secao-filtros-historico recolhido">
+
+                        <button type="button" id="btn-fechar-filtros" class="btn-fechar-caixa"
+                            title="Fechar Filtros">✕</button>
+
+                        <div class="linha-busca-historico">
+                            <div class="grupo-filtro-busca">
+                                <label for="filtro-busca">🔎 Buscar Token</label>
+                                <input type="text" id="filtro-busca" placeholder="Ex: 111 111" maxlength="6"
+                                    inputmode="numeric" pattern="[0-9]*"
+                                    oninput="this.value = this.value.replace(/\D/g, '')">
+                            </div>
+                            <button type="button" id="btn-resetar-filtros" class="btn-limpar-filtros">
+                                🔄 Resetar Filtros
+                            </button>
+                        </div>
+
+                        <div class="grid-filtros-botoes">
+
+                            <div class="categoria-filtro-bloco">
+                                <span class="rotulo-filtro">📅 Período:</span>
+                                <div class="grupo-botoes-segmentados" data-filtro-tipo="periodo">
+                                    <button type="button" class="btn-segmento ativo" data-value="todos">TODOS</button>
+                                    <button type="button" class="btn-segmento" data-value="7days">Últimos 7
+                                        dias</button>
+                                    <button type="button" class="btn-segmento" data-value="30days">Últimos 30
+                                        dias</button>
+                                    <div class="dropdown-segmento">
+                                        <button type="button" class="btn-segmento btn-dropdown-toggle"
+                                            data-value="mes-seletor">
+                                            📅 Selecionar Mês <span class="seta-dropdown">▼</span>
+                                        </button>
+
+                                        <div id="dropdown-meses-container" class="dropdown-opcoes-mes"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="categoria-filtro-bloco">
+                                <span class="rotulo-filtro">⚙️ Canal:</span>
+                                <div class="grupo-botoes-segmentados" data-filtro-tipo="canal">
+                                    <button type="button" class="btn-segmento ativo" data-value="todos">TODOS</button>
+                                    <button type="button" class="btn-segmento" data-value="Ligação">📞 Ligação</button>
+                                    <button type="button" class="btn-segmento" data-value="Email">✉️ E-mail</button>
+                                    <button type="button" class="btn-segmento" data-value="SMS">💬 SMS</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="tabela-info-token">
+                        <table class="tabela-bradesco">
+                            <thead>
+                                <tr>
+                                    <th># Token</th>
+                                    <th>Tipo de Canal</th>
+                                    <th>Data</th>
+                                    <th>Hora</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="corpo-tabela-historico">
+                                <tr>
+                                    <td class="col-codigo">111 111</td>
+                                    <td>Ligação</td>
+                                    <td>23/05/2026</td>
+                                    <td>20:34</td>
+                                    <td><span class="tag-status autenticado">Autenticado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-codigo">451 829</td>
+                                    <td>SMS</td>
+                                    <td>22/05/2026</td>
+                                    <td>14:15</td>
+                                    <td><span class="tag-status pendente">Pendente/Expirado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-codigo">999 000</td>
+                                    <td>SMS</td>
+                                    <td>20/05/2026</td>
+                                    <td>09:02</td>
+                                    <td><span class="tag-status bloqueado">Alerta/Bloqueado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-codigo">222 333</td>
+                                    <td>Email</td>
+                                    <td>19/05/2026</td>
+                                    <td>18:44</td>
+                                    <td><span class="tag-status autenticado">Autenticado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-codigo">111 111</td>
+                                    <td>Ligação</td>
+                                    <td>23/05/2026</td>
+                                    <td>20:33</td>
+                                    <td><span class="tag-status autenticado">Autenticado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-codigo">222 222</td>
+                                    <td>SMS</td>
+                                    <td>15/05/2026</td>
+                                    <td>14:20</td>
+                                    <td><span class="tag-status pendente">Pendente/Expirado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-codigo">333 333</td>
+                                    <td>Email</td>
+                                    <td>02/05/2026</td>
+                                    <td>08:15</td>
+                                    <td><span class="tag-status bloqueado">Alerta/Bloqueado</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="col-codigo">444 444</td>
+                                    <td>Ligação</td>
+                                    <td>28/04/2026</td>
+                                    <td>17:45</td>
+                                    <td><span class="tag-status bloqueado">Alerta/Bloqueado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-codigo">257 338</td>
+                                    <td>SMS</td>
+                                    <td>18/04/2026</td>
+                                    <td>09:40</td>
+                                    <td><span class="tag-status autenticado">Autenticado</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-codigo">555 555</td>
+                                    <td>Email</td>
+                                    <td>05/04/2026</td>
+                                    <td>11:10</td>
+                                    <td><span class="tag-status pendente">Pendente/Expirado</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="col-codigo">666 666</td>
+                                    <td>Ligação</td>
+                                    <td>25/03/2026</td>
+                                    <td>10:30</td>
+                                    <td><span class="tag-status pendente">Pendente/Expirado</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer-dashboard">
+        <div class="footer-conteudo">
+
+            <div class="canais-atendimento">
+                <img src="../../assets/images/logo/logo-bradesco.svg" alt="Bradesco" class="logo-footer">
+
+                <div class="colunas-canais">
+                    <div class="canal">
+                        <h4 class="titulo-canal">Fone Fácil</h4>
+                        <p>Capitais e regiões <br> metropolitanas</p>
+                        <strong class="numero-grande">4002 0022</strong>
+                        <p>Consulta de saldo, extrato, transações financeiras e <br> cartão de crédito.</p>
+                    </div>
+
+                    <div class="canal">
+                        <p>Demais regiões</p>
+                        <strong class="numero-grande">0800 570 0022</strong>
+                        <p>SAC - Deficiência <br> Auditiva ou de Fala</p>
+                        <strong class="numero-grande">0800 722 0099</strong>
+                    </div>
+
+                    <div class="canal">
+                        <p>SAC - Alô Bradesco</p>
+                        <strong class="numero-grande">0800 704 8383</strong>
+                        <p>Cancelamento, <br> reclamação, informação, <br> sugestão e elogio.</p>
+                    </div>
+                </div>
+
+                <div class="footer-inferior">
+                    <div class="qrcode-whatsapp">
+                        <img src="../../assets/bia/qrcode/qrcode-bia-2.png" alt="QR Code">
+                        <span>Se preferir, fale com a BIA pelo WhatsApp: <strong>11 3335 0237</strong></span>
+                    </div>
+                    <a href="#" class="link-privacidade">Aviso de Privacidade</a>
+                </div>
+            </div>
+
+            <div class="card-seguranca">
+                <h4>Segurança</h4>
+                <p>O desenho do cadeado deve aparecer na barra do seu navegador.</p>
+                <a href="#">Ver mais</a>
+            </div>
+        </div>
+
+        <div class="footer-bar">
+            <div class="footer-bar-conteudo">
+                <a href="#">Ver outros telefones <img src="../../assets/icons/nav/arrow-right-chevron-white.svg"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="../../scripts/services/api.js"></script>
+
+    <script type="module" src="tokens.js"></script>
+</body>
+
+</html>

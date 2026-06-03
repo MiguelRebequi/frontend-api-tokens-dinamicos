@@ -1,0 +1,68 @@
+// ============================================================================
+// CÓDIGO RESERVA: VERSÃO DO TECLADO 100% NUMÉRICO (APENAS NÚMEROS DE 0 A 9)
+// Substituir estas funções no seu loading.js quando o Backend for atualizado.
+// ============================================================================
+
+function inicializarTeclado() {
+    const tecladoContainer = document.getElementById('teclado-virtual');
+    if (!tecladoContainer) return;
+
+    // Array contém apenas os números isolados, sem nenhuma letra acoplada
+    const números = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+
+    // Embaralha os botões numerados aleatoriamente a cada carregamento (Padrão Bradesco)
+    números.sort(() => Math.random() - 0.5);
+
+    tecladoContainer.innerHTML = "";
+
+    números.forEach(num => {
+        const btn = document.createElement('button');
+        btn.type = "button";
+        btn.className = "teclado-btn";
+        btn.textContent = num;
+
+        // Como não há mais grupos de letras, o clique insere o número puro instantaneamente
+        btn.addEventListener('click', () => tratarCliqueVirtualNumérico(num));
+        tecladoContainer.appendChild(btn);
+    });
+
+    const btnLimpar = document.createElement('button');
+    btnLimpar.type = "button";
+    btnLimpar.className = "teclado-btn btn-limpar";
+    btnLimpar.textContent = "Limpar";
+    btnLimpar.addEventListener('click', limparSenha);
+    tecladoContainer.appendChild(btnLimpar);
+
+    document.removeEventListener('keydown', capturarTecladoFisico);
+    document.addEventListener('keydown', capturarTecladoFisico);
+}
+
+function tratarCliqueVirtualNumérico(numero) {
+    // Bloqueia se a senha já atingiu o teto de dígitos
+    if (senhaDigitada.length >= TAMANHO_SENHA) return;
+
+    // Adiciona o número digitado diretamente na string da senha
+    senhaDigitada += numero;
+    atualizarDisplaySenha();
+}
+
+function capturarTecladoFisico(evento) {
+    const tecla = evento.key;
+
+    if (tecla === "Backspace" || tecla === "Delete") {
+        limparSenha();
+        return;
+    }
+
+    if (tecla === "Enter" && senhaDigitada.length === TAMANHO_SENHA) {
+        loadingLogica();
+        return;
+    }
+
+    // A expressão regular agora aceita estritamente apenas números (0-9)
+    const ehApenasNumero = /^[0-9]$/.test(tecla);
+
+    if (ehApenasNumero) {
+        pressionarTeclaFisica(tecla);
+    }
+}

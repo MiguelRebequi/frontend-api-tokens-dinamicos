@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco Bradesco | Tela de Carregamento </title>
+    <link rel="shortcut icon" href="../../assets/icons/favicon/faviconV2.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="../../styles/vendor/reset.css">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="loading.css">
+
+</head>
+
+<body>
+    <header class="loading-header">
+        <div class="header-conteudo">
+            <div class="header-esquerda">
+                <img src="../../assets/images/logo/logo-bradesco.svg" alt="Logo Bradesco">
+                <span id="data-atual"></span>
+            </div>
+            <div class="header-direita">
+                <a href="../../index.html" class="btn-cancelar">Cancelar</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="loading-main">
+        <div class="card-autenticacao">
+            <section class="coluna-seguranca">
+                <div class="bloco-usuario">
+                    <h2>Acesso Seguro</h2>
+                    <p class="dados-conta">Agência <span id="lbl-agencia">1234</span> | Conta <span
+                            id="lbl-conta">56789-0</span></p>
+                </div>
+
+                <div class="bloco-senha" id="bloco-senha">
+                    <p class="instrucao-senha">Informe sua senha, clicando no teclado abaixo</p>
+
+                    <div class="display-senha" id="display-senha">
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                        <span class="ponto-senha"></span>
+                    </div>
+
+                    <div class="teclado-container" id="teclado-virtual">
+                    </div>
+
+                    <button type="button" class="btn-acessar" id="btn-acessar" disabled>Acessar</button>
+                    <a href="#" id="link-esqueci-senha" class="link-esqueci">Esqueci minha senha</a>
+                </div>
+
+                <div class="bloco-loading-status estado-oculto" id="bloco-loading">
+                    <p class="texto-status">Carregando Componente de Segurança Bradesco, aguarde alguns instantes...</p>
+                    <div class="spinner-bradesco">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+
+                <div class="bloco-sucesso estado-oculto" id="mensagem-sucesso">
+                    <h3 class="saudacao-usuario">Olá, Miguel Martinho Rebequi</h3>
+                    <p class="texto-sucesso">Acesso autorizado com sucesso! Redirecionando para o seu painel...</p>
+                </div>
+            </section>
+
+            <section class="coluna-banner-bia">
+                <div>
+                    <img src="../../assets/banners/loading/banner-mimo.png" alt="Banner com QR com mimos">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../../scripts/services/api.js"></script>
+
+    <script src="../../scripts/login.js"></script>
+
+    <script src="loading.js"></script>
+</body>
+
+</html>

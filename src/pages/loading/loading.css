@@ -1,0 +1,343 @@
+/* Configurações do Corpo */
+body {
+    background-color: #F4F5F7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header da página de Loading */
+.loading-header {
+    background-image: var(--meu-background-4);
+    padding: 15px 60px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.header-conteudo {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-esquerda {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-esquerda img {
+    height: 28px;
+}
+
+#data-atual {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    line-height: 28px;
+}
+
+.btn-cancelar {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 28px; /* 🌟 Mantém o botão na mesma linha de base */
+    transition: opacity 0.2s ease;
+}
+
+.btn-cancelar:hover {
+    opacity: 0.8;
+}
+
+/* Container de centralização (MAIN) */
+.loading-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.card-autenticacao {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    width: 100%;
+    max-width: 850px;
+    min-height: 480px;
+    overflow: hidden;
+}
+
+/* Coluna esquerda: Conteúdo de segurança */
+.coluna-seguranca {
+    flex: 1;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.bloco-usuario {
+    text-align: center;
+}
+
+.bloco-usuario h2 {
+    color: #333333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.dados-conta {
+    color: #888888;
+    font-size: 14px;
+}
+
+.dados-conta span {
+    color: #555555;
+    font-weight: bold;
+}
+
+/* Bloco do status do carregamento */
+.bloco-loading-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    text-align: center;
+}
+
+.texto-status {
+    color: #666666;
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 300px;
+}
+
+/* Spinner de 8 bolinhas (Loading) */
+.spinner-bradesco {
+    position: relative;
+    width: 44px;
+    height: 40px;
+}
+
+.spinner-bradesco .dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #CC0000;
+    border-radius: 50%;
+    top: 17px;
+    left: 17px;
+    animation: pulsarFade 0.8s infinite linear;
+}
+
+.spinner-bradesco .dot:nth-child(1) { transform: rotate(0deg) translate(20px); animation-delay: 0s; }
+.spinner-bradesco .dot:nth-child(2) { transform: rotate(45deg) translate(20px); animation-delay: -0.1s; }
+.spinner-bradesco .dot:nth-child(3) { transform: rotate(90deg) translate(20px); animation-delay: -0.2s; }
+.spinner-bradesco .dot:nth-child(4) { transform: rotate(135deg) translate(20px); animation-delay: -0.3s; }
+.spinner-bradesco .dot:nth-child(5) { transform: rotate(180deg) translate(20px); animation-delay: -0.4s; }
+.spinner-bradesco .dot:nth-child(6) { transform: rotate(225deg) translate(20px); animation-delay: -0.5s; }
+.spinner-bradesco .dot:nth-child(7) { transform: rotate(270deg) translate(20px); animation-delay: -0.6s; }
+.spinner-bradesco .dot:nth-child(8) { transform: rotate(315deg) translate(20px); animation-delay: -0.7s; }
+
+@keyframes pulsarFade {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 1; }
+}
+/* Bloco de Sucesso */
+.bloco-sucesso {
+    text-align: center;
+    margin: auto 0;
+}
+
+.saudacao-usuario {
+    color: #333333;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.texto-sucesso {
+    color: #555555;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.texto-sucesso::after {
+    content: "✓";
+    color: #007D3E;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* CLASSE UTILITÁRIA PARA OCULTAR ELEMENTOS */
+.estado-oculto {
+    display: none !important;
+}
+
+/* Bloco de Senha */
+.bloco-senha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 320px;
+}
+
+.instrucao-senha {
+    color: #666666;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.display-senha {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.ponto-senha {
+    width: 20px;
+    height: 2px;
+    background-color: #999999;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.ponto-senha.preenchido {
+    width: 10px;
+    height: 10px;
+    background-color: #333333;
+    border-radius: 50%;
+    transform: translateY(-4px);
+}
+
+.teclado-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.teclado-btn {
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 0;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.teclado-btn:hover {
+    background-color: #F4F5F7;
+    border-color: #999999;
+}
+
+
+.teclado-btn.btn-limpar {
+    font-size: 13px;
+    background-color: #FFFFFF;
+}
+
+.btn-acessar {
+    width: 100%;
+    background-color: #E2E4E8;
+    color: #999999;
+    border: none;
+    padding: 14px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: not-allowed;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-acessar:not(:disabled) {
+    background-color: #CC0000;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn-acessar:not(:disabled):hover {
+    background-color: #AA0000;
+}
+
+.link-esqueci {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #007bb6;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.link-esqueci:hover {
+    text-decoration: underline;
+    color: #cc0000;
+}
+
+/* Banner da BIA */
+
+.coluna-banner-bia {
+    width: 320px;
+    background-color: #FFEAEA;
+}
+
+.coluna-banner-bia img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer as proporções */
+    display: block;
+}
+
+
+/* ========================================================
+   MEDIA QUERY: MOBILE (Telas de até 767px)
+   ======================================================== */
+
+@media (max-width: 767px){
+    /* Header */
+    .loading-header {
+        padding: 15px 20px;
+    }
+    
+    #data-atual {
+        display: none !important;
+    }
+
+    .btn-cancelar {
+        font-size: 13px;
+    }
+
+    /* Main */
+    .loading-main {
+        padding: 20px 15px; /* Diminuindo o Padding para aumentar o aproveitamento*/
+    }
+
+    .card-autenticacao {
+        max-width: 400px; /* Impede que a caixa branca fique muito larga em tablets pequenos */
+        border-radius: 12px;
+    }
+
+    .coluna-banner-bia {
+        display: none !important;
+    }
+}
