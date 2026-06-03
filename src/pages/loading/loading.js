@@ -1,3 +1,5 @@
+import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
+
 let senhaDigitada = "";
 const TAMANHO_SENHA = 4;
 
@@ -239,6 +241,13 @@ document.addEventListener('DOMContentLoaded', function () {
     recuperarDadosUsuario();
 
     inicializarTeclado();
+
+    garantirLogoffESeguranca({
+        mensagemVoltar: "Atenção: Interromper o carregamento cancelará o seu acesso seguro. Deseja voltar para o início?",
+        mensagemBotaoSair: "Deseja realmente cancelar o acesso e voltar para a página inicial?",
+        caminhoIndex: "../../index.html",
+        seletorBotaoSair: ".btn-cancelar"
+    });
 
     const btnAcessar = document.getElementById('btn-acessar');
     if (btnAcessar) {

@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     sincronizarSaldoCabecalho();
     inicializarDropdownExtrato();
 
-    garantirLogoffESeguranca();
+    garantirLogoffESeguranca({
+        mensagemVoltar: "Atenção: Voltar para a página anterior irá encerrar sua sessão. Deseja deslogar?",
+        mensagemBotaoSair: "Deseja realmente sair da sua conta do Dashboard com segurança?",
+        caminhoIndex: "../../index.html"
+    });
 
     document.getElementById('data-atual').textContent = formatarDataAtual();
 

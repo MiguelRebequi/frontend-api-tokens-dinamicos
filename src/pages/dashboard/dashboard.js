@@ -210,7 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
     gerenciarNavbarAtiva();
     ativarToggleValores();
 
-    gerenciarSegurancaNavegacao();
+    garantirLogoffESeguranca({
+        mensagemVoltar: "Atenção: Voltar para a página anterior irá encerrar sua sessão do Dashboard. Deseja deslogar?",
+        mensagemBotaoSair: "Deseja realmente sair da sua conta do Dashboard com segurança?",
+        caminhoIndex: "../../index.html"
+    });
+    
     gerenciarTemporizadorSessao();
     inicializarDropdownExtrato();
     // Mobile
