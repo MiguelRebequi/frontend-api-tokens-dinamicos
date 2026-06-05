@@ -1,0 +1,11 @@
+# Gerenciador de Pacotes (Obrigatório para o Cypress não quebrar o GitHub)
+node_modules/
+
+# Arquivos locais e temporários do VS Code
+.vscode/
+.DS_Store
+*.log
+
+# Caso o Cypress crie vídeos ou prints locais de erros automaticamente
+cypress/videos/
+cypress/screenshots/
