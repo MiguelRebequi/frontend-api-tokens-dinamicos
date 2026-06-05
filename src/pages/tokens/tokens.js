@@ -1,10 +1,13 @@
 import { gerenciarNavbarAtiva, iniciarDropdownMaisOpcoesMobile } from '../../scripts/commons/navbar.js';
+import { sincronizarUsuarioCabecalho } from '../../scripts/commons/utils.js';
 import { formatarDataAtual } from '../../scripts/commons/utils.js';
 import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
 
 import { gerenciarTemporizadorSessao } from '../../scripts/commons/sessao.js';
 
 import { inicializarDropdownExtrato } from '../../scripts/commons/cabecalho_saldo.js';
+
+import { iniciarMenuAcessibilidade } from '../../scripts/commons/acessibilidade.js';
 
 
 // Variáveis de escopo global do arquivo
@@ -34,9 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('data-atual').textContent = formatarDataAtual();
+    sincronizarUsuarioCabecalho();
 
     carregarHistoricoTokens();
     gerenciarTemporizadorSessao();
+
+    // Acessibilidade
+    iniciarMenuAcessibilidade();
 });
 
 function inicializarValidacaoToken() {
@@ -460,7 +467,6 @@ async function carregarHistoricoTokens() {
         `;
     });
 
-    // 🔥 A CORREÇÃO DO "PISCA-PISCA": Reaplica os filtros visuais após recriar a tabela!
     filtrarTabelaHistorico();
 }
 

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="../../styles/header-footer.css">
+    <link rel="stylesheet" href="../../styles/components/acessibilidade.css">
 </head>
 
 <body>
@@ -54,9 +55,68 @@
                     </div>
                 </div>
 
+                <div class="usuario-logado-header">
+                    <span id="nome-usuario-topo">...</span>
+                    <span id="dados-conta-topo">0000 • 000000-0</span>
+                </div>
+
                 <div class="timer-sair">
                     <div class="timer-circulo">16 MIN</div>
                     <a href="#" class="btn-sair">Sair <img src="../../assets/icons/nav/logout.svg"></a>
+                </div>
+
+                <div class="header-acessibilidade">
+                    <button id="btn-abrir-acessibilidade" aria-haspopup="dialog" aria-expanded="false"
+                        aria-controls="menu-acessibilidade">
+                        Acessibilidade
+                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade.svg" alt="" aria-hidden="true">
+                    </button>
+
+                    <div id="menu-acessibilidade" class="menu-acessibilidade-escondido" role="dialog" aria-modal="true"
+                        aria-labelledby="titulo-menu-acesso">
+                        <div class="menu-acessibilidade_topo">
+                            <h3 id="titulo-menu-acesso">Acessibilidade</h3>
+                            <button id="btn-fechar-acessibilidade" aria-label="Fechar menu de acessibilidade">X</button>
+                        </div>
+
+                        <div class="menu-acessibilidade_grid">
+                            <ul role="menu">
+                                <li role="presentation">
+                                    <a href="#" title="Ativar WebLibras" class="btn-acesso-item" role="menuitem">
+                                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade_weblibras.svg"
+                                            alt="" aria-hidden="true"> WebLibras
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#" title="Ativar Voz" class="btn-acesso-item" role="menuitem">
+                                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade_contraste.svg"
+                                            alt="" aria-hidden="true"> <span>Voz</span>
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#" title="Acessar mais Ferramentas" class="btn-acesso-item"
+                                        role="menuitem">
+                                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade_contraste.svg"
+                                            alt="" aria-hidden="true"> <span>Mais Ferramentas</span>
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#" title="Ler sobre acessibilidades" class="btn-acesso-item"
+                                        role="menuitem">
+                                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade_produtos_servicos.svg"
+                                            alt="" aria-hidden="true"> <span>Sobre Acessibilidade</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu-acessibilidade_rodape">
+                            <a href="#" class="btn-atendimento-libras" aria-label="Ir para atendimento em Libras">
+                                <img src="../../assets/icons/acessibilidade/icon_acessibilidade_libras.svg" alt=""
+                                    aria-hidden="true">
+                                Atendimento em Libras
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,10 +1,13 @@
 import { formatarDataAtual } from '../../scripts/commons/utils.js';
+import { sincronizarUsuarioCabecalho } from '../../scripts/commons/utils.js';
 import { gerenciarNavbarAtiva, iniciarDropdownMaisOpcoesMobile } from '../../scripts/commons/navbar.js';
 import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
 
 import { gerenciarTemporizadorSessao } from '../../scripts/commons/sessao.js';
 
 import { inicializarDropdownExtrato } from '../../scripts/commons/cabecalho_saldo.js';
+
+import { iniciarMenuAcessibilidade } from '../../scripts/commons/acessibilidade.js';
 
 let valoresOcultados = false; // Inicia mascarado por padrão conforme pedido
 let saldosDaConta = { poupanca: 0, entrada: 0, saida: 0 };
@@ -161,6 +164,7 @@ window.addEventListener('resize', iniciarDropdownMaisOpcoesMobile);
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('data-atual').textContent = formatarDataAtual();
+    sincronizarUsuarioCabecalho();
     gerenciarNavbarAtiva();
     iniciarDropdownMaisOpcoesMobile();
     
@@ -178,5 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile
     iniciarDropdownMaisOpcoesMobile();
 
+    // Acessibilidade
+    iniciarMenuAcessibilidade();
 
 });

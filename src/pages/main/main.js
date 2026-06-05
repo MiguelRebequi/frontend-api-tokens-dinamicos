@@ -1,3 +1,5 @@
+import { iniciarMenuAcessibilidade } from '../../scripts/commons/acessibilidade.js';
+
 function iniciarValidacaoNumerica() {
     const inputs = document.querySelectorAll('.somente-numeros');
 
@@ -34,34 +36,7 @@ function iniciarValidacaoNumerica() {
 
 
 
-function iniciarMenuAcessibilidade() {
-    // 🌟 Mudamos para buscar diretamente pelo ID exato do botão
-    const btnAbrir = document.getElementById('btn-abrir-acessibilidade');
-    const menuAcessibilidade = document.getElementById('menu-acessibilidade');
-    const btnFechar = document.getElementById('btn-fechar-acessibilidade');
 
-    if (btnAbrir && menuAcessibilidade && btnFechar) {
-
-        btnAbrir.addEventListener('click', function (evento) {
-            evento.preventDefault();
-            evento.stopPropagation(); // Impede o clique de propagar e bugar o layout
-
-            const estaAberto = menuAcessibilidade.classList.toggle('mostrar');
-            btnAbrir.setAttribute('aria-expanded', estaAberto ? 'true' : 'false');
-
-            if (estaAberto) {
-                btnFechar.focus();
-            }
-        });
-
-        btnFechar.addEventListener('click', function (evento) {
-            evento.stopPropagation();
-            menuAcessibilidade.classList.remove('mostrar');
-            btnAbrir.setAttribute('aria-expanded', 'false');
-            btnAbrir.focus();
-        });
-    }
-}
 
 function iniciarDropdownsHeader() {
     const botoesPerfil = document.querySelectorAll('.btn-perfil');
@@ -389,7 +364,6 @@ function desativarAvisosNativosRequired() {
 
 document.addEventListener('DOMContentLoaded', function () {
     iniciarValidacaoNumerica();
-    iniciarMenuAcessibilidade();
     iniciarDropdownsHeader();
     iniciarMenuLateral();
     iniciarPainelBusca();
@@ -397,6 +371,9 @@ document.addEventListener('DOMContentLoaded', function () {
     iniciarBarraFlutuante();
     iniciarInteracaoBia();
     iniciarAbasRodape();
+
+    // Acessibilidade
+    iniciarMenuAcessibilidade();
 
     desativarAvisosNativosRequired();
 

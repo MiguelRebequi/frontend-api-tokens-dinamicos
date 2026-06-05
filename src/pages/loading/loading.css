@@ -31,6 +31,12 @@ body {
     height: 28px;
 }
 
+.header-direita {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 #data-atual {
     color: rgba(255, 255, 255, 0.8);
     font-size: 13px;
