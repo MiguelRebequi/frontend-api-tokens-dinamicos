@@ -63,12 +63,14 @@
         </form>
 
         <div class="header-acessibilidade">
-            <a href="#" id="btn-abrir-acessibilidade" aria-haspopup="dialog" aria-expanded="false"
+            <button id="btn-abrir-acessibilidade" aria-haspopup="dialog" aria-expanded="false"
                 aria-controls="menu-acessibilidade">
                 Acessibilidade
                 <img src="assets/icons/acessibilidade/icon_acessibilidade.svg" alt="" aria-hidden="true">
-            </a>
+            </button>
         </div>
+
+
         <button class="btn-acessar-mobile" id="btn-acessar-mobile" aria-expanded="false"
             aria-controls="painel-login-mobile">
             <img src="assets/images/button_cadeado/cadeado.svg" alt="" aria-hidden="true"> ACESSAR
@@ -79,21 +81,24 @@
         <form id="form-login-mobile" class="header_login-form-mobile">
             <div class="input-group">
                 <label for="campo-agencia-m">Agência:</label>
-                <input type="text" class="somente-numeros" id="campo-agencia-m" maxlength="4" autocomplete="off" required>
+                <input type="text" class="somente-numeros" id="campo-agencia-m" maxlength="4" autocomplete="off"
+                    required>
             </div>
             <div class="linha-conta">
                 <div class="input-group">
                     <label for="campo-conta-m">Conta:</label>
-                    <input type="text" class="somente-numeros" id="campo-conta-m" maxlength="7" autocomplete="off" required>
+                    <input type="text" class="somente-numeros" id="campo-conta-m" maxlength="7" autocomplete="off"
+                        required>
                 </div>
                 <div class="input-group">
                     <label for="campo-digito-m">Dígito:</label>
-                    <input type="text" class="somente-numeros" id="campo-digito-m" maxlength="1" autocomplete="off" required>
+                    <input type="text" class="somente-numeros" id="campo-digito-m" maxlength="1" autocomplete="off"
+                        required>
                 </div>
             </div>
             <button class="btn-submit-mobile" id="btn-submit-mobile">Acessar conta</button>
         </form>
-        
+
         <div class="rodape-painel">
             <div class="checkbox-group">
                 <input type="checkbox" id="lembrar-dados-m">
@@ -996,7 +1001,7 @@
 
     <script src="scripts/login.js"></script>
 
-    <script src="pages/main/main.js"></script>
+    <script type="module" src="pages/main/main.js"></script>
 </body>
 
 </html>

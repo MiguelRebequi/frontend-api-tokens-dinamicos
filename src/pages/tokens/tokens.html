@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../styles/global.css">
     <link rel="stylesheet" href="tokens.css">
     <link rel="stylesheet" href="../../styles/header-footer.css">
+    <link rel="stylesheet" href="../../styles/components/acessibilidade.css">
 </head>
 
 <body>
@@ -48,15 +49,74 @@
                         <div class="divisor-mini-extrato"></div>
                         <p class="titulo-mini-lançamentos">Últimos Lançamentos</p>
                         <ul class="lista-mini-lancamentos">
-                            <li><span>Pix Recebido</span> <strong class="texto-verde">+ R$ 150,00</strong></li>
-                            <li><span>Comp. Netflx</span> <strong style="color: #cc0000;">- R$ 55,90</strong></li>
+                            <li><span>Pagto Cobrança</span> <strong>R$ *****</strong></li>
+                            <li><span>Transfe Pix</span> <strong>R$ *****</strong></li>
                         </ul>
                     </div>
+                </div>
+
+                <div class="usuario-logado-header">
+                    <span id="nome-usuario-topo">...</span>
+                    <span id="dados-conta-topo">0000 • 000000-0</span>
                 </div>
 
                 <div class="timer-sair">
                     <div class="timer-circulo">16 MIN</div>
                     <a href="#" class="btn-sair">Sair <img src="../../assets/icons/nav/logout.svg"></a>
+                </div>
+
+                <div class="header-acessibilidade">
+                    <button id="btn-abrir-acessibilidade" aria-haspopup="dialog" aria-expanded="false"
+                        aria-controls="menu-acessibilidade">
+                        Acessibilidade
+                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade.svg" alt="" aria-hidden="true">
+                    </button>
+
+                    <div id="menu-acessibilidade" class="menu-acessibilidade-escondido" role="dialog" aria-modal="true"
+                        aria-labelledby="titulo-menu-acesso">
+                        <div class="menu-acessibilidade_topo">
+                            <h3 id="titulo-menu-acesso">Acessibilidade</h3>
+                            <button id="btn-fechar-acessibilidade" aria-label="Fechar menu de acessibilidade">X</button>
+                        </div>
+
+                        <div class="menu-acessibilidade_grid">
+                            <ul role="menu">
+                                <li role="presentation">
+                                    <a href="#" title="Ativar WebLibras" class="btn-acesso-item" role="menuitem">
+                                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade_weblibras.svg"
+                                            alt="" aria-hidden="true"> WebLibras
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#" title="Ativar Voz" class="btn-acesso-item" role="menuitem">
+                                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade_contraste.svg"
+                                            alt="" aria-hidden="true"> <span>Voz</span>
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#" title="Acessar mais Ferramentas" class="btn-acesso-item"
+                                        role="menuitem">
+                                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade_contraste.svg"
+                                            alt="" aria-hidden="true"> <span>Mais Ferramentas</span>
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#" title="Ler sobre acessibilidades" class="btn-acesso-item"
+                                        role="menuitem">
+                                        <img src="../../assets/icons/acessibilidade/icon_acessibilidade_produtos_servicos.svg"
+                                            alt="" aria-hidden="true"> <span>Sobre Acessibilidade</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="menu-acessibilidade_rodape">
+                            <a href="#" class="btn-atendimento-libras" aria-label="Ir para atendimento em Libras">
+                                <img src="../../assets/icons/acessibilidade/icon_acessibilidade_libras.svg" alt=""
+                                    aria-hidden="true">
+                                Atendimento em Libras
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -191,15 +251,20 @@
 
                     <div id="tela-resultado-usado" class="sub-tela-token estado-oculto">
                         <div class="token-header-resultado centro">
-                            <div class="badge-status perigo" style="background-color: #FF9900; display: flex; align-items: center; justify-content: center;">⚠️</div>
+                            <div class="badge-status perigo"
+                                style="background-color: #FF9900; display: flex; align-items: center; justify-content: center;">
+                                ⚠️</div>
                             <h3 style="color: #FF9900;">Atenção: Token já utilizado!</h3>
                             <p class="subtitulo-resultado">
-                                O token informado <strong>já foi validado e consumido</strong> anteriormente em nossos sistemas. Por motivos de segurança, cada token gerado é de uso único e possui uma validade.
+                                O token informado <strong>já foi validado e consumido</strong> anteriormente em nossos
+                                sistemas. Por motivos de segurança, cada token gerado é de uso único e possui uma
+                                validade.
                             </p>
                         </div>
 
                         <div class="resultado-footer">
-                            <button type="button" class="btn-voltar-token btn-secundario-link">← Voltar para verificação</button>
+                            <button type="button" class="btn-voltar-token btn-secundario-link">← Voltar para
+                                verificação</button>
                         </div>
                     </div>
 

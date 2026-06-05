@@ -1,5 +1,7 @@
 import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
 
+import { iniciarMenuAcessibilidade } from '../../scripts/commons/acessibilidade.js'; 
+
 let senhaDigitada = "";
 const TAMANHO_SENHA = 4;
 
@@ -239,6 +241,9 @@ function recuperarDadosUsuario() {
 document.addEventListener('DOMContentLoaded', function () {
     dataAtual();
     recuperarDadosUsuario();
+
+    // Acessibilidade
+    iniciarMenuAcessibilidade();
 
     inicializarTeclado();
 
