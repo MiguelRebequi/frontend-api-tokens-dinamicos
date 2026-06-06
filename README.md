@@ -191,4 +191,12 @@ git clone [https://github.com/MachadoCodes/api-tokens-dinamicos.git](https://git
 
 <br>
 
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença **MIT**. Para mais detalhes, consulte o arquivo [LICENSE](LICENSE) na raiz do repositório.
+
+Copyright © 2026 - Miguel Martinho Rebequi
+
 <p align="right">(<a href="#readme-top"> ▲ voltar ao topo ▲ </a>)</p>
