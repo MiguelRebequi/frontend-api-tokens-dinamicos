@@ -425,6 +425,16 @@ html.modo-zoom-texto .valor-saldo {
     font-size: calc(100% + 4px) !important;
 }
 
+html.modo-zoom-texto #menu-acessibilidade {
+    width: 320px !important; /* Mantém a largura fixa para conter o grid */
+}
+html.modo-zoom-texto .btn-acesso-item span,
+html.modo-zoom-texto #titulo-menu-acesso {
+    font-size: 13px !important; /* Trava o crescimento do texto interno do componente */
+}
+
+
+
 /* 4. Modo Contraste Escuro */
 body.modo-contraste-escuro {
     background-color: #121212 !important;
@@ -541,13 +551,16 @@ body.modo-contraste-escuro #dados-conta-topo {
 body.modo-contraste-escuro table,
 body.modo-contraste-escuro thead,
 body.modo-contraste-escuro tbody,
-body.modo-contraste-escuro tr {
-    background-color: #1e1e1e !important;
+body.modo-contraste-escuro tr,
+body.modo-contraste-escuro th,
+body.modo-contraste-escuro td {
+    background-color: #1e1e1e !important; /* Força todas as células a assumirem o fundo grafite */
     background-image: none !important;
 }
 
     /* 2. O SEGREDO DO CABEÇALHO: Dá um fundo preto puro para destacar as colunas */
-body.modo-contraste-escuro thead tr {
+body.modo-contraste-escuro thead tr,
+body.modo-contraste-escuro thead th {
     background-color: #121212 !important;
     border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
 }
@@ -558,6 +571,11 @@ body.modo-contraste-escuro th {
     font-weight: 700 !important;
     padding: 15px 10px !important;
     letter-spacing: 0.5px;
+}
+
+body.modo-contraste-escuro th {
+    font-weight: 700 !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
 }
 
     /* 4. Trata as linhas de dados (tbody) para que fiquem legíveis e separadas sutilmente */
