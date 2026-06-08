@@ -1,39 +1,45 @@
-export function garantirLogoffESeguranca(caminhoLogin = "../../index.html") {
-    // 1. BLINDAGEM CONTRA O BOTÃO VOLTAR DO NAVEGADOR (Cache de Histórico)
-    window.addEventListener('pageshow', function (evento) {
-        if (evento.persisted || !localStorage.getItem('conta')) {
-            window.location.replace(caminhoLogin);
-        }
-    });
+/**
+ * Garante o logoff seguro e gerencia a segurança de navegação (Bloqueio do botão Voltar)
+ * @param {Object} configuracao - Objeto contendo os textos, caminhos e seletores da página atual.
+ */
+export function garantirLogoffESeguranca(configuracao) {
+    const {
+        mensagemVoltar = "Atenção: Voltar para a página anterior irá encerrar sua sessão atual de forma segura. Deseja mesmo deslogar?",
+        mensagemBotaoSair = "Deseja realmente sair da sua conta com segurança?",
+        caminhoIndex = "../../index.html",
+        seletorBotaoSair = ".btn-sair" // 🌟 NOVO: Seletor genérico configurável
+    } = configuracao;
 
-    // 2. VERIFICAÇÃO DE SESSÃO ATIVA IMEDIATA
+    // 1. BARREIRA DE ENTRADA: Se não houver dados de conta salvos, expulsa para a Home imediatamente
     if (!localStorage.getItem('conta')) {
-        window.location.replace(caminhoLogin);
+        window.location.replace(caminhoIndex);
         return;
     }
 
-    // 3. EVENTO DO BOTÃO SAIR (LOGOFF CONFIRMADO)
-    const btnSair = document.querySelector('.btn-sair');
-    if (btnSair) {
-        const novoBtnSair = btnSair.cloneNode(true);
-        btnSair.parentNode.replaceChild(novoBtnSair, btnSair);
+    // 2. INJEÇÃO DE HISTÓRICO: Cria um estado "fantasma" para interceptar o primeiro clique de voltar
+    window.history.pushState({ logoff: true }, document.title, window.location.href);
 
-        novoBtnSair.addEventListener('click', function (e) {
+    // 3. CAPTURA DO BOTÃO VOLTAR
+    window.addEventListener('popstate', function (evento) {
+        const desejaSair = confirm(mensagemVoltar);
+
+        if (desejaSair) {
+            localStorage.clear();
+            window.location.replace(caminhoIndex);
+        } else {
+            window.history.pushState({ logoff: true }, document.title, window.location.href);
+        }
+    });
+
+    // 4. VÍNCULO DO BOTÃO FÍSICO (Usando o seletor dinâmico)
+    const btnSair = document.querySelector(seletorBotaoSair);
+    if (btnSair) {
+        btnSair.addEventListener('click', function (e) {
             e.preventDefault();
-            
-            // 🎯 O AJUSTE CRÍTICO: Dispara a caixa de diálogo exibida na imagem_f72d8a.png
-            const usuarioConfirmouSair = window.confirm("Deseja realmente sair da sua conta com segurança?");
-            
-            // Se o usuário clicar em "OK" (Botão Azul)
-            if (usuarioConfirmouSair) {
-                // Limpa absolutamente todas as credenciais gravadas
+            if (confirm(mensagemBotaoSair)) {
                 localStorage.clear();
-                
-                // Substitui o histórico e ejeta o usuário para a página de login inicial
-                window.location.replace(caminhoLogin);
+                window.location.replace(caminhoIndex);
             }
-            
-            // Se o usuário clicar em "Cancelar", a função termina aqui e ele continua navegando no Dashboard normalmente!
         });
     }
 }

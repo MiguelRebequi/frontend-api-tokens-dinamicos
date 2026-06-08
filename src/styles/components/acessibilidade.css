@@ -1,0 +1,715 @@
+/* ==========================================================================
+   COMPONENTE: MENU DE ACESSIBILIDADE E BOTÃO
+   ========================================================================== */
+
+.header-acessibilidade {
+    position: relative !important;
+    display: inline-block;
+}
+
+/* Estilo do botão no Header */
+.header-acessibilidade a {
+    color: var(--cor-superficie, #FFFFFF);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Reseta o visual padrão do navegador para o botão */
+#btn-abrir-acessibilidade {
+    background: transparent;
+    border: none;
+    cursor: pointer;    
+    
+    /* Mantém as regras que já tínhamos feito para alinhar o ícone */
+    color: #FFFFFF !important;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Posição e base do painel flutuante */
+#menu-acessibilidade {
+    position: absolute !important;
+    top: 100% !important; /* Move o menu exatamente para baixo do botão */
+    right: 0 !important;  /* Alinha a borda direita do menu com a do botão */
+    margin-top: 12px !important; /* Dá um recuo confortável para não colar no header */
+    
+    width: 320px !important;
+    background-color: #FFFFFF !important;
+    border-radius: 8px !important;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15) !important;
+    z-index: 2500 !important; /* Garante que fique por cima de tudo na página de loading */
+    display: none; 
+    overflow: hidden;
+}
+
+#menu-acessibilidade.mostrar {
+    display: block !important;
+}
+
+/* Topo do Menu (Faixa Vermelha) */
+.menu-acessibilidade_topo {
+    background-color: var(--cor-primaria, #cc092f);
+    color: var(--cor-superficie, #FFFFFF);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-acessibilidade_topo h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+#btn-fechar-acessibilidade {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: var(--fonte-padrao, sans-serif);
+}
+
+/* Grid com as 4 opções */
+.menu-acessibilidade_grid {
+    padding: 20px;
+}
+
+.menu-acessibilidade_grid ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-acessibilidade_grid li {
+    display: flex;
+}
+
+.btn-acesso-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px 10px;
+    border: 1px solid #EAEAEA;
+    border-radius: 8px;
+    color: var(--cor-texto-principal) !important;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+    text-decoration: none;
+}
+
+.btn-acesso-item:hover {
+    background-color: rgb(240, 241, 245);
+}
+
+.btn-acesso-item img {
+    margin-bottom: 10px;
+    height: 35px;
+}
+
+/* Rodapé do Menu (Botão Libras) */
+.menu-acessibilidade_rodape {
+    background-color: var(--cor-fundo, #f5f5f5);
+    padding: 20px;
+}
+
+.btn-atendimento-libras {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--cor-primaria, #cc092f);
+    color: white;
+    padding: 12px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   WIDGET FLUTUANTE DE ACESSIBILIDADE (ESTILO ORIGINAL)
+   ========================================================================== */
+#painel-acessibilidade-avancada {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    /* Fundo invisível, mas bloqueia interações na página (Opcional, pode usar rgba se quiser) */
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    z-index: 5000 !important;
+    display: flex;
+    align-items: flex-start; /* Alinha no topo */
+    justify-content: flex-start; /* Alinha na esquerda */
+    padding: 20px; /* Desgruda da borda da tela */
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+#painel-acessibilidade-avancada.painel-acesso-escondido {
+    display: none !important;
+}
+
+.painel-acesso-container {
+    background-color: #f2e5e5 !important; /* Cor bege/rosada do fundo */
+    width: 360px; /* Largura do widget */
+    max-height: calc(100vh - 40px); /* Altura máxima com respiro */
+    border: 3px solid #7a151b; /* Borda externa vermelho escuro */
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: fadeInScale 0.2s ease-out;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* 🔴 TOPO ESCURO DO WIDGET */
+.painel-acesso-topo {
+    background-color: #7a151b;
+    color: white;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topo-icones-esq, .topo-icones-dir {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.topo-icones-esq img { height: 16px; }
+.topo-icones-esq svg, .topo-icones-dir svg {
+    width: 18px; height: 18px;
+    fill: white;
+    cursor: pointer;
+    opacity: 0.8;
+}
+.topo-icones-esq svg:hover, .topo-icones-dir svg:hover { opacity: 1; }
+
+/* ❓ FAIXA DE AJUDA */
+.btn-ajuda-acesso {
+    background-color: #871d19;
+    color: white;
+    border: none;
+    padding: 8px;
+    margin: 15px 15px 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-ajuda-acesso:hover{
+    background-color: #be8680;
+}
+
+
+.painel-acesso-corpo {
+    padding: 10px 15px 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto; /* Permite rolar a lista de ferramentas */
+}
+
+/* 🎛️ ESTRUTURA DOS GRIDS */
+.acesso-grid-cores, .acesso-grid-ferramentas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    background-color: transparent;
+}
+
+/* Caixa com borda fina vermelha envolvendo as cores */
+.box-grupo-cores {
+    border: 2px solid #c99c9e;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+/* ==========================================================================
+   DESIGN DOS BOTÕES (COR e COMPORTAMENTO)
+   ========================================================================== */
+.btn-acesso-pequeno, .btn-acesso-grande {
+    color: white;
+    border: 3px solid transparent; /* Espaço invisível para a borda branca não empurrar o layout */
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.1s ease;
+}
+
+
+
+
+/* Botão de Cor: Ícone na esquerda, texto na direita */
+.btn-acesso-pequeno {
+    background-color: #983c39;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 10px;
+    gap: 8px;
+}
+
+.btn-acesso-pequeno svg {
+    width: 20px; height: 20px; flex-shrink: 0; fill: white;
+}
+
+.btn-acesso-pequeno span.txt {
+    font-size: 8px; font-weight: 700; text-align: left; line-height: 1.1;
+}
+
+/* Botão de Ferramenta: Ícone em cima, texto em baixo */
+.btn-acesso-grande {
+    background-color: #be8680;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 5px;
+    gap: 8px;
+}
+
+.btn-acesso-grande svg {
+    width: 24px; height: 24px; fill: #871d19;
+}
+
+.btn-acesso-grande span.txt {
+    font-size: 10px; font-weight: 700; text-align: center; line-height: 1.1;
+}
+
+/* 🌟 ESTADOS: HOVER E ATIVO (Borda Grossa Branca) */
+.btn-acesso-pequeno:hover, .btn-acesso-pequeno.ativo {
+    border-color: #ffffff; /* Fica com a borda grossa branca */
+}
+
+.btn-acesso-grande:hover, .btn-acesso-grande.ativo {
+    border-color: #871d19;
+}
+
+/* ❔ ÍCONE DE AJUDA NO HOVER */
+.icon-help-hover {
+    position: absolute;
+    top: 4px; right: 4px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    border: 1px solid white;
+    color: white;
+    font-size: 6px;
+    font-weight: bold;
+    display: none; /* Escondido por padrão */
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-acesso-pequeno:hover .icon-help-hover,
+.btn-acesso-grande:hover .icon-help-hover {
+    display: flex; /* Aparece ao passar o mouse */
+}
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+@media (max-width: 767px) {
+    #painel-acessibilidade-avancada {
+        padding: 0;
+        align-items: flex-end; /* No celular vira Bottom Sheet */
+    }
+    .painel-acesso-container {
+        width: 100%;
+        max-height: 90vh;
+        border-radius: 16px 16px 0 0;
+        border: none;
+    }
+}
+
+/* ==========================================================================
+   COMPORTAMENTO RESPONSIVO: MOBILE
+   ========================================================================== */
+@media (max-width: 767px) {
+    #painel-acessibilidade-avancada {
+        justify-content: center;
+        align-items: flex-end; 
+    }
+
+    .painel-acesso-container {
+        max-width: 100%;
+        height: 90vh; /* Não cobre a tela toda no celular, deixa um respiro no topo */
+        border-radius: 16px 16px 0 0; 
+        animation: slideUpBottomSheet 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+@keyframes slideUpBottomSheet {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+
+/* ==========================================================================
+   CLASSES GLOBAIS DE ATIVAÇÃO DE ACESSIBILIDADE
+   ========================================================================== */
+
+/* 1. Modo Monocromático */
+body.modo-monocromatico {
+    filter: grayscale(100%) !important;
+}
+
+/* 2. Cursor Grande */
+    /* Definição do cursor padrão GRANDE (a seta customizada que você já tinha) */
+body.modo-cursor-grande, 
+body.modo-cursor-grande input {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 32 32'%3E%3Cdefs%3E%3Cfilter id='shadow' x='-20%25' y='-20%25' width='140%25' height='140%25'%3E%3CfeDropShadow dx='1' dy='1' stdDeviation='1' flood-opacity='0.35'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M4,2 L4,26.4 L11.3,19.5 L16,29 L20.5,26.8 L15.7,17.4 L23.5,17.4 Z' fill='%23000000' stroke='%23ffffff' stroke-width='2.5' stroke-linejoin='miter' filter='url(%23shadow)'/%3E%3C/svg%3E") 8 4, auto !important;
+}
+
+    /* Definição do cursor de MÃO (Hover) para links e botões */
+body.modo-cursor-grande a, 
+body.modo-cursor-grande button {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffffff' stroke='%23000000' stroke-width='1.5' stroke-linejoin='round' d='M11.5 8.5V3.5a1.5 1.5 0 0 0-3 0v10.3l-.8-.9a2 2 0 0 0-2.8-.2l-.4.4a1.5 1.5 0 0 0 .2 2.2l4.8 4c.6.5 1.4.7 2.2.7H17a3 3 0 0 0 3-3V11a1.5 1.5 0 0 0-3 0v-1a1.5 1.5 0 0 0-3 0v-1a1.5 1.5 0 0 0-2.5-.5z'/%3E%3Cpath fill='none' stroke='%23000000' stroke-width='1.2' d='M13.5 14v3m2.5-3v3m-5-2v2' stroke-linecap='round'/%3E%3C/svg%3E") 35 5, pointer !important;
+}
+
+/* 3. Zoom de Texto */
+html.modo-zoom-texto {
+    font-size: 120% !important; /* Agranda o rem/em do site proporcionalmente */
+}
+
+html.modo-zoom-texto h1,
+html.modo-zoom-texto h2,
+html.modo-zoom-texto h3,
+html.modo-zoom-texto h4,
+html.modo-zoom-texto p,
+html.modo-zoom-texto span,
+html.modo-zoom-texto strong,
+html.modo-zoom-texto label,
+html.modo-zoom-texto input,
+html.modo-zoom-texto td,
+html.modo-zoom-texto th,
+html.modo-zoom-texto a {
+    font-size: calc(100% + 2px) !important; 
+}
+
+html.modo-zoom-texto .search-box input,
+html.modo-zoom-texto .valor-saldo {
+    font-size: calc(100% + 4px) !important;
+}
+
+html.modo-zoom-texto #menu-acessibilidade {
+    width: 320px !important; /* Mantém a largura fixa para conter o grid */
+}
+html.modo-zoom-texto .btn-acesso-item span,
+html.modo-zoom-texto #titulo-menu-acesso {
+    font-size: 13px !important; /* Trava o crescimento do texto interno do componente */
+}
+
+
+
+/* 4. Modo Contraste Escuro */
+body.modo-contraste-escuro {
+    background-color: #121212 !important;
+    color: #FFFFFF !important;
+}
+
+    /* 🧱 ENGENHARIA DE HERANÇA: Força TODOS os textos do projeto a ficarem brancos */
+body.modo-contraste-escuro h1,
+body.modo-contraste-escuro h2,
+body.modo-contraste-escuro h3,
+body.modo-contraste-escuro h4,
+body.modo-contraste-escuro p,
+body.modo-contraste-escuro span,
+body.modo-contraste-escuro strong,
+body.modo-contraste-escuro th,
+body.modo-contraste-escuro td,
+body.modo-contraste-escuro label,
+body.modo-contraste-escuro input {
+    color: #FFFFFF !important;
+}
+
+body.modo-contraste-escuro input {
+    background-color: black;
+}
+
+body.modo-contraste-escuro .menu-acessibilidade_grid [role="presentation"] span {
+    background-color: black;
+}
+
+    /* Específico da primeira página */
+body.modo-contraste-escuro #btn-canais span,
+body.modo-contraste-escuro #btn-produtos span,
+body.modo-contraste-escuro .produtos-texto,
+body.modo-contraste-escuro .card-destaque > a > p,
+body.modo-contraste-escuro .non-account-holder > a > span,
+body.modo-contraste-escuro .card-cabecalho-horizontal h3,
+body.modo-contraste-escuro .card-consorcio p,
+body.modo-contraste-escuro .consorcios-titulo {
+    background-color: black;
+}
+
+    /* 🔲 COMPONENTIZAÇÃO DE CARDS: Aplica o grafite de contraste em TODOS os blocos de uma vez */
+/* 🔲 COMPONENTIZAÇÃO DE CARDS: Aplica o grafite em TODOS os blocos de uma vez */
+body.modo-contraste-escuro .card-saldos,
+body.modo-contraste-escuro .card-resumo,
+body.modo-contraste-escuro .card-servico,
+body.modo-contraste-escuro .card-lista-atalhos,
+body.modo-contraste-escuro .card-bloco-centralizado,
+body.modo-contraste-escuro .card-aviso,
+body.modo-contraste-escuro .card-token-funcional,
+body.modo-contraste-escuro .sidebar-tokens,
+body.modo-contraste-escuro .mini-extrato-painel,
+body.modo-contraste-escuro .search-box,
+body.modo-contraste-escuro .nav-dashboard,
+/* 🌟 NOVOS ALVOS ESCURECIDOS (Corrigindo as telas brancas/vermelhas) */
+body.modo-contraste-escuro .container-login, /* Caixa branca do loading */
+body.modo-contraste-escuro .bloco-vermelho-loading, /* Lateral vermelha do loading */
+body.modo-contraste-escuro .footer-dashboard, /* Rodapé inteiro */
+body.modo-contraste-escuro .footer-area-vermelha, 
+body.modo-contraste-escuro .footer-area-cinza,
+body.modo-contraste-escuro #menu-lateral-bradesco,
+body.modo-contraste-escuro .submenu-painel {
+    background-color: #1e1e1e !important;
+    background-image: none !important; 
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Garante que o fundo da página de loading fique 100% preto */
+body.modo-contraste-escuro.body-loading {
+    background-color: #121212 !important;
+}
+
+
+    /* 🔗 LINKS E ELEMENTOS DE DESTAQUE (Amarelo de Alto Contraste AAA) */
+body.modo-contraste-escuro a,
+body.modo-contraste-escuro .link-ver-mais,
+body.modo-contraste-escuro .link-saiba-mais,
+body.modo-contraste-escuro .btn-mais-opcoes,
+body.modo-contraste-escuro .texto-verde,
+body.modo-contraste-escuro .valor-saldo,
+body.modo-contraste-escuro #btn-abrir-acessibilidade {
+    color: #FFD600 !important; /* Destaques ganham amarelo vivo para leitura instantânea */
+}
+
+    /* 🚫 EXCEÇÃO DE SINALIZAÇÃO: Mantém os modais de sucesso verdes e fraudes vermelhas */
+body.modo-contraste-escuro .tag-status.autenticado {
+    background-color: #0b6623 !important;
+    color: #FFFFFF !important;
+}
+body.modo-contraste-escuro .tag-status.bloqueado {
+    background-color: #92171c !important;
+    color: #FFFFFF !important;
+}
+
+body.modo-contraste-escuro .tag-status.pendente {
+    background-color: rgba(255, 193, 7, 0.12) !important;
+    color: #FFFFFF !important;
+}
+
+body.modo-contraste-escuro .tag-status.expirado {
+    background-color: #333333 !important;
+    color: #E0E0E0 !important;
+}
+
+
+
+    /* 📱 CORREÇÃO MOBILE: Trata o texto secundário da agência/conta do header adaptativo */
+body.modo-contraste-escuro #dados-conta-topo {
+    color: #B3B3B3 !important;
+}
+
+    /* 1. Força o contêiner e a tabela a assumirem o fundo grafite escuro */
+body.modo-contraste-escuro table,
+body.modo-contraste-escuro thead,
+body.modo-contraste-escuro tbody,
+body.modo-contraste-escuro tr,
+body.modo-contraste-escuro th,
+body.modo-contraste-escuro td {
+    background-color: #1e1e1e !important; /* Força todas as células a assumirem o fundo grafite */
+    background-image: none !important;
+}
+
+    /* 2. O SEGREDO DO CABEÇALHO: Dá um fundo preto puro para destacar as colunas */
+body.modo-contraste-escuro thead tr,
+body.modo-contraste-escuro thead th {
+    background-color: #121212 !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+    /* 3. Força as letras do cabeçalho a ficarem brancas puras com peso forte */
+body.modo-contraste-escuro th {
+    color: #FFFFFF !important;
+    font-weight: 700 !important;
+    padding: 15px 10px !important;
+    letter-spacing: 0.5px;
+}
+
+body.modo-contraste-escuro th {
+    font-weight: 700 !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+    /* 4. Trata as linhas de dados (tbody) para que fiquem legíveis e separadas sutilmente */
+body.modo-contraste-escuro td {
+    color: #E0E0E0 !important; /* Branco fosco confortável para leitura */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding: 12px 10px !important;
+}
+
+    /* 5. Efeito hover sutil nas linhas da tabela para ganho de usabilidade */
+body.modo-contraste-escuro tbody tr:hover {
+    background-color: #262626 !important;
+}
+
+@media (max-width: 767px) {
+    #painel-acessibilidade-avancada {
+        padding: 0 !important;
+        align-items: flex-end !important;
+        justify-content: center !important;
+    }
+
+    .painel-acesso-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        max-height: 85vh !important;
+        border-radius: 20px 20px 0 0 !important; /* Arredonda as quinas superiores igual app nativo */
+        border: none !important; /* Remove a borda grossa no mobile para dar leveza */
+        border-top: 4px solid #7a151b !important; /* Mantém o detalhe da marca apenas no topo */
+        padding-bottom: 25px !important;
+    }
+
+    /* Ajusta a grade de 3 colunas dos botões para caber em telas bem estreitas */
+    .acesso-grid-cores, .acesso-grid-ferramentas {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px !important;
+    }
+
+    .btn-acesso-grande {
+        padding: 10px 4px !important; /* Encolhe sutilmente o estofamento interno */
+    }
+}
+
+/* ==========================================================================
+   COMPORTAMENTO RESPONSIVO: BOTTOM SHEET (MOBILE)
+   ========================================================================== */
+@media (max-width: 767px) {
+    #painel-acessibilidade-avancada {
+        align-items: flex-end; /* Empurra o modal para o chão da tela */
+    }
+
+    .painel-acesso-container {
+        max-width: 100%;
+        border-radius: 16px 16px 0 0; /* Arredonda apenas as quinas de cima */
+        animation: slideUpBottomSheet 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    #btn-cursor-grande {
+        display: none !important;
+    }
+}
+
+@keyframes slideUpBottomSheet {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+
+/* ==========================================================================
+   RESPONSIVIDADE DO COMPONENTE
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    #btn-abrir-acessibilidade {
+        font-size: 0 !important;
+        gap: 0 !important;
+    }
+    #btn-abrir-acessibilidade img {
+        display: block;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    #menu-acessibilidade {
+        right: 12px !important;
+        width: calc(100vw - 24px) !important;
+        max-width: 320px !important;
+        
+        position: fixed !important;
+        top: 75px !important; /* Nasce logo abaixo do header */
+        box-sizing: border-box !important;
+    }
+
+
+    /* Melhora a área de toque do botão no header (Sua lógica base) */
+    #btn-abrir-acessibilidade {
+        font-size: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 5px !important;
+    }
+
+    #btn-abrir-acessibilidade img {
+        height: 28px !important;
+        width: auto !important;
+        display: block !important;
+    }
+
+    .menu-acessibilidade_grid {
+        padding: 12px !important;
+    }
+
+    .menu-acessibilidade_grid ul {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    /* Força os botões e textos do mini menu a não estourarem com o multiplicador de fonte */
+    .btn-acesso-item {
+        padding: 10px 4px !important;
+        font-size: 11px !important;
+        height: auto !important;
+    }
+    
+    html.modo-zoom-texto .btn-acesso-item span,
+    html.modo-zoom-texto #titulo-menu-acesso {
+        font-size: 11px !important; /* Trava milimétrica */
+    }
+
+    .btn-acesso-item img {
+        height: 26px !important;
+        margin-bottom: 6px !important;
+    }
+}

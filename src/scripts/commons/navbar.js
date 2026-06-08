@@ -22,3 +22,44 @@ export function gerenciarNavbarAtiva() {
         }
     });
 }
+
+export function iniciarDropdownMaisOpcoesMobile() {
+    const btnMaisOpcoes = document.querySelector('.btn-mais-opcoes');
+    const navLinksContainer = document.querySelector('.nav-links');
+
+    if (!btnMaisOpcoes || !navLinksContainer) return;
+
+    if (window.innerWidth > 767) {
+        const menuExistente = navLinksContainer.querySelector('.dropdown-mais-opcoes-mobile');
+        if (menuExistente) menuExistente.remove();
+        return;
+    }
+
+    if (navLinksContainer.querySelector('.dropdown-mais-opcoes-mobile')) return;
+
+    const dropdownMobile = document.createElement('ul');
+    dropdownMobile.className = 'dropdown-mais-opcoes-mobile';
+
+    const todosItens = navLinksContainer.querySelectorAll('li');
+
+    for (let i = 6; i < todosItens.length - 1; i++) {
+        const itemClonado = todosItens[i].cloneNode(true);
+        itemClonado.style.display = 'block';
+        dropdownMobile.appendChild(itemClonado);
+    }
+
+    btnMaisOpcoes.parentElement.appendChild(dropdownMobile);
+
+    btnMaisOpcoes.replaceWith(btnMaisOpcoes.cloneNode(true));
+    const novoBtnMaisOpcoes = document.querySelector('.btn-mais-opcoes');
+
+    novoBtnMaisOpcoes.addEventListener('click', (evento) => {
+        evento.preventDefault();
+        evento.stopPropagation();
+        dropdownMobile.classList.toggle('mostrar-dropdown');
+    });
+
+    document.addEventListener('click', () => {
+        dropdownMobile.classList.remove('mostrar-dropdown');
+    });
+}

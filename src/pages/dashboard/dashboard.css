@@ -698,12 +698,39 @@ body {
    ======================================================== */
 @media (max-width: 767px) {
     
-    /* Configuração de todos do conteúdo dos dashboard */
+    
+
     .dashboard-content, .dashboard-linha, .dashboard-linha-2 {
         grid-template-columns: 1fr !important;
         margin: 20px auto !important;
         gap: 20px !important;
+        width: 100% !important; 
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
     }
+
+    .resumo-container {
+        grid-template-columns: 1fr !important; /* Muda de 2 colunas para 1 */
+        gap: 30px !important;
+    }
+
+    .card-saldos, .card-resumo {
+        padding: 20px 15px !important; /* Diminui o respiro interno geral */
+    }
+
+    .item-saldo {
+        padding: 15px 10px !important; /* Remove o padding excessivo de 30px lateral */
+        font-size: 14px !important;
+        gap: 10px !important;
+    }
+
+    .item-saldo strong {
+        font-size: 15px !important;
+        text-align: right !important;
+        word-break: break-word !important; 
+        max-width: 55% !important; /* Garante que o valor nunca esmague o título "Conta-poupança" */
+    }
+
     .card-header-resumo-container {
         flex-direction: column;
         align-items: flex-start;
@@ -720,4 +747,26 @@ body {
         margin-top: -5px;
     }
     
+    .dashboard-linha-2 {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important; /* Força o container a crescer de acordo com os filhos */
+        overflow: visible !important; /* Desativa qualquer barreira de scroll */
+    }
+
+    .coluna-logo-bg, 
+    .coluna-seguros, 
+    .coluna-avisos {
+        display: block !important;
+        height: auto !important;
+        width: 100% !important;
+    }
+
+    .card-logo-vazio,
+    .card-bloco-centralizado,
+    .card-aviso {
+        height: auto !important;   /* Força a caixa a se moldar ao tamanho dos textos e botões */
+        min-height: auto !important;
+        overflow: visible !important; /* Garante que nenhuma barra de rolagem apareça aqui */
+    }
 }

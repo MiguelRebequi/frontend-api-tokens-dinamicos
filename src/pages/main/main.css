@@ -109,7 +109,23 @@ button.btn-acessar {
     text-align: center;
 }
 
-/* Menu acessibiliddade */
+/* Menu acessibilidade */
+
+#btn-abrir-acessibilidade {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: inherit;       /* Puxa a cor branca do cabeçalho */
+    font-family: inherit; /* Puxa a fonte BradescoSans */
+    
+    /* Mantém as regras que já tínhamos feito para alinhar o ícone */
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
 
 #menu-acessibilidade {
     position: absolute;
@@ -2126,7 +2142,6 @@ button.btn-acessar {
         box-sizing: border-box;
     }
 
-    /* CORREÇÃO DOS PRODUTOS NO MOBILE */
     .benefit-card {
         grid-template-columns: repeat(2, 1fr) !important;
         /* Altera de 3 para 2 colunas nos celulares para não esmagar os textos */
@@ -2165,6 +2180,23 @@ button.btn-acessar {
         width: 20px;
         height: 20px;
     }
+
+    /* Esconde o texto 'Acessibilidade' sem quebrar o clique do botão */
+    #btn-abrir-acessibilidade {
+        font-size: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 5px !important;
+    }
+
+    /* Aumenta o tamanho do ícone para facilitar o toque no celular */
+    #btn-abrir-acessibilidade img {
+        height: 28px !important;
+        width: auto !important;
+    }
+
+    
 
     /* ---- PAINEL DE LOGIN MOBILE ---- */
     .painel-login-mobile {
@@ -2429,7 +2461,8 @@ button.btn-acessar {
     .banner {
         width: 100% !important;
         height: auto !important;
-        aspect-ratio: 2 / 1 !important; /* 🎯 Crucial para enquadrar perfeitamente a imagem 768x379 sem barras cinzas */
+        aspect-ratio: 2 / 1 !important;
+        /* 🎯 Crucial para enquadrar perfeitamente a imagem 768x379 sem barras cinzas */
         background-color: #cc092f !important;
         position: relative !important;
         overflow: visible !important;
@@ -2480,7 +2513,8 @@ button.btn-acessar {
 
     /* Botão de Contrate on-line */
     .non-account-holder {
-        width: 100% !important; /* Ocupa toda a largura da tela sem dentes lateralmente */
+        width: 100% !important;
+        /* Ocupa toda a largura da tela sem dentes lateralmente */
         margin: 0 !important;
         position: relative;
         z-index: 10;
@@ -2488,15 +2522,17 @@ button.btn-acessar {
 
     .non-account-holder a {
         display: flex !important;
-        flex-direction: row !important; /* Garante que texto e seta fiquem lado a lado */
+        flex-direction: row !important;
+        /* Garante que texto e seta fiquem lado a lado */
         align-items: center !important;
         justify-content: center !important;
         gap: 8px !important;
-        padding: 20px 15px !important; 
-        
+        padding: 20px 15px !important;
+
         background-color: #EBEBEB !important;
         color: #333333 !important;
-        font-size: 14px !important; /* Diminui de 20px para 14px para não quebrar feio */
+        font-size: 14px !important;
+        /* Diminui de 20px para 14px para não quebrar feio */
         font-weight: 700 !important;
         text-align: center !important;
         box-sizing: border-box !important;
@@ -2514,6 +2550,7 @@ button.btn-acessar {
         background-image: var(--meu-background) !important;
         color: #FFFFFF !important;
     }
+
     /* BIA */
     #container-flutuante-bia {
         right: 10px !important;

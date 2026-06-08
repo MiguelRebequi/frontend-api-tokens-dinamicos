@@ -1,10 +1,13 @@
-import { gerenciarNavbarAtiva } from '../../scripts/commons/navbar.js';
+import { gerenciarNavbarAtiva, iniciarDropdownMaisOpcoesMobile } from '../../scripts/commons/navbar.js';
+import { sincronizarUsuarioCabecalho } from '../../scripts/commons/utils.js';
 import { formatarDataAtual } from '../../scripts/commons/utils.js';
 import { garantirLogoffESeguranca } from '../../scripts/commons/seguranca.js';
 
 import { gerenciarTemporizadorSessao } from '../../scripts/commons/sessao.js';
 
 import { inicializarDropdownExtrato } from '../../scripts/commons/cabecalho_saldo.js';
+
+import { iniciarMenuAcessibilidade } from '../../scripts/commons/acessibilidade.js';
 
 
 // Variáveis de escopo global do arquivo
@@ -17,6 +20,9 @@ let mesOffsetSelecionado = -1;
 
 document.addEventListener('DOMContentLoaded', () => {
     gerenciarNavbarAtiva();
+    iniciarDropdownMaisOpcoesMobile();
+    window.addEventListener('resize', iniciarDropdownMaisOpcoesMobile);
+    
     inicializarValidacaoToken();
     inicializarNavegacaoAbas();
     inicializarFiltrosEAvancados();
@@ -24,12 +30,20 @@ document.addEventListener('DOMContentLoaded', () => {
     sincronizarSaldoCabecalho();
     inicializarDropdownExtrato();
 
-    garantirLogoffESeguranca();
+    garantirLogoffESeguranca({
+        mensagemVoltar: "Atenção: Voltar para a página anterior irá encerrar sua sessão. Deseja deslogar?",
+        mensagemBotaoSair: "Deseja realmente sair da sua conta do Dashboard com segurança?",
+        caminhoIndex: "../../index.html"
+    });
 
     document.getElementById('data-atual').textContent = formatarDataAtual();
+    sincronizarUsuarioCabecalho();
 
     carregarHistoricoTokens();
     gerenciarTemporizadorSessao();
+
+    // Acessibilidade
+    iniciarMenuAcessibilidade();
 });
 
 function inicializarValidacaoToken() {
@@ -453,7 +467,6 @@ async function carregarHistoricoTokens() {
         `;
     });
 
-    // 🔥 A CORREÇÃO DO "PISCA-PISCA": Reaplica os filtros visuais após recriar a tabela!
     filtrarTabelaHistorico();
 }
 
